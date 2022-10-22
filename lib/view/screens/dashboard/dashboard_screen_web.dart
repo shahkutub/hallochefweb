@@ -253,7 +253,19 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                   ),
                     ),),
-                  Tab(text: "Articles"),
+                  Tab(
+                    //text: "Home",
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(Images.pick_up_tab),
+                            fit: BoxFit.fill,
+                            // colorFilter: ColorFilter.mode(
+                            //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                          )
+
+                      ),
+                    ),),
                   Tab(text: "User"),
                 ]),
               ),

@@ -128,7 +128,7 @@ class CategoryShimmer extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-           // padding: EdgeInsets.only(right: Dimensions.PADDING_SIZE_SMALL),
+            padding: EdgeInsets.only(right: 0),
             child: Shimmer(
               duration: Duration(seconds: 2),
               enabled: categoryController.categoryList == null,
