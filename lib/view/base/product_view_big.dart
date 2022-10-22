@@ -54,7 +54,7 @@ class ProductViewBig extends StatelessWidget {
           crossAxisSpacing: Dimensions.PADDING_SIZE_LARGE,
           mainAxisSpacing: ResponsiveHelper.isDesktop(context) ? Dimensions.PADDING_SIZE_LARGE : 0.01,
           childAspectRatio: ResponsiveHelper.isDesktop(context) ? 2 : showTheme1Restaurant ? .9 : 1.6,
-          crossAxisCount: ResponsiveHelper.isMobile(context) ? 1 : 2,
+          crossAxisCount: ResponsiveHelper.isMobile(context) ? 2 : 2,
         ),
         physics: isScrollable ? BouncingScrollPhysics() : NeverScrollableScrollPhysics(),
         shrinkWrap: isScrollable ? false : true,
