@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:efood_multivendor/controller/order_controller.dart';
 import 'package:efood_multivendor/helper/responsive_helper.dart';
@@ -49,6 +50,24 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
   List<Widget> _screens;
   GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
   bool _canExit = GetPlatform.isWeb ? true : false;
+  int currentIndex = 0;
+  final List<Map<String, dynamic>> tabtitles = [
+    {
+      'title': "Delivery",
+      'img':
+      "https://images.unsplash.com/photo-1542444256-164bd32f11fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1005&q=80"
+    },
+    {
+      'title': "Pick-Up",
+      'img':
+      "https://images.unsplash.com/photo-1598514982901-ae62764ae75e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      'title': "Shop",
+      'img':
+      "https://images.unsplash.com/photo-1598514982901-ae62764ae75e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    }
+  ];
 
   @override
   void initState() {
@@ -65,14 +84,15 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       OrderScreen(),
       Container(),
     ];
-
-    Future.delayed(Duration(seconds: 1), () {
-      setState(() {});
-    });
+    //
+    // Future.delayed(Duration(seconds: 1), () {
+    //   setState(() {});
+    // });
 
     /*if(GetPlatform.isMobile) {
       NetworkInfo.checkConnectivity(_scaffoldKey.currentContext);
     }*/
+
 
     Get.find<CategoryController>().getCategoryList(true);
   }
@@ -238,36 +258,50 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
           child: Column(
             children: <Widget>[
               Container(
-                //constraints: BoxConstraints.expand(height: 50),
-                child: TabBar(tabs: [
-                  Tab(
-                    //text: "Home",
-                    child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(Images.deliverytab),
-                              fit: BoxFit.fill,
-                              // colorFilter: ColorFilter.mode(
-                              //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                    )
 
-                  ),
-                    ),),
-                  Tab(
-                    //text: "Home",
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(Images.pick_up_tab),
-                            fit: BoxFit.fill,
-                            // colorFilter: ColorFilter.mode(
-                            //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                          )
-
-                      ),
-                    ),),
-                  Tab(text: "User"),
-                ]),
+                child: TabBar(
+                  onTap: (value) => setState(() {
+                    currentIndex = value;
+                  }),
+                  indicatorSize: TabBarIndicatorSize.label,
+                  padding: const EdgeInsets.all(0),
+                  labelPadding: const EdgeInsets.all(0),
+                  tabs: [
+                    for (int tabItem = 0; tabItem < 3; tabItem++)
+                      buildTabWidget(tabItem,
+                          currentIndex: currentIndex,
+                          imageUrl: tabtitles[tabItem]['img'])
+                  ],
+                ),
+                // TabBar(tabs: [
+                //   Tab(
+                //     //text: "Home",
+                //     child: Container(
+                //         decoration: BoxDecoration(
+                //             image: DecorationImage(
+                //               image: AssetImage(Images.deliverytab),
+                //               fit: BoxFit.fill,
+                //               // colorFilter: ColorFilter.mode(
+                //               //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                //     )
+                //
+                //   ),
+                //     ),),
+                //   Tab(
+                //     //text: "Home",
+                //     child: Container(
+                //       decoration: BoxDecoration(
+                //           image: DecorationImage(
+                //             image: AssetImage(Images.pick_up_tab),
+                //             fit: BoxFit.fill,
+                //             // colorFilter: ColorFilter.mode(
+                //             //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                //           )
+                //
+                //       ),
+                //     ),),
+                //   Tab(text: "User"),
+                // ]),
               ),
               Expanded(
                 child: Container(
@@ -795,7 +829,42 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         // ),
       ),
     );
+
+
+
   }
+
+
+
+
+  Widget buildTabWidget(int currentItemNumber,
+      { int currentIndex,  String imageUrl}) =>
+      SizedBox(
+        width: ((MediaQuery.of(context).size.width) - 48) / 3,
+        height: 70,
+        child: Stack(alignment: Alignment.bottomLeft, children: [
+          Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          ClipRRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                  sigmaY: currentIndex == currentItemNumber ? 0 : 1,
+                  sigmaX: currentIndex == currentItemNumber ? 0 : 1),
+              child: Container(
+                width: ((MediaQuery.of(context).size.width) - 48) / 3,
+                height: 70,
+                color: Colors.black.withOpacity(0.3),
+              ),
+            ),
+          ),
+          Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.white ),))
+        ]),
+      );
 
   void _setPage(int pageIndex) {
     setState(() {

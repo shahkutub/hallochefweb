@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hallochefweb.iml" filepath="$PROJECT_DIR$/.idea/hallochefweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/testFlutterweb.iml" filepath="$PROJECT_DIR$/.idea/testFlutterweb.iml" />
     </modules>
   </component>
 </project>
