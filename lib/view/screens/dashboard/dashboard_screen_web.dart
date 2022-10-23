@@ -258,7 +258,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
           child: Column(
             children: <Widget>[
               Container(
-                
+
                 child: TabBar(
                   onTap: (value) => setState(() {
                     currentIndex = value;
@@ -841,6 +841,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       { int currentIndex,  String imageUrl}) =>
       SizedBox(
         width: ((MediaQuery.of(context).size.width) - 48) / 3,
+        height: 70,
         child: Stack(alignment: Alignment.bottomLeft, children: [
           Image.network(
             imageUrl,
@@ -853,7 +854,8 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                   sigmaY: currentIndex == currentItemNumber ? 0 : 1,
                   sigmaX: currentIndex == currentItemNumber ? 0 : 1),
               child: Container(
-                width: double.infinity,
+                width: ((MediaQuery.of(context).size.width) - 48) / 3,
+                height: 70,
                 color: Colors.black.withOpacity(0.3),
               ),
             ),
