@@ -54,18 +54,19 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
   final List<Map<String, dynamic>> tabtitles = [
     {
       'title': "Delivery",
-      'img':
-      "https://images.unsplash.com/photo-1542444256-164bd32f11fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1005&q=80"
+      'img':Images.deliverytab
     },
     {
       'title': "Pick-Up",
-      'img':
-      "https://images.unsplash.com/photo-1598514982901-ae62764ae75e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      'img':Images.pick_up_tab
     },
     {
-      'title': "Shop",
-      'img':
-      "https://images.unsplash.com/photo-1598514982901-ae62764ae75e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      'title': "Dine-in",
+      'img':Images.dine_in_tab
+    },
+    {
+      'title': "Book-table",
+      'img':Images.booktable_tab
     }
   ];
 
@@ -166,34 +167,65 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         appBar: AppBar(
           //title: const  Text('') ,
           title: GetBuilder<LocationController>(builder: (locationController) {
-            return InkWell(
-              onTap: (){
-                //Get.to(RouteHelper.getAccessLocationRoute(''));
-                Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-              },
-              child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(
-                    locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                        : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                    size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                  ),
-                  SizedBox(width: 10),
-                  Flexible(
-                    child: Text(
-                      locationController.getUserAddress().address,
-                      style: robotoRegular.copyWith(
-                        color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                      ),
-                      maxLines: 1, overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                ],
-              )
+            return Column(
+              children: [
+                InkWell(
+                    onTap: (){
+                      //Get.to(RouteHelper.getAccessLocationRoute(''));
+                      Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                    },
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                              : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                          size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                        ),
+                        SizedBox(width: 10),
+                        Flexible(
+                          child: Text(
+                            locationController.getUserAddress().address,
+                            style: robotoRegular.copyWith(
+                              color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                            ),
+                            maxLines: 1, overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                      ],
+                    )
+                ),
+                InkWell(
+                    onTap: (){
+                      //Get.to(RouteHelper.getAccessLocationRoute(''));
+                      Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                    },
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                              : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                          size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                        ),
+                        SizedBox(width: 10),
+                        Flexible(
+                          child: Text(
+                            locationController.getUserAddress().address,
+                            style: robotoRegular.copyWith(
+                              color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                            ),
+                            maxLines: 1, overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                      ],
+                    )
+                )
+              ],
             );
 
-          }),
+          }
+          ),
           actions: [
             InkWell(
               onTap: (){
@@ -204,79 +236,82 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
             SizedBox(width: 10,)
           ],
-          bottom: PreferredSize(
-            preferredSize:const Size.fromHeight(40),
-            child:InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
-                child: Row(
-                  children:  [
-                    Expanded(child: CupertinoTextField(
-                      enabled: false,
-                      padding: EdgeInsets.symmetric(vertical: 12 , horizontal: 10),
-                      placeholder: "Seach for shop & restaurants",
-                      prefix: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Icon(Icons.search , color: Color(0xff7b7b7b) ,),
-                      ),
-                      decoration: BoxDecoration(
-                          color: Color(0xfff7f7f7),
-                          borderRadius : BorderRadius.circular(50)
-                      ),
-                      style: TextStyle(color: Color(0xff707070) ,
-                        fontSize: 12, ) ,
-                    )),
-                  ],
-                ),
-              ),
-            )
-            // child: InkWell(
-            //   onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
-            //   child: Container(
-            //     padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_SMALL),
-            //     decoration: BoxDecoration(
-            //       color: Color(0xFFEF7822),
-            //       borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-            //       boxShadow: [BoxShadow(color: Colors.grey[Get.isDarkMode ? 800 : 200], spreadRadius: 1, blurRadius: 5)],
-            //     ),
-            //     child: Row(children: [
-            //       Icon(Icons.search, size: 25, color: Theme.of(context).primaryColor),
-            //       SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-            //       Expanded(child: Text('search_food_or_restaurant'.tr, style: robotoRegular.copyWith(
-            //         fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor,
-            //       ))),
-            //     ]),
-            //   ),
-            // ),
-
-
-          ),
+         // bottom: PreferredSize(
+         //    preferredSize:const Size.fromHeight(40),
+         //    child: GetBuilder<LocationController>(builder: (locationController) {
+         //      return Container(
+         //        margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
+         //        child: Row(
+         //          children: [
+         //            InkWell(
+         //                onTap: (){
+         //                  //Get.to(RouteHelper.getAccessLocationRoute(''));
+         //                  Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+         //                },
+         //                child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+         //                  children: [
+         //                    Icon(
+         //                      locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+         //                          : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+         //                      size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+         //                    ),
+         //                    SizedBox(width: 10),
+         //                    Flexible(
+         //                      child: Text(
+         //                        locationController.getUserAddress().address,
+         //                        style: robotoRegular.copyWith(
+         //                          color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+         //                        ),
+         //                        maxLines: 1, overflow: TextOverflow.ellipsis,
+         //                      ),
+         //                    ),
+         //                    Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+         //                  ],
+         //                )
+         //            )
+         //          ],
+         //        )
+         //      );
+         //
+         //    }
+         //    ),
+         //
+         // ),
         ),
         body:  DefaultTabController(
           length: 3,
           child: Column(
             children: <Widget>[
               Container(
-
-                child: TabBar(
+                color: Color(0xFFFFFFFF),
+                child:
+                TabBar(
+                  indicatorColor: Color(0xFFFF7600),
                   onTap: (value) => setState(() {
                     currentIndex = value;
                   }),
-                  indicatorSize: TabBarIndicatorSize.label,
+                  //indicatorSize: TabBarIndicatorSize.label,
                   padding: const EdgeInsets.all(0),
                   labelPadding: const EdgeInsets.all(0),
                   tabs: [
-                    for (int tabItem = 0; tabItem < 3; tabItem++)
+                    for (int tabItem = 0; tabItem < 4; tabItem++)
                       buildTabWidget(tabItem,
                           currentIndex: currentIndex,
                           imageUrl: tabtitles[tabItem]['img'])
                   ],
+
                 ),
-                // TabBar(tabs: [
+
+
+                // TabBar(
+                //     indicatorColor: Color(0xFFFF7600),
+                //     tabs: [
                 //   Tab(
                 //     //text: "Home",
                 //     child: Container(
+                //       width: 100,
+                //       height: 50,
+                //
                 //         decoration: BoxDecoration(
                 //             image: DecorationImage(
                 //               image: AssetImage(Images.deliverytab),
@@ -300,9 +335,50 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                 //
                 //       ),
                 //     ),),
-                //   Tab(text: "User"),
+                //       Tab(
+                //         //text: "Home",
+                //         child: Container(
+                //           decoration: BoxDecoration(
+                //               image: DecorationImage(
+                //                 image: AssetImage(Images.pick_up_tab),
+                //                 fit: BoxFit.fill,
+                //                 // colorFilter: ColorFilter.mode(
+                //                 //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                //               )
+                //
+                //           ),
+                //         ),),
                 // ]),
               ),
+
+              InkWell(
+                onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
+                child: Container(
+                  width: context.width,
+                  height: 60,
+                  margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+
+                  padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
+                    child: CupertinoTextField(
+                      enabled: false,
+                      padding: EdgeInsets.symmetric(vertical: 12 , horizontal: 10),
+                      placeholder: "Seach for shop & restaurants",
+                      prefix: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Icon(Icons.search , color: Color(0xff7b7b7b) ,),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Color(0xfff7f7f7),
+                          borderRadius : BorderRadius.circular(50)
+                      ),
+                      style: TextStyle(color: Color(0xff707070) ,
+                        fontSize: 12, ) ,
+                    )
+
+
+                ),
+              ),
+
               Expanded(
                 child: Container(
                   child: TabBarView(children: [
@@ -840,29 +916,32 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
   Widget buildTabWidget(int currentItemNumber,
       { int currentIndex,  String imageUrl}) =>
       SizedBox(
-        width: ((MediaQuery.of(context).size.width) - 48) / 3,
+        //width: ((MediaQuery.of(context).size.width) - 48) / 3,
         height: 70,
         child: Stack(alignment: Alignment.bottomLeft, children: [
-          Image.network(
-            imageUrl,
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
-          ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                  sigmaY: currentIndex == currentItemNumber ? 0 : 1,
-                  sigmaX: currentIndex == currentItemNumber ? 0 : 1),
-              child: Container(
-                width: ((MediaQuery.of(context).size.width) - 48) / 3,
-                height: 70,
-                color: Colors.black.withOpacity(0.3),
-              ),
-            ),
-          ),
+          // Image.network(
+          //   imageUrl,
+          //   fit: BoxFit.cover,
+          //   width: double.infinity,
+          // ),
+
+          Image.asset( imageUrl,height:70,fit: BoxFit.fill,),
+
+          // ClipRRect(
+          //   child: BackdropFilter(
+          //     filter: ImageFilter.blur(
+          //         sigmaY: currentIndex == currentItemNumber ? 0 : 1,
+          //         sigmaX: currentIndex == currentItemNumber ? 0 : 1),
+          //     child: Container(
+          //       width: ((MediaQuery.of(context).size.width) - 48) / 3,
+          //       height: 70,
+          //       color: Colors.black.withOpacity(0.3),
+          //     ),
+          //   ),
+          // ),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.white ),))
+              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.black54 ),))
         ]),
       );
 

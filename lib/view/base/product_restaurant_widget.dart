@@ -106,7 +106,7 @@ class ProductRrestaurantWidget extends StatelessWidget {
                           : _baseUrls.productImageUrl}'
                           '/${isRestaurant ? restaurant.logo : product.image}',
                       //height: _desktop ? 120 : 65, width: _desktop ? 120 : 80, fit: BoxFit.cover,
-                      height: _desktop ? 240 : 140, width: Get.width, fit: BoxFit.cover,
+                      height: _desktop ? 160 : 140, width: Get.width, fit: BoxFit.cover,
                     ),
                   ),
                   DiscountTag(

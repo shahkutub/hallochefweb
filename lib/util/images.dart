@@ -70,6 +70,8 @@ class Images {
   static const String chat = 'assets/image/chat.png';
   static const String near_restaurant = 'assets/image/near_restaurant.png';
   static const String restaurant_placeholder = 'assets/image/l_restaurant.png';
-  static const String deliverytab = 'assets/image/deliverytab.png';
+  static const String deliverytab = 'assets/image/deliveytab.png';
   static const String pick_up_tab = 'assets/image/pick_up_tab.png';
+  static const String dine_in_tab = 'assets/image/dinin_tab.png';
+  static const String booktable_tab = 'assets/image/booktable_tab.png';
 }
