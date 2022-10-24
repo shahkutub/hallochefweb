@@ -165,77 +165,221 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         // ),
         backgroundColor: Color(0xffEEF2F5),
         appBar: AppBar(
+          //backgroundColor: Color(0xffEEF2F5),
+          toolbarHeight: 160,
           //title: const  Text('') ,
           title: GetBuilder<LocationController>(builder: (locationController) {
             return Column(
               children: [
-                InkWell(
-                    onTap: (){
-                      //Get.to(RouteHelper.getAccessLocationRoute(''));
-                      Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                    },
-                    child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                              : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                          size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            locationController.getUserAddress().address,
-                            style: robotoRegular.copyWith(
-                              color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                            ),
-                            maxLines: 1, overflow: TextOverflow.ellipsis,
+                Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Stack(
+                        children: [
+                          Align(alignment: Alignment.topLeft,
+                            child: Image.asset(Images.logo,height: 70,width: 100,),
                           ),
-                        ),
-                        Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                      ],
-                    )
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              width: 300,
+                              child:Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.account_circle_sharp,
+                                          color: Colors.white,
+                                          size: 50, // also decreased the size of the icon a bit
+                                        ),
+                                        onPressed: () {},
+                                      ),
+                                      Text("Login"), // here, inside the column
+                                    ],
+                                  ),
+                                  InkWell(
+                                    onTap: (){
+                                      Get.to(CartScreen(fromNav: true),);
+                                    },
+                                    child: Icon(Icons.shopping_bag_outlined),
+                                  ),
+                                ],
+                              )
+
+                            )
+
+                            // InkWell(
+                            //     onTap: (){
+                            //       //Get.to(RouteHelper.getAccessLocationRoute(''));
+                            //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                            //     },
+                            //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
+                            //       children: [
+                            //         Icon(
+                            //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                            //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                            //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                            //         ),
+                            //         SizedBox(width: 10),
+                            //         Flexible(
+                            //           child: Text(
+                            //             locationController.getUserAddress().address,
+                            //             style: robotoRegular.copyWith(
+                            //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                            //             ),
+                            //             maxLines: 1, overflow: TextOverflow.ellipsis,
+                            //           ),
+                            //         ),
+                            //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                            //       ],
+                            //     )
+                            // ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    // Align(
+                    //   alignment: Alignment.bottomLeft,
+                    //   child: Stack(
+                    //     children: [
+                    //       Align(
+                    //         alignment: Alignment.topLeft,
+                    //         child: InkWell(
+                    //             onTap: (){
+                    //               //Get.to(RouteHelper.getAccessLocationRoute(''));
+                    //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                    //             },
+                    //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                    //               children: [
+                    //                 Icon(
+                    //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                    //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                    //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                    //                 ),
+                    //                 SizedBox(width: 10),
+                    //                 Flexible(
+                    //                   child: Text(
+                    //                     locationController.getUserAddress().address,
+                    //                     style: robotoRegular.copyWith(
+                    //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                    //                     ),
+                    //                     maxLines: 1, overflow: TextOverflow.ellipsis,
+                    //                   ),
+                    //                 ),
+                    //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                    //               ],
+                    //             )
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                  ],
                 ),
-                InkWell(
-                    onTap: (){
-                      //Get.to(RouteHelper.getAccessLocationRoute(''));
-                      Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                    },
-                    child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                              : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                          size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            locationController.getUserAddress().address,
-                            style: robotoRegular.copyWith(
-                              color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                            ),
-                            maxLines: 1, overflow: TextOverflow.ellipsis,
+                Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Stack(
+                        children: [
+                          Align(alignment: Alignment.topLeft,
+                            child: Image.asset(Images.logo,height: 50,width: 50,),
                           ),
-                        ),
-                        Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                      ],
-                    )
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Image.asset(Images.logo,height: 50,width: 50,),
+
+                            // InkWell(
+                            //     onTap: (){
+                            //       //Get.to(RouteHelper.getAccessLocationRoute(''));
+                            //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                            //     },
+                            //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
+                            //       children: [
+                            //         Icon(
+                            //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                            //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                            //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                            //         ),
+                            //         SizedBox(width: 10),
+                            //         Flexible(
+                            //           child: Text(
+                            //             locationController.getUserAddress().address,
+                            //             style: robotoRegular.copyWith(
+                            //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                            //             ),
+                            //             maxLines: 1, overflow: TextOverflow.ellipsis,
+                            //           ),
+                            //         ),
+                            //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                            //       ],
+                            //     )
+                            // ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                    // Align(
+                    //   alignment: Alignment.bottomLeft,
+                    //   child: Stack(
+                    //     children: [
+                    //       Align(
+                    //         alignment: Alignment.topLeft,
+                    //         child: InkWell(
+                    //             onTap: (){
+                    //               //Get.to(RouteHelper.getAccessLocationRoute(''));
+                    //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                    //             },
+                    //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                    //               children: [
+                    //                 Icon(
+                    //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                    //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                    //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                    //                 ),
+                    //                 SizedBox(width: 10),
+                    //                 Flexible(
+                    //                   child: Text(
+                    //                     locationController.getUserAddress().address,
+                    //                     style: robotoRegular.copyWith(
+                    //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                    //                     ),
+                    //                     maxLines: 1, overflow: TextOverflow.ellipsis,
+                    //                   ),
+                    //                 ),
+                    //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                    //               ],
+                    //             )
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                  ],
                 )
               ],
             );
 
           }
           ),
-          actions: [
-            InkWell(
-              onTap: (){
-                Get.to(CartScreen(fromNav: true),);
-              },
-              child: Icon(Icons.shopping_bag_outlined),
-            ),
-
-            SizedBox(width: 10,)
-          ],
+          // actions: [
+          //   InkWell(
+          //     onTap: (){
+          //       Get.to(CartScreen(fromNav: true),);
+          //     },
+          //     child: Icon(Icons.shopping_bag_outlined),
+          //   ),
+          //
+          //   SizedBox(width: 10,)
+          // ],
          // bottom: PreferredSize(
          //    preferredSize:const Size.fromHeight(40),
          //    child: GetBuilder<LocationController>(builder: (locationController) {
