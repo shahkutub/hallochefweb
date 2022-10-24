@@ -166,7 +166,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         backgroundColor: Color(0xffEEF2F5),
         appBar: AppBar(
           //backgroundColor: Color(0xffEEF2F5),
-          toolbarHeight: 160,
+          toolbarHeight: 140,
           //title: const  Text('') ,
           title: GetBuilder<LocationController>(builder: (locationController) {
             return Column(
@@ -185,32 +185,52 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                             child: Container(
                               width: 300,
                               child:Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.account_circle_sharp,
-                                          color: Colors.white,
-                                          size: 50, // also decreased the size of the icon a bit
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                      Text("Login"), // here, inside the column
-                                    ],
+
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5,right: 5),
+                                    height: 45,
+                                    width: 1,
+                                    color: Colors.white,
                                   ),
+
+                                  InkWell(
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                            Icons.account_circle_sharp,
+                                            color: Colors.white,
+                                            size: 50, // also decreased the size of the icon a bit
+                                          ),
+
+                                        Text("Login",style: TextStyle(fontSize: 12),), // here, inside the column
+                                      ],
+                                    ),
+                                  ),
+
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5,right: 15),
+                                    height: 45,
+                                    width: 1,
+                                    color: Colors.white,
+                                  ),
+
                                   InkWell(
                                     onTap: (){
                                       Get.to(CartScreen(fromNav: true),);
                                     },
                                     child: Icon(Icons.shopping_bag_outlined),
                                   ),
+                                  SizedBox(
+                                    //width: 20,
+                                  )
                                 ],
-                              )
+                              ),
+
 
                             )
 
@@ -283,6 +303,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                     // ),
                   ],
                 ),
+
                 Stack(
                   children: [
                     Align(
@@ -290,39 +311,54 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                       child: Stack(
                         children: [
                           Align(alignment: Alignment.topLeft,
-                            child: Image.asset(Images.logo,height: 50,width: 50,),
-                          ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Image.asset(Images.logo,height: 50,width: 50,),
+                            child: Container(
+                              //width: 500,
+                              child: InkWell(
+                                  onTap: (){
+                                    //Get.to(RouteHelper.getAccessLocationRoute(''));
+                                    Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                                  },
+                                  child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
 
-                            // InkWell(
-                            //     onTap: (){
-                            //       //Get.to(RouteHelper.getAccessLocationRoute(''));
-                            //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                            //     },
-                            //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
-                            //       children: [
-                            //         Icon(
-                            //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                            //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                            //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                            //         ),
-                            //         SizedBox(width: 10),
-                            //         Flexible(
-                            //           child: Text(
-                            //             locationController.getUserAddress().address,
-                            //             style: robotoRegular.copyWith(
-                            //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                            //             ),
-                            //             maxLines: 1, overflow: TextOverflow.ellipsis,
-                            //           ),
-                            //         ),
-                            //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                            //       ],
-                            //     )
-                            // ),
-                          )
+                                      Text('Delivering to : ',style: TextStyle(fontSize: 12),),
+
+                                      Icon(
+                                        locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                                            : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                        size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Flexible(
+                                        child: Text(
+                                          locationController.getUserAddress().address,
+                                          style: robotoRegular.copyWith(
+                                            color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                                          ),
+                                          maxLines: 1, overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+
+                                      Container(
+                                        margin: EdgeInsets.only(left: 15,right: 15),
+                                        height: 45,
+                                        width: 1,
+                                        color: Colors.white,
+                                      ),
+
+                                      Text('WHEN : ',style: TextStyle(fontSize: 12),),
+                                    ],
+                                  )
+                              ),
+                            )
+                          ),
+                          // Align(
+                          //   alignment: Alignment.topRight,
+                          //   child: Image.asset(Images.logo,height: 50,width: 50,),
+                          //
+                          //
+                          // )
                         ],
                       ),
                     ),
