@@ -323,11 +323,23 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                                       Text('Delivering to : ',style: TextStyle(fontSize: 12),),
 
+                                      // Container(
+                                      //   height: 60,
+                                      //     width: 60,
+                                      //     decoration: BoxDecoration(
+                                      //         border: Border.all(
+                                      //           color: Colors.red[500].withOpacity(2.0),
+                                      //         ),
+                                      //         borderRadius: BorderRadius.all(Radius.circular(20))
+                                      //     ),
+                                      //
+                                      // ),
                                       Icon(
                                         locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
                                             : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                        size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                                        size: 20, color: Colors.white,
                                       ),
+
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(
