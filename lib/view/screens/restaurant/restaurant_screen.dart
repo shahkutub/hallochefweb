@@ -304,8 +304,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
               ))),
 
               (restController.categoryList.length > 0) ? SliverPersistentHeader(
-                pinned: true,
+                pinned: false,
                 delegate: SliverDelegate(child: Center(child: Container(
+                  //height: 50, width: context.width*5, color: Theme.of(context).cardColor,
                   height: 50, width: Dimensions.WEB_MAX_WIDTH, color: Theme.of(context).cardColor,
                   padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                   child: ListView.builder(
