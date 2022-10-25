@@ -178,7 +178,26 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                       child: Stack(
                         children: [
                           Align(alignment: Alignment.topLeft,
-                            child: Image.asset(Images.logo,height: 70,width: 100,),
+                            child: Container(
+                              width: 300,
+                              child:Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+
+                                  Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
+                                  Text('HalloChef',style: TextStyle(fontSize: 30),),
+                                  //Image.asset(Images.logo_name,height: 70,width: 220,fit: BoxFit.fill,),
+                                  SizedBox(
+                                    //width: 20,
+                                  )
+                                ],
+                              ),
+
+
+                            )
+
+                            //Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
                           ),
                           Align(
                             alignment: Alignment.topRight,
@@ -186,7 +205,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                               width: 300,
                               child:Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
 
                                   Container(
