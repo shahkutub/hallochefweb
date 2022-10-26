@@ -166,7 +166,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         backgroundColor: Color(0xffEEF2F5),
         appBar: AppBar(
           //backgroundColor: Color(0xffEEF2F5),
-          toolbarHeight: 140,
+          toolbarHeight: 80,
           //title: const  Text('') ,
           title: GetBuilder<LocationController>(builder: (locationController) {
             return Column(
@@ -179,13 +179,14 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                         children: [
                           Align(alignment: Alignment.topLeft,
                             child: Container(
+                              margin: EdgeInsets.only(top: 5),
                               width: 300,
                               child:Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
 
-                                  Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
+                                  Image.asset(Images.logo,height: 40,width: 40,fit: BoxFit.fill,),
                                   Text('HalloChef',style: TextStyle(fontSize: 30),),
                                   //Image.asset(Images.logo_name,height: 70,width: 220,fit: BoxFit.fill,),
                                   SizedBox(
@@ -202,6 +203,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                           Align(
                             alignment: Alignment.topRight,
                             child: Container(
+                              margin: EdgeInsets.only(top: 10),
                               width: 300,
                               child:Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -210,7 +212,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                                   Container(
                                     margin: EdgeInsets.only(left: 5,right: 5),
-                                    height: 45,
+                                    height: 30,
                                     width: 1,
                                     color: Colors.white,
                                   ),
@@ -223,7 +225,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         Icon(
                                             Icons.account_circle_sharp,
                                             color: Colors.white,
-                                            size: 50, // also decreased the size of the icon a bit
+                                            size: 30, // also decreased the size of the icon a bit
                                           ),
 
                                         Text("Login",style: TextStyle(fontSize: 12),), // here, inside the column
@@ -233,7 +235,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                                   Container(
                                     margin: EdgeInsets.only(left: 5,right: 15),
-                                    height: 45,
+                                    height: 30,
                                     width: 1,
                                     color: Colors.white,
                                   ),
