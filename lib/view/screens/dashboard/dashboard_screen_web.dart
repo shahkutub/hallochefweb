@@ -375,7 +375,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                                       Container(
                                         margin: EdgeInsets.only(left: 15,right: 15),
-                                        height: 45,
+                                        height: 30,
                                         width: 1,
                                         color: Colors.white,
                                       ),
