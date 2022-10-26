@@ -184,7 +184,6 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-
                                   Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
                                   Text('HalloChef',style: TextStyle(fontSize: 30),),
                                   //Image.asset(Images.logo_name,height: 70,width: 220,fit: BoxFit.fill,),
