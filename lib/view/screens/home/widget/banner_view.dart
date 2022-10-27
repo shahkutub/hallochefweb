@@ -22,7 +22,7 @@ class BannerView extends StatelessWidget {
     return GetBuilder<BannerController>(builder: (bannerController) {
       return (bannerController.bannerImageList != null && bannerController.bannerImageList.length == 0) ? SizedBox() : Container(
         width: MediaQuery.of(context).size.width,
-        height: GetPlatform.isDesktop ? 200 : MediaQuery.of(context).size.width * 0.4,
+        height: GetPlatform.isDesktop ? 150 : MediaQuery.of(context).size.width * 0.4,
         padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT),
         child: bannerController.bannerImageList != null ? Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,8 +85,8 @@ class BannerView extends StatelessWidget {
               //   },
               // ),
             child:  SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: GetPlatform.isDesktop ? 200 :130,
+              // width: MediaQuery.of(context).size.width,
+              // height: GetPlatform.isDesktop ? 150 :130,
 
               child: ListView.builder(
                 itemCount: bannerController.bannerImageList.length,
@@ -121,7 +121,7 @@ class BannerView extends StatelessWidget {
                         },
                         child: Container(
                           margin: EdgeInsets.only(left: 5,right: 5),
-                          width: GetPlatform.isDesktop ? 400 :120,
+                          width: GetPlatform.isDesktop ? 300 :120,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),

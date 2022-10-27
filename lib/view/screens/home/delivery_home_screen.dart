@@ -303,7 +303,8 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
               // ),
 
               SliverToBoxAdapter(
-                child: Center(child: SizedBox(
+                child: Center(child: Container(
+                  margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
                   width: Dimensions.WEB_MAX_WIDTH,
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
