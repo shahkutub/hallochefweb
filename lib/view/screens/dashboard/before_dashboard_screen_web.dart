@@ -635,7 +635,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                                     autocorrect: true,
                                                     decoration: InputDecoration(
                                                       contentPadding: EdgeInsets.symmetric(vertical: 25.0),
-                                                      hintText: 'Type Text Here...',
+                                                      //hintText: 'Type Text Here...',
+                                                      labelText: "    Enter your full address",
                                                       hintStyle: TextStyle(color: Colors.grey),
                                                       filled: true,
                                                       fillColor: Colors.white70,
