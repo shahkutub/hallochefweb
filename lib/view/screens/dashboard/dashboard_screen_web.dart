@@ -47,7 +47,7 @@ class DashboardScreenWeb extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreenWeb> {
   PageController _pageController;
   int _pageIndex = 0;
-  List<Widget> _screens;
+  //List<Widget> _screens;
   GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
   bool _canExit = GetPlatform.isWeb ? true : false;
   int currentIndex = 0;
@@ -78,13 +78,13 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
     _pageController = PageController(initialPage: widget.pageIndex);
 
-    _screens = [
-      HomeScreen(),
-      FavouriteScreen(),
-      CartScreen(fromNav: true),
-      OrderScreen(),
-      Container(),
-    ];
+    // _screens = [
+    //   HomeScreen(),
+    //   FavouriteScreen(),
+    //   CartScreen(fromNav: true),
+    //   OrderScreen(),
+    //   Container(),
+    // ];
     //
     // Future.delayed(Duration(seconds: 1), () {
     //   setState(() {});

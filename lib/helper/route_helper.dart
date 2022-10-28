@@ -63,6 +63,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../view/screens/dashboard/before_dashboard_screen.dart';
+import '../view/screens/dashboard/before_dashboard_screen_web.dart';
 import '../view/screens/dashboard/dashboard_screen_web.dart';
 
 class RouteHelper {
@@ -211,16 +212,16 @@ class RouteHelper {
   static String getDeliverymanRegistrationRoute() => '$deliveryManRegistration';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => getRoute(DashboardScreenWeb(pageIndex: 0))),
+    GetPage(name: initial, page: () => getRoute(BeforeDashboardScreenWeb(pageIndex: 0))),
     //GetPage(name: initial, page: () => getRoute(BeforeDashboardScreen(pageIndex: 0))),
-    GetPage(name: splash, page: () {
-      NotificationBody _data;
-      if(Get.parameters['data'] != 'null') {
-        List<int> _decode = base64Decode(Get.parameters['data'].replaceAll(' ', '+'));
-        _data = NotificationBody.fromJson(jsonDecode(utf8.decode(_decode)));
-      }
-      return SplashScreen(body: _data);
-    }),
+    // GetPage(name: splash, page: () {
+    //   NotificationBody _data;
+    //   if(Get.parameters['data'] != 'null') {
+    //     List<int> _decode = base64Decode(Get.parameters['data'].replaceAll(' ', '+'));
+    //     _data = NotificationBody.fromJson(jsonDecode(utf8.decode(_decode)));
+    //   }
+    //   return SplashScreen(body: _data);
+    // }),
     //*
     //GetPage(name: language, page: () => ChooseLanguageScreen(fromMenu: Get.parameters['page'] == 'menu')),
     GetPage(name: onBoarding, page: () => OnBoardingScreen()),

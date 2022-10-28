@@ -309,7 +309,7 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
                     BannerView(),
-                    CategoryViewBeforeDashboard(),
+
                     //CategoryView(),
                     //CategoryViewBeforeDashboard(),
                      _configModel.popularRestaurant == 1 ? PopularRestaurantView(isPopular: true) : SizedBox(),
@@ -319,7 +319,7 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
                     _configModel.popularFood == 1 ? PopularFoodView(isPopular: true) : SizedBox(),
                     _configModel.newRestaurant == 1 ? PopularRestaurantView(isPopular: false) : SizedBox(),
                     _configModel.mostReviewedFoods == 1 ? PopularFoodView(isPopular: false) : SizedBox(),
-
+                    CategoryViewBeforeDashboard(),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10, 15, 0, 5),
                       child: Row(children: [

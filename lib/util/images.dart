@@ -74,4 +74,5 @@ class Images {
   static const String pick_up_tab = 'assets/image/pick_up_tab.png';
   static const String dine_in_tab = 'assets/image/dinin_tab.png';
   static const String booktable_tab = 'assets/image/booktable_tab.png';
+  static const String foods = 'assets/image/foods.png';
 }
