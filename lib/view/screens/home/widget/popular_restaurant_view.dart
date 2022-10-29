@@ -39,7 +39,7 @@ class PopularRestaurantView extends StatelessWidget {
           ),
 
           SizedBox(
-            height: 220,
+            height: 230,
             child: _restaurantList != null ? ListView.builder(
               controller: _scrollController,
               physics: BouncingScrollPhysics(),
@@ -57,8 +57,8 @@ class PopularRestaurantView extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      height: 220,
-                      width: 220,
+                      height: 230,
+                      width: 240,
                       decoration: BoxDecoration(
                         //color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
@@ -75,7 +75,7 @@ class PopularRestaurantView extends StatelessWidget {
                             child: CustomImage(
                               image: '${Get.find<SplashController>().configModel.baseUrls.restaurantCoverPhotoUrl}'
                                   '/${_restaurantList[index].coverPhoto}',
-                              height: 140, width: 220, fit: BoxFit.cover,
+                              height: 150, width: 240, fit: BoxFit.cover,
                             ),
                           ),
                           DiscountTag(
@@ -110,6 +110,41 @@ class PopularRestaurantView extends StatelessWidget {
                               );
                             }),
                           ),
+
+                          Positioned(top: 40, child: Container(
+                            margin: EdgeInsets.all(0),
+
+                            decoration: BoxDecoration(
+                                color: Color(0xffEF7822),
+                                border: Border.all(
+                                  color: Color(0xffEF7822),
+                                  //color: Colors.red[500],
+                                ),
+                                borderRadius: BorderRadius.only(topRight: Radius.circular(50),bottomRight: Radius.circular(50))
+                            ),
+                            padding: EdgeInsets.only(left: 5,right: 5,bottom: 3,top: 3),
+                            child: Text('VOUCHER: PH200',style: TextStyle(color: Colors.white,fontSize: 10),),
+
+                          )
+                          ),
+
+                          Positioned(top: 70, child: Container(
+                            margin: EdgeInsets.all(0),
+
+                            decoration: BoxDecoration(
+                                color: Color(0xffEF7822),
+                                border: Border.all(
+                                  color: Color(0xffEF7822),
+                                  //color: Colors.red[500],
+                                ),
+                                borderRadius: BorderRadius.only(topRight: Radius.circular(50),bottomRight: Radius.circular(50))
+                            ),
+                            padding: EdgeInsets.only(left: 5,right: 5,bottom: 3,top: 3),
+                            child: Text('WELCOME GIFT: FREE DELIVERY',style: TextStyle(color: Colors.white,fontSize: 10),),
+
+                          )
+                          ),
+
                           Positioned(bottom: 0.0, child: Container(
                             margin: EdgeInsets.all(5),
 

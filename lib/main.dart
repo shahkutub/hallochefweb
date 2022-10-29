@@ -15,6 +15,7 @@ import 'package:efood_multivendor/theme/dark_theme.dart';
 import 'package:efood_multivendor/theme/light_theme.dart';
 import 'package:efood_multivendor/util/app_constants.dart';
 import 'package:efood_multivendor/util/messages.dart';
+import 'package:efood_multivendor/view/screens/dashboard/dashboard_screen_web.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
@@ -94,6 +95,8 @@ class MyApp extends StatelessWidget {
       }
       Get.find<CartController>().getCartData();
       _route();
+      //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+
     }
 
     return GetBuilder<ThemeController>(builder: (themeController) {
@@ -110,7 +113,10 @@ class MyApp extends StatelessWidget {
             locale: localizeController.locale,
             translations: Messages(languages: languages),
             fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
-            initialRoute: GetPlatform.isWeb ? RouteHelper.getInitialRoute() : RouteHelper.getSplashRoute(body),
+            //initialRoute: GetPlatform.isWeb ? RouteHelper.getInitialRoute() : RouteHelper.getSplashRoute(body),
+            //initialRoute:RouteHelper.getInitialRoute(),
+            //initialRoute: RouteHelper.initial,
+            //getPages: RouteHelper.routes,
             getPages: RouteHelper.routes,
             defaultTransition: Transition.topLevel,
             transitionDuration: Duration(milliseconds: 500),

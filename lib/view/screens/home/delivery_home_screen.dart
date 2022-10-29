@@ -82,6 +82,7 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Color(0xFFFFFFFF),
       // appBar: AppBar(
       //   //title: const  Text('') ,
       //   title: GetBuilder<LocationController>(builder: (locationController) {
@@ -309,17 +310,42 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
                     BannerView(),
+                    SizedBox(
+                      height: 20,
+                    ),
 
                     //CategoryView(),
                     //CategoryViewBeforeDashboard(),
                      _configModel.popularRestaurant == 1 ? PopularRestaurantView(isPopular: true) : SizedBox(),
-                     NearByButtonView(),
 
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    NearByButtonView(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     ItemCampaignView(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     _configModel.popularFood == 1 ? PopularFoodView(isPopular: true) : SizedBox(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     _configModel.newRestaurant == 1 ? PopularRestaurantView(isPopular: false) : SizedBox(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     _configModel.mostReviewedFoods == 1 ? PopularFoodView(isPopular: false) : SizedBox(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     CategoryViewBeforeDashboard(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10, 15, 0, 5),
                       child: Row(children: [
@@ -330,7 +356,9 @@ class _HomeScreenStateDelivery extends State<DeliveryHomeScreen> {
                         FilterView(),
                       ]),
                     ),
-
+                    SizedBox(
+                      height: 20,
+                    ),
                     GetBuilder<RestaurantController>(builder: (restaurantController) {
                       return PaginatedListView(
                         scrollController: _scrollController,

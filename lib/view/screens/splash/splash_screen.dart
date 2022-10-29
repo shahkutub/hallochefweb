@@ -95,11 +95,12 @@ class _SplashScreenState extends State<SplashScreen> {
               if (Get.find<AuthController>().isLoggedIn()) {
                 Get.find<AuthController>().updateToken();
                 await Get.find<WishListController>().getWishList();
-                if (Get.find<LocationController>().getUserAddress() != null) {
-                  Get.offNamed(RouteHelper.getInitialRoute());
-                } else {
-                  Get.offNamed(RouteHelper.getAccessLocationRoute('splash'));
-                }
+                Get.offNamed(RouteHelper.getInitialRoute());
+                // if (Get.find<LocationController>().getUserAddress() != null) {
+                //   Get.offNamed(RouteHelper.getInitialRoute());
+                // } else {
+                //   Get.offNamed(RouteHelper.getAccessLocationRoute('splash'));
+                // }
               } else {
                 if (Get.find<SplashController>().showIntro()) {
                   Get.offNamed(RouteHelper.getOnBoardingRoute());

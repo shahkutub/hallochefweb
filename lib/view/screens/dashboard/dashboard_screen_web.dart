@@ -163,204 +163,46 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         //     );
         //   }
         // ),
-        backgroundColor: Color(0xffEEF2F5),
+        backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           //backgroundColor: Color(0xffEEF2F5),
-          toolbarHeight: 80,
+         // toolbarHeight: 80,
           //title: const  Text('') ,
           title: GetBuilder<LocationController>(builder: (locationController) {
             return Column(
               children: [
-                Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Stack(
-                        children: [
-                          Align(alignment: Alignment.topLeft,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 5),
-                              width: 300,
-                              child:Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-
-                                  Image.asset(Images.logo,height: 40,width: 40,fit: BoxFit.fill,),
-                                  Text('HalloChef',style: TextStyle(fontSize: 30),),
-                                  //Image.asset(Images.logo_name,height: 70,width: 220,fit: BoxFit.fill,),
-                                  SizedBox(
-                                    //width: 20,
-                                  )
-                                ],
-                              ),
-
-
-                            )
-
-                            //Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
-                          ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 10),
-                              width: 300,
-                              child:Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5,right: 5),
-                                    height: 30,
-                                    width: 1,
-                                    color: Colors.white,
-                                  ),
-
-                                  InkWell(
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                            Icons.account_circle_sharp,
-                                            color: Colors.white,
-                                            size: 30, // also decreased the size of the icon a bit
-                                          ),
-
-                                        Text("Login",style: TextStyle(fontSize: 12),), // here, inside the column
-                                      ],
-                                    ),
-                                  ),
-
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5,right: 15),
-                                    height: 30,
-                                    width: 1,
-                                    color: Colors.white,
-                                  ),
-
-                                  InkWell(
-                                    onTap: (){
-                                      Get.to(CartScreen(fromNav: true),);
-                                    },
-                                    child: Icon(Icons.shopping_bag_outlined),
-                                  ),
-                                  SizedBox(
-                                    //width: 20,
-                                  )
-                                ],
-                              ),
-
-
-                            )
-
-                            // InkWell(
-                            //     onTap: (){
-                            //       //Get.to(RouteHelper.getAccessLocationRoute(''));
-                            //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                            //     },
-                            //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
-                            //       children: [
-                            //         Icon(
-                            //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                            //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                            //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                            //         ),
-                            //         SizedBox(width: 10),
-                            //         Flexible(
-                            //           child: Text(
-                            //             locationController.getUserAddress().address,
-                            //             style: robotoRegular.copyWith(
-                            //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                            //             ),
-                            //             maxLines: 1, overflow: TextOverflow.ellipsis,
-                            //           ),
-                            //         ),
-                            //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                            //       ],
-                            //     )
-                            // ),
-                          )
-                        ],
-                      ),
-                    ),
-
-                    // Align(
-                    //   alignment: Alignment.bottomLeft,
-                    //   child: Stack(
-                    //     children: [
-                    //       Align(
-                    //         alignment: Alignment.topLeft,
-                    //         child: InkWell(
-                    //             onTap: (){
-                    //               //Get.to(RouteHelper.getAccessLocationRoute(''));
-                    //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                    //             },
-                    //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
-                    //               children: [
-                    //                 Icon(
-                    //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                    //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                    //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                    //                 ),
-                    //                 SizedBox(width: 10),
-                    //                 Flexible(
-                    //                   child: Text(
-                    //                     locationController.getUserAddress().address,
-                    //                     style: robotoRegular.copyWith(
-                    //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                    //                     ),
-                    //                     maxLines: 1, overflow: TextOverflow.ellipsis,
-                    //                   ),
-                    //                 ),
-                    //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                    //               ],
-                    //             )
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                  ],
-                ),
-
-                Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Stack(
-                        children: [
-                          Align(alignment: Alignment.topLeft,
-                            child: Container(
-                              //width: 500,
-                              child: InkWell(
-                                  onTap: (){
-                                    //Get.to(RouteHelper.getAccessLocationRoute(''));
-                                    Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                                  },
-                                  child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                Container(
+                  padding: EdgeInsets.all(5),
+                  child:Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Stack(
+                          children: [
+                            Align(alignment: Alignment.topLeft,
+                                child: Container(
+                                  //margin: EdgeInsets.only(top: 5),
+                                  width: 900,
+                                  child:Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
 
-                                      Text('Delivering to : ',style: TextStyle(fontSize: 12),),
-
-                                      // Container(
-                                      //   height: 60,
-                                      //     width: 60,
-                                      //     decoration: BoxDecoration(
-                                      //         border: Border.all(
-                                      //           color: Colors.red[500].withOpacity(2.0),
-                                      //         ),
-                                      //         borderRadius: BorderRadius.all(Radius.circular(20))
-                                      //     ),
-                                      //
-                                      // ),
-                                      Icon(
-                                        locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                                            : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                        size: 20, color: Colors.white,
+                                      Image.asset(Images.logo,height: 50,width: 50,fit: BoxFit.fill,),
+                                      Text('HalloChef',style: TextStyle(fontSize: 20,color: Color(0xffFFFFFF),fontWeight: FontWeight.bold),),
+                                      SizedBox(width: 20,),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 15,right: 15),
+                                        height: 50,
+                                        width: 1,
+                                        color: Colors.white,
                                       ),
-
+                                      SizedBox(width: 20,),
+                                      Text('DELIVERING TO : ',style: TextStyle(fontSize: 12),),
+                                      Icon(
+                                        locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                        size: 20, color: Colors.white,),
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(
@@ -374,8 +216,8 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
 
                                       Container(
-                                        margin: EdgeInsets.only(left: 15,right: 15),
-                                        height: 30,
+                                        margin: EdgeInsets.only(left: 25,right: 15),
+                                        height: 50,
                                         width: 1,
                                         color: Colors.white,
                                       ),
@@ -386,58 +228,414 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       Icon(Icons.keyboard_arrow_down_sharp, color: Colors.white)
 
                                     ],
-                                  )
-                              ),
-                            )
-                          ),
-                          // Align(
-                          //   alignment: Alignment.topRight,
-                          //   child: Image.asset(Images.logo,height: 50,width: 50,),
-                          //
-                          //
-                          // )
-                        ],
-                      ),
-                    ),
+                                  ),
 
-                    // Align(
-                    //   alignment: Alignment.bottomLeft,
-                    //   child: Stack(
-                    //     children: [
-                    //       Align(
-                    //         alignment: Alignment.topLeft,
-                    //         child: InkWell(
-                    //             onTap: (){
-                    //               //Get.to(RouteHelper.getAccessLocationRoute(''));
-                    //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
-                    //             },
-                    //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
-                    //               children: [
-                    //                 Icon(
-                    //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
-                    //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                    //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
-                    //                 ),
-                    //                 SizedBox(width: 10),
-                    //                 Flexible(
-                    //                   child: Text(
-                    //                     locationController.getUserAddress().address,
-                    //                     style: robotoRegular.copyWith(
-                    //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
-                    //                     ),
-                    //                     maxLines: 1, overflow: TextOverflow.ellipsis,
-                    //                   ),
-                    //                 ),
-                    //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
-                    //               ],
-                    //             )
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                  ],
-                )
+
+                                )
+
+                              //Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
+                            ),
+
+
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                  //margin: EdgeInsets.only(top: 10),
+                                  width: 300,
+                                  child:Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(left: 5,right: 15),
+                                        height: 50,
+                                        width: 1,
+                                        color: Colors.white,
+                                      ),
+                                      Text("BN",style: TextStyle(fontSize: 12,color: Colors.white),), // here, inside the column
+
+                                      Container(
+                                        margin: EdgeInsets.only(left: 15,right: 15),
+                                        height: 50,
+                                        width: 1,
+                                        color: Colors.white,
+                                      ),
+
+                                      InkWell(
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.account_circle_sharp,
+                                              color: Color(0xffFFFFFF),
+                                              size: 30, // also decreased the size of the icon a bit
+                                            ),
+
+                                            Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),), // here, inside the column
+                                          ],
+                                        ),
+                                      ),
+
+                                      Container(
+                                        margin: EdgeInsets.only(left: 15,right: 15),
+                                        height: 50,
+                                        width: 1,
+                                        color: Colors.white,
+                                      ),
+
+                                      InkWell(
+                                        onTap: (){
+                                          Get.to(CartScreen(fromNav: true),);
+                                        },
+                                        child: Icon(Icons.shopping_bag_outlined,color: Color(0xffFFFFFF),),
+                                      ),
+                                      SizedBox(
+                                        //width: 20,
+                                      )
+                                    ],
+                                  ),
+
+
+                                )
+
+                              // InkWell(
+                              //     onTap: (){
+                              //       //Get.to(RouteHelper.getAccessLocationRoute(''));
+                              //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                              //     },
+                              //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
+                              //       children: [
+                              //         Icon(
+                              //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                              //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                              //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                              //         ),
+                              //         SizedBox(width: 10),
+                              //         Flexible(
+                              //           child: Text(
+                              //             locationController.getUserAddress().address,
+                              //             style: robotoRegular.copyWith(
+                              //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                              //             ),
+                              //             maxLines: 1, overflow: TextOverflow.ellipsis,
+                              //           ),
+                              //         ),
+                              //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                              //       ],
+                              //     )
+                              // ),
+                            )
+                          ],
+                        ),
+                      ),
+
+                      // Align(
+                      //   alignment: Alignment.bottomLeft,
+                      //   child: Stack(
+                      //     children: [
+                      //       Align(
+                      //         alignment: Alignment.topLeft,
+                      //         child: InkWell(
+                      //             onTap: (){
+                      //               //Get.to(RouteHelper.getAccessLocationRoute(''));
+                      //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                      //             },
+                      //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                      //               children: [
+                      //                 Icon(
+                      //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                      //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                      //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Flexible(
+                      //                   child: Text(
+                      //                     locationController.getUserAddress().address,
+                      //                     style: robotoRegular.copyWith(
+                      //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                      //                     ),
+                      //                     maxLines: 1, overflow: TextOverflow.ellipsis,
+                      //                   ),
+                      //                 ),
+                      //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                      //               ],
+                      //             )
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ),
+                // Stack(
+                //   children: [
+                //     Align(
+                //       alignment: Alignment.topLeft,
+                //       child: Stack(
+                //         children: [
+                //           Align(alignment: Alignment.topLeft,
+                //             child: Container(
+                //               margin: EdgeInsets.only(top: 5),
+                //               width: 300,
+                //               child:Row(
+                //                 crossAxisAlignment: CrossAxisAlignment.center,
+                //                 mainAxisAlignment: MainAxisAlignment.start,
+                //                 children: [
+                //
+                //                   Image.asset(Images.logo,height: 40,width: 40,fit: BoxFit.fill,),
+                //                   Text('HalloChef',style: TextStyle(fontSize: 30),),
+                //                   //Image.asset(Images.logo_name,height: 70,width: 220,fit: BoxFit.fill,),
+                //                   SizedBox(
+                //                     //width: 20,
+                //                   )
+                //                 ],
+                //               ),
+                //
+                //
+                //             )
+                //
+                //             //Image.asset(Images.logo,height: 70,width: 70,fit: BoxFit.fill,),
+                //           ),
+                //           Align(
+                //             alignment: Alignment.topRight,
+                //             child: Container(
+                //               margin: EdgeInsets.only(top: 10),
+                //               width: 300,
+                //               child:Row(
+                //                 crossAxisAlignment: CrossAxisAlignment.center,
+                //                 mainAxisAlignment: MainAxisAlignment.end,
+                //                 children: [
+                //
+                //                   Container(
+                //                     margin: EdgeInsets.only(left: 5,right: 5),
+                //                     height: 30,
+                //                     width: 1,
+                //                     color: Colors.white,
+                //                   ),
+                //
+                //                   InkWell(
+                //                     child: Row(
+                //                       crossAxisAlignment: CrossAxisAlignment.center,
+                //                       mainAxisAlignment: MainAxisAlignment.center,
+                //                       children: [
+                //                         Icon(
+                //                             Icons.account_circle_sharp,
+                //                             color: Colors.white,
+                //                             size: 30, // also decreased the size of the icon a bit
+                //                           ),
+                //
+                //                         Text("Login",style: TextStyle(fontSize: 12),), // here, inside the column
+                //                       ],
+                //                     ),
+                //                   ),
+                //
+                //                   Container(
+                //                     margin: EdgeInsets.only(left: 5,right: 15),
+                //                     height: 30,
+                //                     width: 1,
+                //                     color: Colors.white,
+                //                   ),
+                //
+                //                   InkWell(
+                //                     onTap: (){
+                //                       Get.to(CartScreen(fromNav: true),);
+                //                     },
+                //                     child: Icon(Icons.shopping_bag_outlined),
+                //                   ),
+                //                   SizedBox(
+                //                     //width: 20,
+                //                   )
+                //                 ],
+                //               ),
+                //
+                //
+                //             )
+                //
+                //             // InkWell(
+                //             //     onTap: (){
+                //             //       //Get.to(RouteHelper.getAccessLocationRoute(''));
+                //             //       Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                //             //     },
+                //             //     child: Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start,
+                //             //       children: [
+                //             //         Icon(
+                //             //           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                //             //               : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                //             //           size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                //             //         ),
+                //             //         SizedBox(width: 10),
+                //             //         Flexible(
+                //             //           child: Text(
+                //             //             locationController.getUserAddress().address,
+                //             //             style: robotoRegular.copyWith(
+                //             //               color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                //             //             ),
+                //             //             maxLines: 1, overflow: TextOverflow.ellipsis,
+                //             //           ),
+                //             //         ),
+                //             //         Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                //             //       ],
+                //             //     )
+                //             // ),
+                //           )
+                //         ],
+                //       ),
+                //     ),
+                //
+                //     // Align(
+                //     //   alignment: Alignment.bottomLeft,
+                //     //   child: Stack(
+                //     //     children: [
+                //     //       Align(
+                //     //         alignment: Alignment.topLeft,
+                //     //         child: InkWell(
+                //     //             onTap: (){
+                //     //               //Get.to(RouteHelper.getAccessLocationRoute(''));
+                //     //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                //     //             },
+                //     //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                //     //               children: [
+                //     //                 Icon(
+                //     //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                //     //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                //     //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                //     //                 ),
+                //     //                 SizedBox(width: 10),
+                //     //                 Flexible(
+                //     //                   child: Text(
+                //     //                     locationController.getUserAddress().address,
+                //     //                     style: robotoRegular.copyWith(
+                //     //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                //     //                     ),
+                //     //                     maxLines: 1, overflow: TextOverflow.ellipsis,
+                //     //                   ),
+                //     //                 ),
+                //     //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                //     //               ],
+                //     //             )
+                //     //         ),
+                //     //       )
+                //     //     ],
+                //     //   ),
+                //     // ),
+                //   ],
+                // ),
+                //
+                // Stack(
+                //   children: [
+                //     Align(
+                //       alignment: Alignment.topLeft,
+                //       child: Stack(
+                //         children: [
+                //           Align(alignment: Alignment.topLeft,
+                //             child: Container(
+                //               //width: 500,
+                //               child: InkWell(
+                //                   onTap: (){
+                //                     //Get.to(RouteHelper.getAccessLocationRoute(''));
+                //                     Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                //                   },
+                //                   child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                //                     children: [
+                //
+                //                       Text('Delivering to : ',style: TextStyle(fontSize: 12),),
+                //
+                //                       // Container(
+                //                       //   height: 60,
+                //                       //     width: 60,
+                //                       //     decoration: BoxDecoration(
+                //                       //         border: Border.all(
+                //                       //           color: Colors.red[500].withOpacity(2.0),
+                //                       //         ),
+                //                       //         borderRadius: BorderRadius.all(Radius.circular(20))
+                //                       //     ),
+                //                       //
+                //                       // ),
+                //                       Icon(
+                //                         locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                //                             : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                //                         size: 20, color: Colors.white,
+                //                       ),
+                //
+                //                       SizedBox(width: 10),
+                //                       Flexible(
+                //                         child: Text(
+                //                           locationController.getUserAddress().address,
+                //                           style: robotoRegular.copyWith(
+                //                             color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                //                           ),
+                //                           maxLines: 1, overflow: TextOverflow.ellipsis,
+                //                         ),
+                //                       ),
+                //                       Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                //
+                //                       Container(
+                //                         margin: EdgeInsets.only(left: 15,right: 15),
+                //                         height: 30,
+                //                         width: 1,
+                //                         color: Colors.white,
+                //                       ),
+                //
+                //                       Text('WHEN : ',style: TextStyle(fontSize: 12),),
+                //
+                //                       Text('ASAP  ',style: TextStyle(fontSize: 12),),
+                //                       Icon(Icons.keyboard_arrow_down_sharp, color: Colors.white)
+                //
+                //                     ],
+                //                   )
+                //               ),
+                //             )
+                //           ),
+                //           // Align(
+                //           //   alignment: Alignment.topRight,
+                //           //   child: Image.asset(Images.logo,height: 50,width: 50,),
+                //           //
+                //           //
+                //           // )
+                //         ],
+                //       ),
+                //     ),
+                //
+                //     // Align(
+                //     //   alignment: Alignment.bottomLeft,
+                //     //   child: Stack(
+                //     //     children: [
+                //     //       Align(
+                //     //         alignment: Alignment.topLeft,
+                //     //         child: InkWell(
+                //     //             onTap: (){
+                //     //               //Get.to(RouteHelper.getAccessLocationRoute(''));
+                //     //               Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                //     //             },
+                //     //             child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start,
+                //     //               children: [
+                //     //                 Icon(
+                //     //                   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled
+                //     //                       : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                //     //                   size: 20, color: Theme.of(context).textTheme.bodyText1.color,
+                //     //                 ),
+                //     //                 SizedBox(width: 10),
+                //     //                 Flexible(
+                //     //                   child: Text(
+                //     //                     locationController.getUserAddress().address,
+                //     //                     style: robotoRegular.copyWith(
+                //     //                       color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                //     //                     ),
+                //     //                     maxLines: 1, overflow: TextOverflow.ellipsis,
+                //     //                   ),
+                //     //                 ),
+                //     //                 Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                //     //               ],
+                //     //             )
+                //     //         ),
+                //     //       )
+                //     //     ],
+                //     //   ),
+                //     // ),
+                //   ],
+                // )
               ],
             );
 
@@ -498,8 +696,12 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         body:  DefaultTabController(
           length: 3,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                margin: EdgeInsets.only(left: 120,top: 20),
+                width: context.width/2,
                 color: Color(0xFFFFFFFF),
                 child:
                 TabBar(
@@ -520,81 +722,40 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                 ),
 
 
-                // TabBar(
-                //     indicatorColor: Color(0xFFFF7600),
-                //     tabs: [
-                //   Tab(
-                //     //text: "Home",
-                //     child: Container(
-                //       width: 100,
-                //       height: 50,
-                //
-                //         decoration: BoxDecoration(
-                //             image: DecorationImage(
-                //               image: AssetImage(Images.deliverytab),
-                //               fit: BoxFit.fill,
-                //               // colorFilter: ColorFilter.mode(
-                //               //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                //     )
-                //
-                //   ),
-                //     ),),
-                //   Tab(
-                //     //text: "Home",
-                //     child: Container(
-                //       decoration: BoxDecoration(
-                //           image: DecorationImage(
-                //             image: AssetImage(Images.pick_up_tab),
-                //             fit: BoxFit.fill,
-                //             // colorFilter: ColorFilter.mode(
-                //             //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                //           )
-                //
-                //       ),
-                //     ),),
-                //       Tab(
-                //         //text: "Home",
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //               image: DecorationImage(
-                //                 image: AssetImage(Images.pick_up_tab),
-                //                 fit: BoxFit.fill,
-                //                 // colorFilter: ColorFilter.mode(
-                //                 //     Colors.black.withOpacity(0.4), BlendMode.dstATop),
-                //               )
-                //
-                //           ),
-                //         ),),
-                // ]),
               ),
 
-              InkWell(
-                onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
+              Card(
+                margin: EdgeInsets.only(left: 120,top: 30,bottom: 30),
+                elevation: 10,
                 child: Container(
-                  width: context.width,
-                  height: 60,
-                  margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                  width: context.width/2.5,
+                  padding: EdgeInsets.all(10),
+                  child: InkWell(
+                    onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
+                        child: CupertinoTextField(
+                          enabled: false,
+                          padding: EdgeInsets.symmetric(vertical: 12 , horizontal: 10),
+                          placeholder: "Seach for shop & restaurants",
+                          prefix: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Icon(Icons.search , color: Color(0xff7b7b7b) ,),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Color(0xfff7f7f7),
+                              borderRadius : BorderRadius.circular(50)
+                          ),
+                          style: TextStyle(color: Color(0xff707070) ,
+                            fontSize: 12, ) ,
+                        )
 
-                  padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
-                    child: CupertinoTextField(
-                      enabled: false,
-                      padding: EdgeInsets.symmetric(vertical: 12 , horizontal: 10),
-                      placeholder: "Seach for shop & restaurants",
-                      prefix: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Icon(Icons.search , color: Color(0xff7b7b7b) ,),
-                      ),
-                      decoration: BoxDecoration(
-                          color: Color(0xfff7f7f7),
-                          borderRadius : BorderRadius.circular(50)
-                      ),
-                      style: TextStyle(color: Color(0xff707070) ,
-                        fontSize: 12, ) ,
-                    )
 
-
+                    ),
+                  ),
                 ),
               ),
+
 
               Expanded(
                 child: Container(
@@ -868,250 +1029,253 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         //     ),
         //   ),
         // ),
-        drawer: Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Color(0xffEF7822),
-                ),
-                child: CircleAvatar(
-                  radius: 24,
-                  //backgroundImage: NetworkImage('https://media-exp1.licdn.com/dms/image/C5603AQFtuW78eNazIw/profile-displayphoto-shrink_800_800/0/1567442703746?e=2147483647&v=beta&t=N5dGxws3xJIhwPM8w_i4dlX8qLmxznmVykPCTccYHj8'),
-                  backgroundImage: NetworkImage(''),
 
-                ),
-              ),
+        // drawer: Drawer(
+        //   child: ListView(
+        //     // Important: Remove any padding from the ListView.
+        //     padding: EdgeInsets.zero,
+        //     children: [
+        //       const DrawerHeader(
+        //         decoration: BoxDecoration(
+        //           color: Color(0xffEF7822),
+        //         ),
+        //         child: CircleAvatar(
+        //           radius: 24,
+        //           //backgroundImage: NetworkImage('https://media-exp1.licdn.com/dms/image/C5603AQFtuW78eNazIw/profile-displayphoto-shrink_800_800/0/1567442703746?e=2147483647&v=beta&t=N5dGxws3xJIhwPM8w_i4dlX8qLmxznmVykPCTccYHj8'),
+        //           backgroundImage: NetworkImage(''),
+        //
+        //         ),
+        //       ),
+        //
+        //
+        //       ListTile(
+        //         title:  Text('my_address'.tr, style: TextStyle( color : Colors.black)),
+        //         //leading: Icon(Icons.location_on ,),
+        //         leading: Image.asset('assets/image/location.png',height: 25,width: 25,),
+        //         onTap: () {
+        //           Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
+        //
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //       ListTile(
+        //         title:  Text('language'.tr, style: TextStyle( color : Colors.black)),
+        //         //leading: Icon(Icons.language ,),
+        //         leading: Image.asset('assets/image/language.png',height: 22,width: 22,),
+        //         onTap: () {
+        //           //Get.offNamed(RouteHelper.getLanguageRoute('splash'));
+        //           Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseLanguageScreen()));
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //        ListTile(
+        //         title:  Text('coupon'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( 'assets/image/coupon.png',height: 25,width: 25,),
+        //         onTap: () {
+        //           Navigator.push(context, MaterialPageRoute(builder: (context) => CouponScreen(fromCheckout: false)));
+        //
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //       ListTile(
+        //         title:  Text('help_support'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( 'assets/image/support.png',height: 25,width: 25,),
+        //         onTap: () {
+        //           Navigator.push(context, MaterialPageRoute(builder: (context) => SupportScreen()));
+        //
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //       ListTile(
+        //         title:  Text('privacy_policy'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( 'assets/image/policy.png',height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getHtmlRoute('privacy-policy'));
+        //          // Navigator.push(context, MaterialPageRoute(builder: (context) => SupportScreen()));
+        //
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //       ListTile(
+        //         title:  Text('about_us'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.about_us,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getHtmlRoute('about-us'));
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //       ListTile(
+        //         title:  Text('terms_conditions'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.terms,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getHtmlRoute('terms-and-condition'));
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //       ListTile(
+        //         title:  Text('live_chat'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.chat,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getConversationRoute());
+        //
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //       Get.find<SplashController>().configModel.refEarningStatus == 1 ? ListTile(
+        //         title:  Text('refer'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.refer_code,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getReferAndEarnRoute());
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ) : SizedBox(height: 5,),
+        //
+        //       Get.find<SplashController>().configModel.customerWalletStatus == 1 ? ListTile(
+        //         title:  Text('wallet'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.wallet,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getWalletRoute(true));
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //          // Navigator.pop(context);
+        //         },
+        //       ) : SizedBox(height: 5,),
+        //
+        //       Get.find<SplashController>().configModel.loyaltyPointStatus == 1 ? ListTile(
+        //         title:  Text('loyalty_points'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.loyal,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getWalletRoute(false));
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ) : SizedBox(height: 5,),
+        //
+        //       Get.find<SplashController>().configModel.toggleDmRegistration && !ResponsiveHelper.isDesktop(context) ? ListTile(
+        //         title:  Text('join_as_a_delivery_man'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.delivery_man_join,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getDeliverymanRegistrationRoute());
+        //
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ) : SizedBox(height: 5,),
+        //
+        //       Get.find<SplashController>().configModel.toggleRestaurantRegistration && !ResponsiveHelper.isDesktop(context) ? ListTile(
+        //         title:  Text('join_as_a_restaurant'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.restaurant_join,height: 25,width: 25,),
+        //         onTap: () {
+        //           Get.toNamed(RouteHelper.getRestaurantRegistrationRoute());
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //          // Navigator.pop(context);
+        //         },
+        //       ) : SizedBox(height: 5,),
+        //
+        //       Get.find<AuthController>().isLoggedIn()  ? ListTile(
+        //         title:  Text('logout'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.restaurant_join,height: 25,width: 25,),
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           Navigator.pop(context);
+        //         },
+        //       ) : ListTile(
+        //         title:  Text('logout'.tr, style: TextStyle( color : Colors.black)),
+        //         leading: Image.asset( Images.log_out,height: 25,width: 25,),
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           //Navigator.pop(context);
+        //         },
+        //       ),
+        //
+        //
+        //       ListTile(
+        //         title: const Text('Setting' , style: TextStyle( color : Colors.black)),
+        //         leading: Icon(Icons.settings_outlined ,),
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           Navigator.pop(context);
+        //         },
+        //       ),
+        //       ListTile(
+        //         title: const Text('Help center 2' , style: TextStyle( color : Colors.black)),
+        //         leading: Icon(Icons.help_outline, ),
+        //
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           Navigator.pop(context);
+        //         },
+        //       ),
+        //       ListTile(
+        //         title: const Text('More' , style: TextStyle( color : Colors.black)),
+        //         leading: Icon(Icons.more_horiz, ),
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           Navigator.pop(context);
+        //         },
+        //       ),
+        //       ListTile(
+        //         title: const Text('Sign up or Login in' , style: TextStyle( color : Colors.black)),
+        //         leading: Icon(Icons.login_outlined, ),
+        //         onTap: () {
+        //           // Update the state of the app
+        //           // ...
+        //           // Then close the drawer
+        //           Navigator.pop(context);
+        //         },
+        //       ),
+        //     ],
+        //   ),
+        // ),
 
 
-              ListTile(
-                title:  Text('my_address'.tr, style: TextStyle( color : Colors.black)),
-                //leading: Icon(Icons.location_on ,),
-                leading: Image.asset('assets/image/location.png',height: 25,width: 25,),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
-
-                  //Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title:  Text('language'.tr, style: TextStyle( color : Colors.black)),
-                //leading: Icon(Icons.language ,),
-                leading: Image.asset('assets/image/language.png',height: 22,width: 22,),
-                onTap: () {
-                  //Get.offNamed(RouteHelper.getLanguageRoute('splash'));
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseLanguageScreen()));
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-               ListTile(
-                title:  Text('coupon'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( 'assets/image/coupon.png',height: 25,width: 25,),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CouponScreen(fromCheckout: false)));
-
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-              ListTile(
-                title:  Text('help_support'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( 'assets/image/support.png',height: 25,width: 25,),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SupportScreen()));
-
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-              ListTile(
-                title:  Text('privacy_policy'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( 'assets/image/policy.png',height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getHtmlRoute('privacy-policy'));
-                 // Navigator.push(context, MaterialPageRoute(builder: (context) => SupportScreen()));
-
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-              ListTile(
-                title:  Text('about_us'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.about_us,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getHtmlRoute('about-us'));
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title:  Text('terms_conditions'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.terms,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getHtmlRoute('terms-and-condition'));
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-              ListTile(
-                title:  Text('live_chat'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.chat,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getConversationRoute());
-
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-              Get.find<SplashController>().configModel.refEarningStatus == 1 ? ListTile(
-                title:  Text('refer'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.refer_code,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getReferAndEarnRoute());
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ) : SizedBox(height: 5,),
-
-              Get.find<SplashController>().configModel.customerWalletStatus == 1 ? ListTile(
-                title:  Text('wallet'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.wallet,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getWalletRoute(true));
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                 // Navigator.pop(context);
-                },
-              ) : SizedBox(height: 5,),
-
-              Get.find<SplashController>().configModel.loyaltyPointStatus == 1 ? ListTile(
-                title:  Text('loyalty_points'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.loyal,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getWalletRoute(false));
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ) : SizedBox(height: 5,),
-
-              Get.find<SplashController>().configModel.toggleDmRegistration && !ResponsiveHelper.isDesktop(context) ? ListTile(
-                title:  Text('join_as_a_delivery_man'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.delivery_man_join,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getDeliverymanRegistrationRoute());
-
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ) : SizedBox(height: 5,),
-
-              Get.find<SplashController>().configModel.toggleRestaurantRegistration && !ResponsiveHelper.isDesktop(context) ? ListTile(
-                title:  Text('join_as_a_restaurant'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.restaurant_join,height: 25,width: 25,),
-                onTap: () {
-                  Get.toNamed(RouteHelper.getRestaurantRegistrationRoute());
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                 // Navigator.pop(context);
-                },
-              ) : SizedBox(height: 5,),
-
-              Get.find<AuthController>().isLoggedIn()  ? ListTile(
-                title:  Text('logout'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.restaurant_join,height: 25,width: 25,),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ) : ListTile(
-                title:  Text('logout'.tr, style: TextStyle( color : Colors.black)),
-                leading: Image.asset( Images.log_out,height: 25,width: 25,),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  //Navigator.pop(context);
-                },
-              ),
-
-
-              ListTile(
-                title: const Text('Setting' , style: TextStyle( color : Colors.black)),
-                leading: Icon(Icons.settings_outlined ,),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('Help center 2' , style: TextStyle( color : Colors.black)),
-                leading: Icon(Icons.help_outline, ),
-
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('More' , style: TextStyle( color : Colors.black)),
-                leading: Icon(Icons.more_horiz, ),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('Sign up or Login in' , style: TextStyle( color : Colors.black)),
-                leading: Icon(Icons.login_outlined, ),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),
         // body: PageView.builder(
         //   controller: _pageController,
         //   itemCount: _screens.length,
@@ -1132,9 +1296,10 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
   Widget buildTabWidget(int currentItemNumber,
       { int currentIndex,  String imageUrl}) =>
-      SizedBox(
+      Container(
+        margin: EdgeInsets.only(left: 20),
         //width: ((MediaQuery.of(context).size.width) - 48) / 3,
-        height: 70,
+        height: 50,
         child: Stack(alignment: Alignment.bottomLeft, children: [
           // Image.network(
           //   imageUrl,

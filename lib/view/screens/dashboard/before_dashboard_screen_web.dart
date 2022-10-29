@@ -47,12 +47,12 @@ class BeforeDashboardScreenWeb extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
-  PageController _pageController;
+  //PageController _pageController;
   int _pageIndex = 0;
   //List<Widget> _screens;
   GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
   bool _canExit = GetPlatform.isWeb ? true : false;
-  int currentIndex = 0;
+ // int currentIndex = 0;
   final List<Map<String, dynamic>> tabtitles = [
     {
       'title': "Delivery",
@@ -76,9 +76,9 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
   void initState() {
     super.initState();
 
-    _pageIndex = widget.pageIndex;
+    //_pageIndex = widget.pageIndex;
 
-    _pageController = PageController(initialPage: widget.pageIndex);
+   // _pageController = PageController(initialPage: widget.pageIndex);
 
     // _screens = [
     //   HomeScreen(),
@@ -97,7 +97,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
     }*/
 
 
-    Get.find<CategoryController>().getCategoryList(true);
+   // Get.find<CategoryController>().getCategoryList(true);
   }
 
   @override
@@ -777,11 +777,101 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                       Column(
                         children: [
                           Image.asset(
-                            Images.citis,height: 300,
+                            Images.citis,height: 350,
                             width: context.width,
                             fit: BoxFit.fill,),
                         ],
-                      )
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/image/citis2.png',height: 350,
+                            width: context.width,
+                            fit: BoxFit.fill,),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+
+                      Image.asset(
+                        'assets/image/applinkview.png',height: 470,
+                        width: context.width,
+                        fit: BoxFit.fill,),
+
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            height: 400,
+                            width: context.width,
+                            child:Image.asset(
+                              'assets/image/bussiness.png',height: 400,
+                              width: context.width,
+                              fit: BoxFit.fill,),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Card(
+                              margin: EdgeInsets.only(top: 150,left: 100),
+                              elevation: 15,
+                              child:Container(
+                                padding: EdgeInsets.all(20),
+                                color: Colors.white,
+                                height: 300,
+                                width: 500,
+                                child: Column(
+                                  children: [
+                                    Text('HalloChef for business',style: TextStyle(fontSize: 20),),
+                                    SizedBox(height: 10,),
+                                    Text('Order lunch or fuel for work-from-home, late nights in the office, corporate events, client meetings, and much more.',style: TextStyle(fontSize: 15),),
+
+                                    Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Container(
+                                        alignment: Alignment.bottomRight,
+                                        margin: EdgeInsets.fromLTRB(15, 30, 10, 0),
+                                        padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                                        height: 50,
+                                        width: 200,
+                                        decoration: BoxDecoration(
+
+                                          color: Color(0xFFE34A28),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(5),
+                                          ),
+                                          border: Border.all(
+                                            width: 1,
+                                            color: Colors.white,
+                                            style: BorderStyle.solid,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "Get started",style: TextStyle(fontSize: 15,color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+
+                            ),
+
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Image.asset(
+                        'assets/image/fotter.png',height: 370,
+                        width: context.width,
+                        fit: BoxFit.fill,),
                     ],
                   ),
                 ),
@@ -828,16 +918,19 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
           //     ),
           //   ),
           // ),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.black54 ),))
+
+          // Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.black54 ),)
+          // )
+
         ]),
       );
 
-  void _setPage(int pageIndex) {
-    setState(() {
-      _pageController.jumpToPage(pageIndex);
-      _pageIndex = pageIndex;
-    });
-  }
+  // void _setPage(int pageIndex) {
+  //   setState(() {
+  //     _pageController.jumpToPage(pageIndex);
+  //     _pageIndex = pageIndex;
+  //   });
+  // }
 }
