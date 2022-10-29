@@ -36,6 +36,7 @@ import '../home/widget/causines_view_dashboard.dart';
 import '../language/language_screen.dart';
 import '../location/access_location_screen.dart';
 import '../support/support_screen.dart';
+import 'dashboard_screen_web.dart';
 
 class BeforeDashboardScreenWeb extends StatefulWidget {
   final int pageIndex;
@@ -106,7 +107,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
         key: _scaffoldKey,
 
 
-        backgroundColor: Color(0xffEEF2F5),
+        backgroundColor: Color(0xffFFFFFF),
         // appBar: AppBar(
         //   //backgroundColor: Color(0xffEEF2F5),
         //   toolbarHeight: 60,
@@ -652,29 +653,35 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                                   width:context.width/1.7
                                                 ),
 
-                                                Container(
-                                                  margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
-                                                  padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
-                                                  height: 55,
-                                                  //width: 100,
-                                                  decoration: BoxDecoration(
+                                                InkWell(
+                                                  onTap: (){
+                                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+                                                  },
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
+                                                    padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                                                    height: 55,
+                                                    //width: 100,
+                                                    decoration: BoxDecoration(
 
-                                                    color: Color(0xFFE34A28),
-                                                    borderRadius: BorderRadius.all(
-                                                      Radius.circular(5),
+                                                      color: Color(0xFFE34A28),
+                                                      borderRadius: BorderRadius.all(
+                                                        Radius.circular(5),
+                                                      ),
+                                                      border: Border.all(
+                                                        width: 1,
+                                                        color: Colors.white,
+                                                        style: BorderStyle.solid,
+                                                      ),
                                                     ),
-                                                    border: Border.all(
-                                                      width: 1,
-                                                      color: Colors.white,
-                                                      style: BorderStyle.solid,
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Delivery",style: TextStyle(fontSize: 15,color: Colors.white),
+                                                      ),
                                                     ),
                                                   ),
-                                                  child: Center(
-                                                    child: Text(
-                                                      "Delivery",style: TextStyle(fontSize: 15,color: Colors.white),
-                                                    ),
-                                                  ),
-                                                ),
+                                                )
+
 
 
                                               ],
@@ -698,71 +705,83 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                         ],
                       ),
 
-
-                      Container(
-                        alignment: Alignment.topRight,
-                        height: 500,
-                        color: Colors.white,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child:Image.asset(
-                                Images.foods,height: 500,
-                                width: 230,fit: BoxFit.fill,),
-                            ),
-                            Container(
-                              height: 500,
-                              margin: EdgeInsets.fromLTRB(100, 0, 20, 0),
-                              width: context.width-330,
-                              alignment: Alignment.center,
-                                //child: Center(
-                                  child: Card(
-                                    elevation: 20,
-                                    //width: context.width-200,
-                                    child:Container(
-                                      width: context.width-330,
-                                      child: Container(
-                                          padding: EdgeInsets.all(20),
-                                          child: TextField(
-                                            autocorrect: true,
-                                            decoration: InputDecoration(
-                                              hintText: 'Type Text Here...',
-                                              hintStyle: TextStyle(color: Colors.grey),
-                                              filled: true,
-                                              fillColor: Colors.white70,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                                                borderSide: BorderSide(color: Colors.grey, width: 1),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                                borderSide: BorderSide(color: Colors.grey),
-                                              ),
-                                            ),)
-
-                                      ),
-                                    )
+                     Stack(
+                       children: [
+                         Container(
+                           height: 400,
+                           width: context.width,
+                           child:Image.asset(
+                             Images.chef,height: 400,
+                             width: context.width,
+                             fit: BoxFit.fill,),
+                         ),
+                         Align(
+                           alignment: Alignment.bottomLeft,
+                           child: Card(
+                             margin: EdgeInsets.only(top: 150,left: 100),
+                             elevation: 15,
+                             child:Container(
+                               padding: EdgeInsets.all(20),
+                               color: Colors.white,
+                               height: 300,
+                               width: 500,
+                               child: Column(
+                                 children: [
+                                   Text('List your restaurant or shop on HalloChef',style: TextStyle(fontSize: 20),),
+                                   SizedBox(height: 10,),
+                                   Text('Would you like millions of new customers to enjoy your amazing food and groceries? So would we!\n \n '
+                                       'Its simple: we list your menu and product lists online, help you process orders, pick them up, and deliver them to hungry pandas – in a heartbeat!\n \n Interested? Lets start our partnership today!',style: TextStyle(fontSize: 15),),
 
 
+                                   Align(
+                                     alignment: Alignment.bottomRight,
+                                     child: Container(
+                                       alignment: Alignment.bottomRight,
+                                       margin: EdgeInsets.fromLTRB(15, 30, 10, 0),
+                                       padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                                       height: 50,
+                                       width: 200,
+                                       decoration: BoxDecoration(
 
-                                  ),
-                               // ),
-                            )
-                          ],
+                                         color: Color(0xFFE34A28),
+                                         borderRadius: BorderRadius.all(
+                                           Radius.circular(5),
+                                         ),
+                                         border: Border.all(
+                                           width: 1,
+                                           color: Colors.white,
+                                           style: BorderStyle.solid,
+                                         ),
+                                       ),
+                                       child: Center(
+                                         child: Text(
+                                           "Get started",style: TextStyle(fontSize: 15,color: Colors.white),
+                                         ),
+                                       ),
+                                     ),
+                                   ),
 
-                        ),
+                                 ],
+                               ),
+                             ),
+
+                           ),
+
+                         )
+                       ],
+                     ),
+
+                      SizedBox(
+                        height: 40,
                       ),
-
-                      Container(
-                        height: 100,
-                        color: Colors.black54,
-                      ),
-
-                      Container(
-                        height: 100,
-                        color: Colors.blue,
-                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            Images.citis,height: 300,
+                            width: context.width,
+                            fit: BoxFit.fill,),
+                        ],
+                      )
                     ],
                   ),
                 ),
