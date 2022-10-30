@@ -334,6 +334,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
         // ),
         body: Column(
           children: [
+            
             Container(
               color: Color(0xFFE34A28),
               child:Stack(
