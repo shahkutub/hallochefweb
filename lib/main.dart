@@ -114,7 +114,7 @@ class MyApp extends StatelessWidget {
             translations: Messages(languages: languages),
             fallbackLocale: Locale(AppConstants.languages[0].languageCode, AppConstants.languages[0].countryCode),
             //initialRoute: GetPlatform.isWeb ? RouteHelper.getInitialRoute() : RouteHelper.getSplashRoute(body),
-            //initialRoute:RouteHelper.getInitialRoute(),
+            initialRoute:RouteHelper.getInitialRoute(),
             //initialRoute: RouteHelper.initial,
             //getPages: RouteHelper.routes,
             getPages: RouteHelper.routes,
