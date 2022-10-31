@@ -206,7 +206,8 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(
-                                          locationController.getUserAddress().address,
+                                          'Gulshan, dhaka',
+                                          //locationController.getUserAddress().address,
                                           style: robotoRegular.copyWith(
                                             color: Colors.white, fontSize: Dimensions.fontSizeSmall,
                                           ),
@@ -694,7 +695,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
          // ),
         ),
         body:  DefaultTabController(
-          length: 3,
+          length: 4,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -762,7 +763,8 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                   child: TabBarView(children: [
                     DeliveryHomeScreen(),
                     AllRestaurantScreen(isPopular: true),
-                    PickUpHomeScreen()
+                    PickUpHomeScreen(),
+                    AllRestaurantScreen(isPopular: true),
                   ]),
                 ),
               )

@@ -212,8 +212,8 @@ class RouteHelper {
   static String getDeliverymanRegistrationRoute() => '$deliveryManRegistration';
 
   static List<GetPage> routes = [
-    //GetPage(name: initial, page: () => getRoute(BeforeDashboardScreenWeb(pageIndex: 0))),
-    GetPage(name: initial, page: () => BeforeDashboardScreenWeb(pageIndex: 0)),
+    GetPage(name: initial, page: () => getRoute(BeforeDashboardScreenWeb(pageIndex: 0))),
+    //GetPage(name: initial, page: () => BeforeDashboardScreenWeb(pageIndex: 0)),
     //GetPage(name: initial, page: () => getRoute(BeforeDashboardScreen(pageIndex: 0))),
     // GetPage(name: splash, page: () {
     //   NotificationBody _data;
@@ -361,5 +361,6 @@ class RouteHelper {
         : Get.find<SplashController>().configModel.maintenanceMode ? UpdateScreen(isUpdate: false)
         : Get.find<LocationController>().getUserAddress() != null ? navigateTo
         : AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute);
+        //: BeforeDashboardScreenWeb(pageIndex: 0);
   }
 }
