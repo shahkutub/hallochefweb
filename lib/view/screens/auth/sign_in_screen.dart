@@ -24,6 +24,7 @@ import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';
 
 import '../../../util/app_constants.dart';
+import 'widget/social_login_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   final bool exitFromApp;
@@ -207,9 +208,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       ]) : Center(child: CircularProgressIndicator()),
                       SizedBox(height: 30),
 
-                      // SocialLoginWidget(),
+                       //SocialLoginWidget(),
 
                       GuestButton(),
+
+                      SocialLoginWidget(),
 
                     ]);
                   }),

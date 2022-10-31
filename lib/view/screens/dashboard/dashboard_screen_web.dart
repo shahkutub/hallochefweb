@@ -166,10 +166,11 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
         backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          //backgroundColor: Color(0xffEEF2F5),
+          backgroundColor: Color(0xffFFFFFF),
          // toolbarHeight: 80,
           //title: const  Text('') ,
-          title: GetBuilder<LocationController>(builder: (locationController) {
+          title:
+          GetBuilder<LocationController>(builder: (locationController) {
             return Column(
               children: [
                 Container(
@@ -195,40 +196,40 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         width: 45,
                                         decoration: BoxDecoration(
                                           ///color: Colors.deepOrangeAccent.withOpacity(0.5),
-                                            color: Colors.white.withOpacity(0.5),
+                                            color: Color(0xFFE34A28).withOpacity(0.1),
                                             shape: BoxShape.circle
                                         ),
                                         child:Image.asset(Images.logo,
                                           height: 40,width: 40,
-                                          fit: BoxFit.fill,),
+                                          fit: BoxFit.cover,),
 
                                       ),
                                       SizedBox(width: 20,),
-                                      Text('HalloChef',style: TextStyle(fontSize: 20,color: Color(0xffFFFFFF),fontWeight: FontWeight.bold),),
+                                      Text('HalloChef',style: TextStyle(fontSize: 20,color: Color(0xFFE34A28),fontWeight: FontWeight.bold),),
                                       SizedBox(width: 20,),
                                       Container(
                                         margin: EdgeInsets.only(left: 15,right: 15),
                                         height: 50,
                                         width: 1,
-                                        color: Colors.white,
+                                        color: Color(0xffEBEBEB),
                                       ),
                                       SizedBox(width: 20,),
-                                      Text('DELIVERING TO : ',style: TextStyle(fontSize: 12),),
+                                      Text('DELIVERING TO : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2)),),
 
                                       Container(
                                         alignment: Alignment.center,
-                                        height: 30,
-                                        width: 30,
+                                        height: 40,
+                                        width: 40,
                                         //padding: EdgeInsets.all(10),
                                         //margin: EdgeInsets.all(100.0),
                                         decoration: BoxDecoration(
                                             ///color: Colors.deepOrangeAccent.withOpacity(0.5),
-                                            color: Colors.white.withOpacity(0.5),
+                                            color: Color(0xFFE34A28).withOpacity(0.1),
                                             shape: BoxShape.circle
                                         ),
                                         child: Icon(
-                                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                          size: 20, color: Colors.red,),
+                                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on_outlined,
+                                          size: 30, color: Color(0xFFE34A28)),
                                       ),
                                       // SizedBox(width: 10),
                                       // Icon(
@@ -237,27 +238,27 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(
-                                          'Gulshan, dhaka',
-                                          //locationController.getUserAddress().address,
+                                          //'Gulshan, dhaka',
+                                          locationController.getUserAddress().address,
                                           style: robotoRegular.copyWith(
-                                            color: Colors.white, fontSize: Dimensions.fontSizeSmall,
+                                            color: Color(0xFFE34A28), fontSize: Dimensions.fontSizeSmall,
                                           ),
                                           maxLines: 1, overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
-                                      Icon(Icons.arrow_drop_down, color: Theme.of(context).textTheme.bodyText1.color),
+                                      Icon(Icons.arrow_drop_down, color: Color(0xFFE34A28)),
 
                                       Container(
                                         margin: EdgeInsets.only(left: 25,right: 15),
                                         height: 50,
                                         width: 1,
-                                        color: Colors.white,
+                                        color: Color(0xffEBEBEB),
                                       ),
 
-                                      Text('WHEN : ',style: TextStyle(fontSize: 12),),
+                                      Text('WHEN : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2),),),
 
-                                      Text('ASAP  ',style: TextStyle(fontSize: 12),),
-                                      Icon(Icons.keyboard_arrow_down_sharp, color: Colors.white)
+                                      Text('ASAP  ',style: TextStyle(fontSize: 12,color:Colors.black,fontWeight: FontWeight.bold),),
+                                      Icon(Icons.keyboard_arrow_down_sharp, color: Color(0xFFE34A28))
 
                                     ],
                                   ),
@@ -282,15 +283,15 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         margin: EdgeInsets.only(left: 5,right: 15),
                                         height: 50,
                                         width: 1,
-                                        color: Colors.white,
+                                        color: Color(0xffEBEBEB),
                                       ),
-                                      Text("BN",style: TextStyle(fontSize: 12,color: Colors.white),), // here, inside the column
+                                      Text("EN",style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2),),), // here, inside the column
 
                                       Container(
                                         margin: EdgeInsets.only(left: 15,right: 15),
                                         height: 50,
                                         width: 1,
-                                        color: Colors.white,
+                                        color: Color(0xffEBEBEB),
                                       ),
 
                                       InkWell(
@@ -300,11 +301,11 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                           children: [
                                             Icon(
                                               Icons.account_circle_sharp,
-                                              color: Color(0xffFFFFFF),
+                                              color: Color(0xFFE34A28),
                                               size: 30, // also decreased the size of the icon a bit
                                             ),
 
-                                            Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),), // here, inside the column
+                                            Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
                                           ],
                                         ),
                                       ),
@@ -313,14 +314,14 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         margin: EdgeInsets.only(left: 15,right: 15),
                                         height: 50,
                                         width: 1,
-                                        color: Colors.white,
+                                        color: Color(0xffEBEBEB),
                                       ),
 
                                       InkWell(
                                         onTap: (){
                                           Get.to(CartScreen(fromNav: true),);
                                         },
-                                        child: Icon(Icons.shopping_bag_outlined,color: Color(0xffFFFFFF),),
+                                        child: Icon(Icons.shopping_bag_outlined, color: Color(0xFFE34A28),),
                                       ),
                                       SizedBox(
                                         //width: 20,
@@ -737,7 +738,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                 color: Color(0xFFFFFFFF),
                 child:
                 TabBar(
-                  indicatorColor: Color(0xFFFF7600),
+                  indicatorColor: Color(0xFFE34A28),
                   onTap: (value) => setState(() {
                     currentIndex = value;
                   }),
@@ -1356,7 +1357,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
           // ),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Colors.deepOrange:Colors.black54 ),))
+              child: Text(tabtitles[currentItemNumber]['title'],style: TextStyle(color: currentIndex == currentItemNumber ? Color(0xFFE34A28):Colors.black54 ),))
         ]),
       );
 
