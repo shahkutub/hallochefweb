@@ -189,7 +189,21 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
 
-                                      Image.asset(Images.logo,height: 50,width: 50,fit: BoxFit.fill,),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 45,
+                                        width: 45,
+                                        decoration: BoxDecoration(
+                                          ///color: Colors.deepOrangeAccent.withOpacity(0.5),
+                                            color: Colors.white.withOpacity(0.5),
+                                            shape: BoxShape.circle
+                                        ),
+                                        child:Image.asset(Images.logo,
+                                          height: 40,width: 40,
+                                          fit: BoxFit.fill,),
+
+                                      ),
+                                      SizedBox(width: 20,),
                                       Text('HalloChef',style: TextStyle(fontSize: 20,color: Color(0xffFFFFFF),fontWeight: FontWeight.bold),),
                                       SizedBox(width: 20,),
                                       Container(
