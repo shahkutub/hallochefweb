@@ -183,7 +183,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                             Align(alignment: Alignment.topLeft,
                                 child: Container(
                                   //margin: EdgeInsets.only(top: 5),
-                                  width: 900,
+                                  width: 1000,
                                   child:Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -200,9 +200,26 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       ),
                                       SizedBox(width: 20,),
                                       Text('DELIVERING TO : ',style: TextStyle(fontSize: 12),),
-                                      Icon(
-                                        locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                        size: 20, color: Colors.white,),
+
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 30,
+                                        width: 30,
+                                        //padding: EdgeInsets.all(10),
+                                        //margin: EdgeInsets.all(100.0),
+                                        decoration: BoxDecoration(
+                                            ///color: Colors.deepOrangeAccent.withOpacity(0.5),
+                                            color: Color(0xFFFDF2F7),
+                                            shape: BoxShape.circle
+                                        ),
+                                        child: Icon(
+                                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                          size: 20, color: Colors.deepOrangeAccent,),
+                                      ),
+                                      // SizedBox(width: 10),
+                                      // Icon(
+                                      //   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                      //   size: 20, color: Colors.white,),
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(

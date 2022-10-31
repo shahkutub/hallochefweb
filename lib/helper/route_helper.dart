@@ -212,8 +212,8 @@ class RouteHelper {
   static String getDeliverymanRegistrationRoute() => '$deliveryManRegistration';
 
   static List<GetPage> routes = [
-    //GetPage(name: initial, page: () => getRoute(BeforeDashboardScreenWeb(pageIndex: 0))),
-    GetPage(name: initial, page: () => BeforeDashboardScreenWeb(pageIndex: 0)),
+    GetPage(name: initial, page: () => getRoute(BeforeDashboardScreenWeb(pageIndex: 0))),
+    //GetPage(name: initial, page: () => BeforeDashboardScreenWeb(pageIndex: 0)),
     //GetPage(name: initial, page: () => getRoute(BeforeDashboardScreen(pageIndex: 0))),
     // GetPage(name: splash, page: () {
     //   NotificationBody _data;
