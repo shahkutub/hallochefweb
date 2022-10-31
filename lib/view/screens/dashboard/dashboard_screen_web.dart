@@ -183,13 +183,27 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                             Align(alignment: Alignment.topLeft,
                                 child: Container(
                                   //margin: EdgeInsets.only(top: 5),
-                                  width: 900,
+                                  width: 1000,
                                   child:Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
 
-                                      Image.asset(Images.logo,height: 50,width: 50,fit: BoxFit.fill,),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 45,
+                                        width: 45,
+                                        decoration: BoxDecoration(
+                                          ///color: Colors.deepOrangeAccent.withOpacity(0.5),
+                                            color: Colors.white.withOpacity(0.5),
+                                            shape: BoxShape.circle
+                                        ),
+                                        child:Image.asset(Images.logo,
+                                          height: 40,width: 40,
+                                          fit: BoxFit.fill,),
+
+                                      ),
+                                      SizedBox(width: 20,),
                                       Text('HalloChef',style: TextStyle(fontSize: 20,color: Color(0xffFFFFFF),fontWeight: FontWeight.bold),),
                                       SizedBox(width: 20,),
                                       Container(
@@ -200,9 +214,26 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                       ),
                                       SizedBox(width: 20,),
                                       Text('DELIVERING TO : ',style: TextStyle(fontSize: 12),),
-                                      Icon(
-                                        locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                        size: 20, color: Colors.white,),
+
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 30,
+                                        width: 30,
+                                        //padding: EdgeInsets.all(10),
+                                        //margin: EdgeInsets.all(100.0),
+                                        decoration: BoxDecoration(
+                                            ///color: Colors.deepOrangeAccent.withOpacity(0.5),
+                                            color: Colors.white.withOpacity(0.5),
+                                            shape: BoxShape.circle
+                                        ),
+                                        child: Icon(
+                                          locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                          size: 20, color: Colors.red,),
+                                      ),
+                                      // SizedBox(width: 10),
+                                      // Icon(
+                                      //   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
+                                      //   size: 20, color: Colors.white,),
                                       SizedBox(width: 10),
                                       Flexible(
                                         child: Text(
