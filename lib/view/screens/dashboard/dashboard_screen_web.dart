@@ -209,12 +209,12 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         //margin: EdgeInsets.all(100.0),
                                         decoration: BoxDecoration(
                                             ///color: Colors.deepOrangeAccent.withOpacity(0.5),
-                                            color: Color(0xFFFDF2F7),
+                                            color: Colors.white.withOpacity(0.5),
                                             shape: BoxShape.circle
                                         ),
                                         child: Icon(
                                           locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
-                                          size: 20, color: Colors.deepOrangeAccent,),
+                                          size: 20, color: Colors.red,),
                                       ),
                                       // SizedBox(width: 10),
                                       // Icon(
