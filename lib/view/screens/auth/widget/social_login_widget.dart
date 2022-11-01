@@ -13,8 +13,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 class SocialLoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return (Get.find<SplashController>().configModel.socialLogin[0].status
-    || Get.find<SplashController>().configModel.socialLogin[1].status) ? Column(children: [
+    return
+      (Get.find<SplashController>().configModel.socialLogin[0].status
+    || Get.find<SplashController>().configModel.socialLogin[1].status) ?
+    Column(children: [
 
       Center(child: Text('social_login'.tr, style: robotoMedium)),
       SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
@@ -73,6 +75,9 @@ class SocialLoginWidget extends StatelessWidget {
       ]),
       SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
-    ]) : SizedBox();
+    ])
+          :
+      SizedBox()
+    ;
   }
 }

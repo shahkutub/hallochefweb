@@ -23,6 +23,7 @@ import 'package:get/get.dart';
 import '../../../controller/auth_controller.dart';
 import '../../../controller/category_controller.dart';
 import '../../../controller/location_controller.dart';
+import '../../../controller/search_controller.dart';
 import '../../../controller/splash_controller.dart';
 import '../../../helper/route_helper.dart';
 import '../../../util/images.dart';
@@ -35,6 +36,7 @@ import '../home/widget/category_view_before_dashboard.dart';
 import '../home/widget/causines_view_dashboard.dart';
 import '../language/language_screen.dart';
 import '../location/access_location_screen.dart';
+import '../search/search_screen_web.dart';
 import '../support/support_screen.dart';
 import 'dashboard_screen_web.dart';
 
@@ -71,7 +73,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
       'img':Images.booktable_tab
     }
   ];
-
+  final TextEditingController _searchController = TextEditingController();
+  bool _isLoggedIn;
   @override
   void initState() {
     super.initState();
@@ -98,6 +101,11 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
 
    // Get.find<CategoryController>().getCategoryList(true);
+    _isLoggedIn = Get.find<AuthController>().isLoggedIn();
+    if(_isLoggedIn) {
+      Get.find<SearchController>().getSuggestedFoods();
+    }
+    Get.find<SearchController>().getHistoryList();
   }
 
   @override
@@ -651,6 +659,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                                         borderSide: BorderSide(color: Colors.grey),
                                                       ),
                                                     ),),
+                                                  // child: SearchScreenWeb(),
+
                                                   width:context.width/1.7
                                                 ),
 

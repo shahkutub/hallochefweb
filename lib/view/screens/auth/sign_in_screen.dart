@@ -208,11 +208,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       ]) : Center(child: CircularProgressIndicator()),
                       SizedBox(height: 30),
 
-                       //SocialLoginWidget(),
+                       SocialLoginWidget(),
 
                       GuestButton(),
 
-                      SocialLoginWidget(),
+                      //SocialLoginWidget(),
 
                     ]);
                   }),
