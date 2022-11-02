@@ -28,6 +28,7 @@ import '../../../util/images.dart';
 import '../../../util/styles.dart';
 import '../../base/title_widget.dart';
 import '../address/address_screen.dart';
+import '../auth/sign_in_button_screen.dart';
 import '../home/delivery_home_screen.dart';
 import '../home/pick_up_home_screen.dart';
 import '../home/widget/category_view_before_dashboard.dart';
@@ -305,7 +306,13 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                               size: 30, // also decreased the size of the icon a bit
                                             ),
 
-                                            Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
+                                            InkWell(
+                                              onTap: (){
+                                                showDialogLogin(context);
+                                              },
+                                              child: Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
+                                            )
+
                                           ],
                                         ),
                                       ),
@@ -1366,5 +1373,48 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       _pageController.jumpToPage(pageIndex);
       _pageIndex = pageIndex;
     });
+  }
+
+  void showDialogLogin(BuildContext context) {
+
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel: MaterialLocalizations.of(context)
+            .modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (BuildContext buildContext,
+            Animation animation,
+            Animation secondaryAnimation) {
+          return Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width - 10,
+              height: MediaQuery.of(context).size.height -  80,
+              padding: EdgeInsets.all(20),
+              color: Colors.white,
+              child: Column(
+                children: [
+
+                  SignInButtonScreen(),
+
+                  TextButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
+
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    //color: const Color(0xFF1BC0C5),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+
   }
 }

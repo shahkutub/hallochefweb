@@ -6,6 +6,8 @@ import 'package:country_code_picker/country_code.dart';
 import 'package:efood_multivendor/controller/auth_controller.dart';
 import 'package:efood_multivendor/controller/localization_controller.dart';
 import 'package:efood_multivendor/controller/splash_controller.dart';
+import 'package:efood_multivendor/data/model/body/social_log_in_body.dart';
+import 'package:efood_multivendor/data/model/response/config_model.dart';
 import 'package:efood_multivendor/helper/responsive_helper.dart';
 import 'package:efood_multivendor/helper/route_helper.dart';
 import 'package:efood_multivendor/util/dimensions.dart';
@@ -208,11 +210,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       ]) : Center(child: CircularProgressIndicator()),
                       SizedBox(height: 30),
 
-                       SocialLoginWidget(),
+
 
                       GuestButton(),
 
-                      //SocialLoginWidget(),
+                      SocialLoginWidget(),
 
                     ]);
                   }),

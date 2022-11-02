@@ -47,6 +47,7 @@ dependencies:
   image_compression_flutter: ^1.0.2
   fwfh_text_style: ^2.22.8+1
   proste_bezier_curve: ^2.0.2
+  social_login_buttons: ^1.0.6+2
 
 dev_dependencies:
   flutter_test:
