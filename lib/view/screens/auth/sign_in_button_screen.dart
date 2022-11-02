@@ -46,49 +46,50 @@ class _SignInScreenState extends State<SignInButtonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Container(
+      margin: EdgeInsets.fromLTRB(220,80,220,80),
       child: Center(
+        
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.apple,
-                onPressed: () {},
-              ),
-              const SizedBox(height: 10),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.appleBlack,
-                onPressed: () {},
-              ),
+              // SocialLoginButton(
+              //   buttonType: SocialLoginButtonType.apple,
+              //   onPressed: () {},
+              // ),
+              // const SizedBox(height: 10),
+              // SocialLoginButton(
+              //   buttonType: SocialLoginButtonType.appleBlack,
+              //   onPressed: () {},
+              // ),
               const SizedBox(height: 10),
               SocialLoginButton(
                 buttonType: SocialLoginButtonType.facebook,
                 onPressed: () {},
               ),
-              const SizedBox(height: 10),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.github,
-                onPressed: () {},
-              ),
+              // const SizedBox(height: 10),
+              // SocialLoginButton(
+              //   buttonType: SocialLoginButtonType.github,
+              //   onPressed: () {},
+              // ),
               const SizedBox(height: 10),
               SocialLoginButton(
                 buttonType: SocialLoginButtonType.google,
                 onPressed: () {},
               ),
-              const SizedBox(height: 10),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.microsoft,
-                onPressed: () {},
-              ),
-              const SizedBox(height: 10),
-              SocialLoginButton(
-                buttonType: SocialLoginButtonType.microsoftBlack,
-                onPressed: () {},
-                imageWidth: 20,
-              ),
+              // const SizedBox(height: 10),
+              // SocialLoginButton(
+              //   buttonType: SocialLoginButtonType.microsoft,
+              //   onPressed: () {},
+              // ),
+              // const SizedBox(height: 10),
+              // SocialLoginButton(
+              //   buttonType: SocialLoginButtonType.microsoftBlack,
+              //   onPressed: () {},
+              //   imageWidth: 20,
+              // ),
               const SizedBox(height: 10),
               SocialLoginButton(
                 backgroundColor: Colors.amber,
@@ -100,19 +101,20 @@ class _SignInScreenState extends State<SignInButtonScreen> {
                 onPressed: () {},
               ),
               const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SocialLoginButton(
-                    buttonType: SocialLoginButtonType.google,
-                    onPressed: () {},
-                    mode: SocialLoginButtonMode.single,
-                  ),
-                ],
-              )
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     SocialLoginButton(
+              //       buttonType: SocialLoginButtonType.google,
+              //       onPressed: () {},
+              //       mode: SocialLoginButtonMode.single,
+              //     ),
+              //   ],
+              // )
             ],
           ),
         ),
+        
       ),
     );
   }

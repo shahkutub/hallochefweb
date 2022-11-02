@@ -967,8 +967,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
             Animation secondaryAnimation) {
           return Center(
             child: Container(
-              width: MediaQuery.of(context).size.width - 10,
-              height: MediaQuery.of(context).size.height -  80,
+              // width: MediaQuery.of(context).size.width - 10,
+              // height: MediaQuery.of(context).size.height -  80,
               padding: EdgeInsets.all(20),
               color: Colors.white,
               child: Column(
@@ -976,18 +976,18 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
                   SignInButtonScreen(),
 
-                  TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
-
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    //color: const Color(0xFF1BC0C5),
-                  )
+                  // TextButton(
+                  //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                  //
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  //   child: Text(
+                  //     "Cancel",
+                  //     style: TextStyle(color: Colors.white),
+                  //   ),
+                  //   //color: const Color(0xFF1BC0C5),
+                  // )
                 ],
               ),
             ),
