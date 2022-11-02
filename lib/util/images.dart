@@ -77,4 +77,5 @@ class Images {
   static const String foods = 'assets/image/foods.png';
   static const String chef = 'assets/image/chef.png';
   static const String citis = 'assets/image/citis.png';
+  static const String signupbtn = 'assets/image/signupbtn.png';
 }

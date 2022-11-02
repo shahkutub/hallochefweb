@@ -19,6 +19,7 @@ import 'package:efood_multivendor/view/screens/restaurant/all_restaurant_screen.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 import '../../../controller/auth_controller.dart';
 import '../../../controller/category_controller.dart';
@@ -967,14 +968,47 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
             Animation secondaryAnimation) {
           return Center(
             child: Container(
-              // width: MediaQuery.of(context).size.width - 10,
-              // height: MediaQuery.of(context).size.height -  80,
-              padding: EdgeInsets.all(20),
+
+              width: MediaQuery.of(context).size.width -800,
+              height: MediaQuery.of(context).size.height -100,
+              padding: EdgeInsets.fromLTRB(120,0,120,0),
               color: Colors.white,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-                  SignInButtonScreen(),
+                  SizedBox(height: 20,),
+                  SocialLoginButton(
+                    buttonType: SocialLoginButtonType.facebook,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 40,),
+
+                  SocialLoginButton(
+                   // backgroundColor: Colors.indigo,
+                    buttonType: SocialLoginButtonType.google,
+                    onPressed: () {},
+                  ),
+
+                  SizedBox(height: 40,),
+
+                  SocialLoginButton(
+                    buttonType: SocialLoginButtonType.generalLogin,
+                    onPressed: () {},
+                  ),
+
+                 
+                  SizedBox(height: 20,),
+
+                  Image.asset(Images.signupbtn),
+
+                  // InkWell(
+                  //   child: Image.asset(Images.signupbtn),
+                  // )
+
+
+                  //SignInButtonScreen(),
 
                   // TextButton(
                   //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
