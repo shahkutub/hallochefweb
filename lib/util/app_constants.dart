@@ -1,5 +1,8 @@
 import 'package:efood_multivendor/data/model/response/language_model.dart';
 import 'package:efood_multivendor/util/images.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 class AppConstants {
   //static const String APP_NAME = 'StackFood';
@@ -127,4 +130,115 @@ class AppConstants {
   ];
 
   static String pagename = '';
+
+  static showDialogLogin(BuildContext context) {
+
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel: MaterialLocalizations.of(context)
+            .modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (BuildContext buildContext,
+            Animation animation,
+            Animation secondaryAnimation) {
+          return
+            Center(
+              child: Container(
+
+                width: MediaQuery.of(context).size.width -800,
+                height: MediaQuery.of(context).size.height -100,
+                padding: EdgeInsets.fromLTRB(120,0,120,0),
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+
+                    SizedBox(height: 20,),
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.facebook,
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 40,),
+
+                    SocialLoginButton(
+                      // backgroundColor: Colors.indigo,
+                      buttonType: SocialLoginButtonType.google,
+                      onPressed: () {},
+                    ),
+
+                    SizedBox(height: 40,),
+
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.generalLogin,
+                      onPressed: () {},
+                    ),
+
+
+                    SizedBox(height: 20,),
+
+                    Material(
+                      child: InkWell(
+                        onTap: (){
+                          //Forgot password Tapped
+                        },
+                        child: Image.asset(Images.signupbtn),
+                      ),
+                    ),
+
+                    SizedBox(height: 20,),
+                    // Material(
+                    //   child:InkWell(
+                    //     onTap: () {}, // Handle your callback.
+                    //     splashColor: Colors.brown.withOpacity(0.5),
+                    //     child: Ink(
+                    //        height: 70,
+                    //       width: 200,
+                    //       decoration: BoxDecoration(
+                    //         image: DecorationImage(
+                    //           image: AssetImage(Images.signupbtn),
+                    //           fit: BoxFit.fill,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   )
+                    // ),
+
+
+                    // IconButton(
+                    //   icon: Image.asset(Images.signupbtn),
+                    //   //iconSize: 50,
+                    //   onPressed: () {},
+                    // ),
+                    //Image.asset(Images.signupbtn),
+
+                    // InkWell(
+                    //   child: Image.asset(Images.signupbtn),
+                    // )
+
+
+                    //SignInButtonScreen(),
+
+                    // TextButton(
+                    //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                    //
+                    //   onPressed: () {
+                    //     Navigator.of(context).pop();
+                    //   },
+                    //   child: Text(
+                    //     "Cancel",
+                    //     style: TextStyle(color: Colors.white),
+                    //   ),
+                    //   //color: const Color(0xFF1BC0C5),
+                    // )
+                  ],
+                ),
+              ),
+            );
+        });
+
+  }
+
 }

@@ -308,7 +308,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
                                             InkWell(
                                               onTap: (){
-                                                showDialogLogin(context);
+                                                AppConstants.showDialogLogin(context);
                                               },
                                               child: Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
                                             )
@@ -1375,46 +1375,4 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
     });
   }
 
-  void showDialogLogin(BuildContext context) {
-
-    showGeneralDialog(
-        context: context,
-        barrierDismissible: true,
-        barrierLabel: MaterialLocalizations.of(context)
-            .modalBarrierDismissLabel,
-        barrierColor: Colors.black45,
-        transitionDuration: const Duration(milliseconds: 200),
-        pageBuilder: (BuildContext buildContext,
-            Animation animation,
-            Animation secondaryAnimation) {
-          return Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width - 10,
-              height: MediaQuery.of(context).size.height -  80,
-              padding: EdgeInsets.all(20),
-              color: Colors.white,
-              child: Column(
-                children: [
-
-                  SignInButtonScreen(),
-
-                  TextButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
-
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    //color: const Color(0xFF1BC0C5),
-                  )
-                ],
-              ),
-            ),
-          );
-        });
-
-  }
 }

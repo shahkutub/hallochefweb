@@ -520,7 +520,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
                                         InkWell(
                                           onTap: (){
-                                            showDialogLogin(context);
+                                            AppConstants.showDialogLogin(context);
                                           },
                                           child:Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),), // here, inside the column
 
@@ -648,30 +648,37 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                             padding: EdgeInsets.all(20),
                                             child: Row(
                                               children: [
-                                                Container(
+                                                InkWell(
+                                                  onTap: (){
+                                                    Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+                                                  },
+                                                  child: Container(
 
-                                                  child: TextField(
-                                                    autocorrect: true,
-                                                    decoration: InputDecoration(
-                                                      contentPadding: EdgeInsets.symmetric(vertical: 25.0),
-                                                      //hintText: 'Type Text Here...',
-                                                      labelText: "    Enter your full address",
-                                                      hintStyle: TextStyle(color: Colors.grey),
-                                                      filled: true,
-                                                      fillColor: Colors.white70,
-                                                      enabledBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                                                        borderSide: BorderSide(color: Colors.grey, width: 1),
-                                                      ),
-                                                      focusedBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                                        borderSide: BorderSide(color: Colors.grey),
-                                                      ),
-                                                    ),),
-                                                  // child: SearchScreenWeb(),
+                                                      child: TextField(
+                                                        enabled: true,
+                                                        autocorrect: true,
+                                                        decoration: InputDecoration(
+                                                          contentPadding: EdgeInsets.symmetric(vertical: 25.0,horizontal: 25.0),
+                                                          //hintText: 'Type Text Here...',
+                                                          labelText: "    Enter your full address",
+                                                          hintStyle: TextStyle(color: Colors.grey),
+                                                          filled: true,
+                                                          fillColor: Colors.white70,
+                                                          enabledBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                                                            borderSide: BorderSide(color: Colors.grey, width: 1),
+                                                          ),
+                                                          focusedBorder: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                                            borderSide: BorderSide(color: Colors.grey),
+                                                          ),
+                                                        ),),
+                                                      // child: SearchScreenWeb(),
 
-                                                  width:context.width/1.7
+                                                      width:context.width/1.7
+                                                  ),
                                                 ),
+
 
                                                 InkWell(
                                                   onTap: (){
@@ -954,80 +961,5 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
   //   });
   // }
 
-  void showDialogLogin(BuildContext context) {
-
-    showGeneralDialog(
-        context: context,
-        barrierDismissible: true,
-        barrierLabel: MaterialLocalizations.of(context)
-            .modalBarrierDismissLabel,
-        barrierColor: Colors.black45,
-        transitionDuration: const Duration(milliseconds: 200),
-        pageBuilder: (BuildContext buildContext,
-            Animation animation,
-            Animation secondaryAnimation) {
-          return Center(
-            child: Container(
-
-              width: MediaQuery.of(context).size.width -800,
-              height: MediaQuery.of(context).size.height -100,
-              padding: EdgeInsets.fromLTRB(120,0,120,0),
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-
-                  SizedBox(height: 20,),
-                  SocialLoginButton(
-                    buttonType: SocialLoginButtonType.facebook,
-                    onPressed: () {},
-                  ),
-                  SizedBox(height: 40,),
-
-                  SocialLoginButton(
-                   // backgroundColor: Colors.indigo,
-                    buttonType: SocialLoginButtonType.google,
-                    onPressed: () {},
-                  ),
-
-                  SizedBox(height: 40,),
-
-                  SocialLoginButton(
-                    buttonType: SocialLoginButtonType.generalLogin,
-                    onPressed: () {},
-                  ),
-
-                 
-                  SizedBox(height: 20,),
-
-                  Image.asset(Images.signupbtn),
-
-                  // InkWell(
-                  //   child: Image.asset(Images.signupbtn),
-                  // )
-
-
-                  //SignInButtonScreen(),
-
-                  // TextButton(
-                  //   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
-                  //
-                  //   onPressed: () {
-                  //     Navigator.of(context).pop();
-                  //   },
-                  //   child: Text(
-                  //     "Cancel",
-                  //     style: TextStyle(color: Colors.white),
-                  //   ),
-                  //   //color: const Color(0xFF1BC0C5),
-                  // )
-                ],
-              ),
-            ),
-          );
-        });
-
-  }
 
 }
