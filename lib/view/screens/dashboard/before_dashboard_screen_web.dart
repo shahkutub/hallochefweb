@@ -672,7 +672,18 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                                             borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                                             borderSide: BorderSide(color: Colors.grey),
                                                           ),
-                                                        ),),
+
+                                                          suffixIcon: IconButton(
+                                                            icon: Icon(Icons.ac_unit),
+                                                            onPressed: (){
+                                                              
+                                                            },
+
+                                                          )
+                                                        ),
+
+
+                                                      ),
                                                       // child: SearchScreenWeb(),
 
                                                       width:context.width/1.7
