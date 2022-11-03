@@ -2,7 +2,10 @@ import 'package:efood_multivendor/data/model/response/language_model.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
+
+import '../helper/route_helper.dart';
 
 class AppConstants {
   //static const String APP_NAME = 'StackFood';
@@ -173,7 +176,9 @@ class AppConstants {
 
                     SocialLoginButton(
                       buttonType: SocialLoginButtonType.generalLogin,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RouteHelper.getSignInRoute(RouteHelper.main));
+                      },
                     ),
 
 
@@ -182,7 +187,7 @@ class AppConstants {
                     Material(
                       child: InkWell(
                         onTap: (){
-                          //Forgot password Tapped
+                          Get.toNamed(RouteHelper.getSignUpRoute());
                         },
                         child: Image.asset(Images.signupbtn),
                       ),
