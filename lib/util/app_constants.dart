@@ -241,4 +241,46 @@ class AppConstants {
 
   }
 
+  static showDialogSearch(BuildContext context) {
+
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel: MaterialLocalizations.of(context)
+            .modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (BuildContext buildContext,
+            Animation animation,
+            Animation secondaryAnimation) {
+          return
+            Center(
+              child: Container(
+
+                width: MediaQuery.of(context).size.width -800,
+                height: MediaQuery.of(context).size.height -100,
+                padding: EdgeInsets.fromLTRB(10,0,10,0),
+                margin: EdgeInsets.fromLTRB(520,50,50,0),
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+
+                    SizedBox(height: 20,),
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.facebook,
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 40,),
+
+
+                  ],
+                ),
+              ),
+            );
+        });
+
+  }
+
 }

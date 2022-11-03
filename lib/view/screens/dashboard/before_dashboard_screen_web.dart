@@ -520,7 +520,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
                                         InkWell(
                                           onTap: (){
-                                            AppConstants.showDialogLogin(context);
+                                            //AppConstants.showDialogLogin(context);
+                                            AppConstants.showDialogSearch(context);
                                           },
                                           child:Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),), // here, inside the column
 
