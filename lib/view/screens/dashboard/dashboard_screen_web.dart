@@ -256,10 +256,24 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                         color: Color(0xffEBEBEB),
                                       ),
 
-                                      Text('WHEN : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2),),),
+                                      InkWell(
+                                        onTap: (){
+                                          AppConstants.showDialogWhenAsap(context);
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          child: Row(
+                                            children: [
+                                              Text('WHEN : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2),),),
 
-                                      Text('ASAP  ',style: TextStyle(fontSize: 12,color:Colors.black,fontWeight: FontWeight.bold),),
-                                      Icon(Icons.keyboard_arrow_down_sharp, color: Color(0xFFE34A28))
+                                              Text('ASAP  ',style: TextStyle(fontSize: 12,color:Colors.black,fontWeight: FontWeight.bold),),
+                                              Icon(Icons.keyboard_arrow_down_sharp, color: Color(0xFFE34A28))
+                                            ],
+                                          ),
+                                        )
+
+                                      )
+
 
                                     ],
                                   ),

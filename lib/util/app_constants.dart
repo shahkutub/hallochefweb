@@ -1,3 +1,4 @@
+
 import 'package:efood_multivendor/data/model/response/language_model.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:flutter/cupertino.dart';
@@ -246,7 +247,7 @@ class AppConstants {
 
   }
 
-  static showDialogSearch(BuildContext context) {
+  static showDialogWhenAsap(BuildContext context) {
 
     showGeneralDialog(
         context: context,
@@ -257,15 +258,31 @@ class AppConstants {
         transitionDuration: const Duration(milliseconds: 200),
         pageBuilder: (BuildContext buildContext,
             Animation animation,
+
             Animation secondaryAnimation) {
+
+          double width = MediaQuery.of(context).size.width / 3;
+
+          List<String> times =  [];
+          times.add('ASAP');
+          times.add('10:30 PM');
+          times.add('10:45 PM');
+          times.add('11:00 PM');
+          times.add('11:15 PM');
+          times.add('11:30 PM');
+          times.add('11:45 PM');
+
           return
-            Center(
+            //Card(
+
+            //child:
+              Center(
               child: Container(
 
-                width: MediaQuery.of(context).size.width -800,
-                height: MediaQuery.of(context).size.height -100,
-                padding: EdgeInsets.fromLTRB(10,0,10,0),
-                margin: EdgeInsets.fromLTRB(520,50,50,0),
+                width: MediaQuery.of(context).size.width / 3,
+                height: MediaQuery.of(context).size.height -170,
+               // padding: EdgeInsets.fromLTRB(10,0,10,0),
+                margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width / 2,0,0,0),
                 color: Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -273,17 +290,124 @@ class AppConstants {
                   children: [
 
                     SizedBox(height: 20,),
-                    SocialLoginButton(
-                      buttonType: SocialLoginButtonType.facebook,
-                      onPressed: () {},
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+
+                          },
+                          child:Container(
+                            alignment: Alignment.center,
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                border: Border.all(
+                                  color: Colors.red[500],
+                                ),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Fri',style: TextStyle(color: Colors.white,fontSize: 12,decoration: TextDecoration.none),),
+                                SizedBox(height: 5,),
+                                Text('4',style: TextStyle(color: Colors.white,fontSize: 15,decoration: TextDecoration.none),),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        GestureDetector(
+                          onTap: (){
+
+                          },
+                          child:Container(
+                            alignment: Alignment.center,
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                               // color: Colors.red,
+                                border: Border.all(
+                                  color: Colors.red[500],
+                                ),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Sat',style: TextStyle(color: Colors.red,fontSize: 12,decoration: TextDecoration.none),),
+                                SizedBox(height: 5,),
+                                Text('5',style: TextStyle(color: Colors.red,fontSize: 15,decoration: TextDecoration.none),),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        GestureDetector(
+                          onTap: (){
+
+                          },
+                          child:Container(
+                            alignment: Alignment.center,
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                //color: Colors.red,
+                                border: Border.all(
+                                  color: Colors.red[500],
+                                ),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Sun',style: TextStyle(color: Colors.red,
+                                    fontSize: 12,decoration: TextDecoration.none),),
+                                SizedBox(height: 5,),
+                                Text('6',style: TextStyle(color: Colors.red,
+                                    fontSize: 15,decoration: TextDecoration.none),),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+
                     SizedBox(height: 40,),
+
+                    Container(
+                      margin: EdgeInsets.only(left: 15,right: 15),
+                      height: 1,
+                      width: MediaQuery.of(context).size.width / 3,
+                      color: Color(0xffEBEBEB),
+                    ),
+
+                    Expanded(child: ListView.builder(
+                        itemCount: times.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String data = times[index].toString();
+                          return Container(
+                            margin: EdgeInsets.all(10),
+                            alignment: Alignment.center,
+                            width: width,
+                            child: Text(''+data,style: TextStyle(fontSize: 15,color: Colors.black,decoration: TextDecoration.none),),
+                              );
+                        }),)
 
 
                   ],
                 ),
               ),
-            );
+            )
+          //)
+          ;
         });
 
   }
