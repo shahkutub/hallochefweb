@@ -98,7 +98,10 @@ class _SignInScreenState extends State<SignInButtonScreen> {
                 borderRadius: 20,
                 fontSize: 25,
                 buttonType: SocialLoginButtonType.generalLogin,
-                onPressed: () {},
+                onPressed: () {
+                  Get.offAllNamed(RouteHelper.getSignInRoute(RouteHelper.main));
+
+                },
               ),
               const SizedBox(height: 10),
               // Row(

@@ -38,6 +38,7 @@ class RestaurantScreen extends StatefulWidget {
 class _RestaurantScreenState extends State<RestaurantScreen> {
   final ScrollController scrollController = ScrollController();
   final bool _ltr = Get.find<LocalizationController>().isLtr;
+  bool isSwitched = false;
 
   @override
   void initState() {
@@ -74,6 +75,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: ResponsiveHelper.isDesktop(context) ? WebMenuBar() : null,
       backgroundColor: Theme.of(context).cardColor,
@@ -87,6 +89,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
           return (restController.restaurant != null && restController.restaurant.name != null && categoryController.categoryList != null) ?
           Container(
+              color: Color(0xFFffffff),
             child:Row(
               children: <Widget>[
                 new Flexible(child: CustomScrollView(
@@ -398,6 +401,18 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+
+
+
+                      SizedBox(height: 20,),
+                      Switch(
+                        value: isSwitched,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched = value;
+                          });
+                        },
+                      ),
                       SizedBox(height: 20,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
