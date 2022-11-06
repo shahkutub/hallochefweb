@@ -26,6 +26,7 @@ import 'package:get/get.dart';
 import 'package:proste_bezier_curve/proste_bezier_curve.dart';
 
 import '../../base/custom_button.dart';
+import '../checkout/checkout_screen_web.dart';
 
 class RestaurantScreen extends StatefulWidget {
   final Restaurant restaurant;
@@ -101,7 +102,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
                     ResponsiveHelper.isDesktop(context) ? SliverToBoxAdapter(
                       child: Container(
-                        color: Color(0xFF171A29),
+                        //color: Color(0xFF171A29),
+                        color: Color(0xFFffffff),
                         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
                         alignment: Alignment.center,
                         child: Center(child: SizedBox(width: Dimensions.WEB_MAX_WIDTH, child: Padding(
@@ -111,6 +113,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             // Expanded(
                             //   child:
                             ClipRRect(
+
                               borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
                               child: CustomImage(
                                 fit: BoxFit.cover, placeholder: Images.restaurant_cover, height: 220,
@@ -405,14 +408,26 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
 
                       SizedBox(height: 20,),
-                      Switch(
-                        value: isSwitched,
-                        onChanged: (value) {
-                          setState(() {
-                            isSwitched = value;
-                          });
-                        },
+
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Switch(
+                            activeColor: Color(0xffE34A28),
+                            value: isSwitched,
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched = value;
+                              });
+                            },
+                          ),
+                          SizedBox(width: 10,),
+                          Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
+                        ],
                       ),
+
+
                       SizedBox(height: 20,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -462,7 +477,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       //Go to Checkout
                       InkWell(
                         onTap: (){
-                          //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
                         },
                         child: Container(
                           margin: EdgeInsets.fromLTRB(15, 0, 15, 0),

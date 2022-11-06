@@ -22,8 +22,11 @@ class RestaurantDescriptionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String address = restaurant.address;
+    double minimumShippingCharge = restaurant.minimumShippingCharge;
+    double perKmShippingCharge = restaurant.perKmShippingCharge;
     bool _isAvailable = Get.find<RestaurantController>().isRestaurantOpenNow(restaurant.active, restaurant.schedules);
-    Color _textColor = ResponsiveHelper.isDesktop(context) ? Colors.white : null;
+    Color _textColor = ResponsiveHelper.isDesktop(context) ? Colors.black : null;
     return Container(
       color: Colors.white,
       child: Column(children: [
@@ -65,7 +68,7 @@ class RestaurantDescriptionView extends StatelessWidget {
             //   style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
             // ),
             Text(
-              '0.3 km | tk 50 minimum', maxLines: 1, overflow: TextOverflow.ellipsis,
+              '0.3 km | tk ${minimumShippingCharge} minimum', maxLines: 1, overflow: TextOverflow.ellipsis,
               style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
             ),
 
@@ -175,14 +178,26 @@ class RestaurantDescriptionView extends StatelessWidget {
             Stack(
               children: [
                 Align(alignment: Alignment.bottomLeft,
-                    child:Row(children: [
-                      Icon(Icons.watch_later_outlined, color: Theme.of(context).primaryColor, size: 20),
-                      SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                      Text(
-                        'Delivery: ${restaurant.deliveryTime} ${'min'.tr}',
-                        style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor),
-                      ),
-                    ])
+                    child:Column(
+                      children: [
+                        Row(
+                            children: [
+                          Icon(Icons.watch_later_outlined, color: Theme.of(context).primaryColor, size: 20),
+                          SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                          Text(
+                            'Delivery: ${restaurant.deliveryTime} ${'min'.tr}',
+                            style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor),
+                          ),
+                        ]),
+                        SizedBox(height: 10,),
+                        Text(
+                          '${address} ${''}',
+                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: _textColor,),
+                        ),
+                      ],
+                    )
+
+
                 ),
 
                 // Align(alignment: Alignment.bottomRight,
@@ -211,6 +226,9 @@ class RestaurantDescriptionView extends StatelessWidget {
 
 
         ]),
+
+
+
       ]),
     );
   }

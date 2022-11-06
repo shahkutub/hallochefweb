@@ -651,12 +651,13 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                               children: [
                                                 InkWell(
                                                   onTap: (){
+                                                    //AppConstants.showDialogPlaceSearch(context);
                                                     Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
                                                   },
                                                   child: Container(
 
                                                       child: TextField(
-                                                        enabled: true,
+                                                        enabled: false,
                                                         autocorrect: true,
                                                         decoration: InputDecoration(
                                                           contentPadding: EdgeInsets.symmetric(vertical: 25.0,horizontal: 25.0),

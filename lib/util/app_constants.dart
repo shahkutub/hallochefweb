@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
 import '../helper/route_helper.dart';
+import '../view/screens/dashboard/widget/place_search.dart';
 
 class AppConstants {
   //static const String APP_NAME = 'StackFood';
@@ -407,6 +408,39 @@ class AppConstants {
               ),
             )
           //)
+          ;
+        });
+
+  }
+
+  static showDialogPlaceSearch(BuildContext context) {
+
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel: MaterialLocalizations.of(context)
+            .modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (BuildContext buildContext,
+            Animation animation,
+
+            Animation secondaryAnimation) {
+
+          double width = MediaQuery.of(context).size.width / 3;
+
+          List<String> times =  [];
+          times.add('ASAP');
+          times.add('10:30 PM');
+          times.add('10:45 PM');
+          times.add('11:00 PM');
+          times.add('11:15 PM');
+          times.add('11:30 PM');
+          times.add('11:45 PM');
+
+          return
+          Center()
+           // PlaceSearch()
           ;
         });
 
