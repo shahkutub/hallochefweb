@@ -122,7 +122,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             ),
                             //),
                             SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-                            RestaurantDescriptionView(restaurant: _restaurant)
+                            RestaurantDescriptionView(restaurant: _restaurant,catList: restController.categoryList)
                             //Expanded(child: RestaurantDescriptionView(restaurant: _restaurant)),
 
                           ]),

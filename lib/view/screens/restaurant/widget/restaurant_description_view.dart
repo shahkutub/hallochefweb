@@ -12,15 +12,18 @@ import 'package:efood_multivendor/util/dimensions.dart';
 import 'package:efood_multivendor/util/styles.dart';
 import 'package:efood_multivendor/view/base/custom_image.dart';
 import 'package:efood_multivendor/view/base/custom_snackbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/model/response/category_model.dart';
 import '../../../base/rating_bar.dart';
 
 class RestaurantDescriptionView extends StatelessWidget {
   final Restaurant restaurant;
+  final List<CategoryModel> catList;
 
-  RestaurantDescriptionView({@required this.restaurant});
+  RestaurantDescriptionView({@required this.restaurant,@required this.catList});
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +92,7 @@ class RestaurantDescriptionView extends StatelessWidget {
                           padding: EdgeInsets.all(7),
                           decoration: BoxDecoration(
                               //color:Colors.deepOrange,
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
                             border: Border.all(width: 1,color: Colors.deepOrange)
 
                           ),
@@ -156,25 +159,26 @@ class RestaurantDescriptionView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.currency_bitcoin_outlined,size: 10,color: Colors.deepOrange,),
+                Icon(Icons.currency_bitcoin_outlined,size: 20,color: Colors.deepOrange,),
                 //SizedBox(width: 1),
-                Icon(Icons.currency_bitcoin_outlined,size: 10,color: Colors.deepOrange,),
+                //Icon(Icons.currency_bitcoin_outlined,size: 20,color: Colors.deepOrange,),
                 //SizedBox(width: 1),
-                Icon(Icons.currency_bitcoin_outlined,size: 10,color: Colors.deepOrange,),
+                //Icon(Icons.currency_bitcoin_outlined,size: 20,color: Colors.deepOrange,),
                 SizedBox(width: 10),
 
                 Flexible(
                   child: Container(
                     alignment: Alignment.centerLeft,
 
-                    height: 50,
+                    height: 20,
                     child: ListView.builder(
                       shrinkWrap: false,
-                      itemCount: restaurant.categoryIds.length,
+                      itemCount: catList.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, i) {
+
                         return Container(
-                          child: Text('jdfh'),
+                          child: Text('  .'+catList[i].name),
                         );
 
                       },
@@ -192,22 +196,95 @@ class RestaurantDescriptionView extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
             ),
 
-            Container(
-              margin: EdgeInsets.fromLTRB(50, 50, 50, 50),
-              child: Row(
-                children: [
-                  Flexible(child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                        borderRadius: BorderRadius.all(Radius.circular(5))
-                    ),
-                    padding: EdgeInsets.all(15),
-                    child: Row(
-                      children: [
 
-                      ],
-                    )
-                  ))
+            Container(
+              alignment: Alignment.topLeft,
+              //margin: EdgeInsets.fromLTRB(50, 50, 50, 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15,),
+                  Text('Offers',style: TextStyle(color: Colors.grey,fontStyle: FontStyle.normal,
+                  fontSize: 15,fontWeight: FontWeight.bold),),
+                  SizedBox(height: 5,),
+                  Container(
+                        alignment: Alignment.centerLeft,
+                        height: 110,
+                        child: ListView.builder(
+                          shrinkWrap: false,
+                          itemCount: 2,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, i) {
+                            if(i == 0){
+                              return Container(
+                                padding: EdgeInsets.all(15),
+                                margin: EdgeInsets.all(10),
+                                height: 110,
+                                width: 280,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.withOpacity(0.2),
+                                    borderRadius: BorderRadius.all(Radius.circular(5.0))
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child: Text('Pro',style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),),
+                                          padding: EdgeInsets.all(7),
+                                          color: Colors.grey,
+                                        ),
+                                        Text('  40% Off',style: TextStyle(color: Colors.grey,fontStyle: FontStyle.normal,
+                                            fontSize: 15,fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    SizedBox(height: 5,),
+                                    Text('and special savings for pandapro members ',style: TextStyle(color: Colors.grey,fontStyle: FontStyle.normal,
+                                        fontSize: 13,fontWeight: FontWeight.normal),),
+                                  ],
+                                )
+
+
+                              );
+                            }else{
+                              return Container(
+                                padding: EdgeInsets.all(15),
+                                margin: EdgeInsets.all(10),
+                                height: 110,
+                                width: 280,
+                                decoration: BoxDecoration(
+                                    color: Colors.orange.withOpacity(0.2),
+                                    borderRadius: BorderRadius.all(Radius.circular(5.0))
+                                ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          // Container(
+                                          //   child: Text('Pro',style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),),
+                                          //   padding: EdgeInsets.all(7),
+                                          //   color: Colors.grey,
+                                          // ),
+                                          Text('40% Off',style: TextStyle(color: Colors.deepOrange,fontStyle: FontStyle.normal,
+                                              fontSize: 15,fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
+                                      SizedBox(height: 5,),
+                                      Text('and special savings for pandapro members ',style: TextStyle(color: Colors.black,fontStyle: FontStyle.normal,
+                                          fontSize: 13,fontWeight: FontWeight.normal),),
+                                    ],
+                                  )
+
+                              );
+                            }
+
+
+                          },
+                        )
+                    ),
+
                 ],
               ),
             ),
