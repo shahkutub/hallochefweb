@@ -18,6 +18,7 @@ import 'package:efood_multivendor/view/base/bottom_cart_widget.dart';
 import 'package:efood_multivendor/view/base/custom_image.dart';
 import 'package:efood_multivendor/view/base/product_view.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
+import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_web.dart';
 import 'package:efood_multivendor/view/screens/restaurant/recent_order.dart';
 import 'package:efood_multivendor/view/screens/restaurant/widget/restaurant_description_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,6 +27,7 @@ import 'package:get/get.dart';
 import 'package:proste_bezier_curve/proste_bezier_curve.dart';
 
 import '../../base/custom_button.dart';
+import '../cart/widget/cart_product_widget.dart';
 import '../checkout/checkout_screen_web.dart';
 
 class RestaurantScreen extends StatefulWidget {
@@ -447,6 +449,17 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                           Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
                         ],
                       ),
+
+          GetBuilder<CartController>(builder: (cartController) {
+            return ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: cartController.cartList.length,
+              itemBuilder: (context, index) {
+                return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
+              },
+            );
+          }),
 
                       SizedBox(height: 20,),
 
