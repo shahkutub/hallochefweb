@@ -31,6 +31,8 @@ import 'package:efood_multivendor/view/screens/cart/widget/delivery_option_butto
 import 'package:efood_multivendor/view/screens/checkout/widget/address_dialogue.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/payment_button.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/tips_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -63,10 +65,28 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
   bool _isLoggedIn;
   List<CartModel> _cartList;
 
+  static const _daylist = [
+    'Mon, Nov 7',
+    'Tue, Nov 8',
+    'Wed, Nov 9',
 
+  ];
+
+  static const _timelist = [
+    'ASAP',
+    '12:15 PM',
+    '12:30 PM',
+    '12:45 PM',
+    '1:00 PM',
+    '1:15 PM',
+    '1:30 PM',
+  ];
   final ScrollController scrollController = ScrollController();
   final bool _ltr = Get.find<LocalizationController>().isLtr;
   bool isSwitched = false;
+
+  var _selectedDay ='Mon, Nov 7';
+  var _selectedTime ='ASAP';
   @override
   void initState() {
     super.initState();
@@ -122,10 +142,15 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
               // padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
               child: Center(child: SizedBox(
                 width: Dimensions.WEB_MAX_WIDTH,
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
 
                   Container(
-                      color: Color(0xFFffffff),
+                    height: 800,
+                    //margin: EdgeInsets.fromLTRB(context.width/8, 0, context.width/8, 0),
+                      //color: Color(0xFFffffff),
                       child:Row(
                         children: <Widget>[
                           new Flexible(
@@ -133,6 +158,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                               elevation: 5,
                               margin: EdgeInsets.all(20),
                               child: Container(
+                                color: Color(0xFFffffff),
                                 padding: EdgeInsets.all(20),
                                 child: Column(
                                   children: [
@@ -141,18 +167,146 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                                         Container(
                                           padding: EdgeInsets.all(10),
                                           color: Colors.deepOrangeAccent,
-                                          child: Text('1'),
+                                          child: Text('1',style: TextStyle(color: Colors.white),),
                                         ),
-
-                                        
-
+                                        SizedBox(width: 20,),
+                                        Text('Delivery details',style: TextStyle(color: Colors.black),),
                                       ],
                                     ),
+
+                                    SizedBox(height: 30,),
+                                    Container(
+                                      height: 100,
+                                      color: Color(0xffEEF0F1),
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Container(
+                                              height: 100,
+                                              width: 1,
+                                              color: Colors.black,
+                                            )
+                                          ),
+                                          Align(
+                                            alignment: Alignment.center,
+                                            child: Container(
+                                              margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Contactless delivery',style: TextStyle(color: Colors.black,fontSize: 15),),
+                                                  Stack(
+                                                    children: [
+                                                      Align(
+                                                          alignment: Alignment.topLeft,
+                                                          child: Container(
+                                                              margin: EdgeInsets.fromLTRB(0, 15, 30, 0),
+                                                              child: Flexible(child:Text('Please put a note to the rider to let them know where '
+                                                              'you want them to leave your order such as your room number or '
+                                                              'at the lobby (for online payment) ',textAlign: TextAlign.left,),)
+                                                          )
+
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+
+                                          ),
+                                          
+
+                                          Align(
+                                            alignment: Alignment.topRight,
+                                            child: Container(
+                                              //margin: EdgeInsets.all(20),
+                                              child: Switch(
+                                                activeColor: Colors.deepOrange,
+                                              ),
+                                            )
+                                            
+                                            
+                                          )
+
+
+                                        ],
+                                      ),
+                                    ),
+
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('Delivery time :',style: TextStyle(color: Colors.black,),textAlign: TextAlign.left,),
+                                      ],
+                                    ),
+
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Flexible(child: InputDecorator(
+                                            decoration: InputDecoration(
+                                              //labelText: 'Fruit',
+                                              labelStyle: Theme.of(context).primaryTextTheme.caption.copyWith(color: Colors.black),
+                                              border: const OutlineInputBorder(),
+                                            ),
+                                            child: DropdownButtonHideUnderline(
+                                              child: DropdownButton(
+                                                isExpanded: true,
+                                                isDense: true, // Reduces the dropdowns height by +/- 50%
+                                                icon: Icon(Icons.keyboard_arrow_down),
+                                                value: _selectedDay,
+                                                items: _daylist.map((item) {
+                                                  return DropdownMenuItem(
+                                                    value: item,
+                                                    child: Text(item),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (selectedItem) => setState(() => _selectedDay = selectedItem,
+                                                ),
+                                              ),
+                                            )
+                                        ),flex: 1,),
+                                        SizedBox(width: 10,),
+                                        Flexible(child: InputDecorator(
+                                            decoration: InputDecoration(
+                                              //labelText: 'Fruit',
+                                              labelStyle: Theme.of(context).primaryTextTheme.caption.copyWith(color: Colors.black),
+                                              border: const OutlineInputBorder(),
+                                            ),
+                                            child: DropdownButtonHideUnderline(
+                                              child: DropdownButton(
+                                                isExpanded: true,
+                                                isDense: true, // Reduces the dropdowns height by +/- 50%
+                                                icon: Icon(Icons.keyboard_arrow_down),
+                                                value: _selectedTime,
+                                                items: _timelist.map((item) {
+                                                  return DropdownMenuItem(
+                                                    value: item,
+                                                    child: Text(item),
+                                                  );
+                                                }).toList(),
+                                                onChanged: (selectedItem) => setState(() => _selectedTime = selectedItem,
+                                                ),
+                                              ),
+                                            )
+                                        ),flex: 1,),
+                                      ],
+                                    )
+
                                   ],
                                 ),
                               ),
 
-                            ), flex: 7,),
+                            ),
+                            flex: 7,),
                           new Flexible(
                             //child: Container(
                             //alignment: Alignment.center,
@@ -263,7 +417,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                               ],
                             ),
                             //),
-                            flex: 2,)
+                            flex: 3,)
                         ],
                       )
 
