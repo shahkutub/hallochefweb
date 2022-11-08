@@ -275,7 +275,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
                     SliverToBoxAdapter(child: Center(child: Container(
                       width: Dimensions.WEB_MAX_WIDTH,
-                      padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                      //padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                       color: Theme.of(context).cardColor,
                       child: Column(children: [
                         // _restaurant.discount != null ? Container(
@@ -316,8 +316,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         //RecentOrderView(isPopular: true,)
 
 
+
                       ]),
                     ))),
+
+
 
                     (restController.categoryList.length > 0) ? SliverPersistentHeader(
                       pinned: false,
