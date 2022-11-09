@@ -214,7 +214,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       GuestButton(),
 
-                      SocialLoginWidget(),
+                     // SocialLoginWidget(),
 
                     ]);
                   }),
