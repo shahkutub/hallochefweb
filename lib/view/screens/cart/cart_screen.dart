@@ -25,7 +25,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-
+  bool isSwitched = false;
   @override
   void initState() {
     super.initState();
@@ -51,15 +51,38 @@ class _CartScreenState extends State<CartScreen> {
                         child:
                         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-                          // Product
-                          ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: cartController.cartList.length,
-                            itemBuilder: (context, index) {
-                              return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
-                            },
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Switch(
+                                activeColor: Color(0xffE34A28),
+                                value: isSwitched,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isSwitched = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(width: 10,),
+                              Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
+                            ],
                           ),
+
+
+                          // Product
+                          SizedBox(
+                            height: 300,
+                            child: ListView.builder(
+                              //physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: false,
+                              itemCount: cartController.cartList.length,
+                              itemBuilder: (context, index) {
+                                return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
+                              },
+                            ),
+                          ),
+
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
                           // Total

@@ -404,7 +404,10 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   ],
                 ) , flex: 8,),
                 new Flexible(
+
                   child: CartScreen(fromNav: false),
+
+
 
                 //   Container(
                 //     margin: EdgeInsets.all(20),
