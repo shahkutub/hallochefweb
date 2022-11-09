@@ -18,6 +18,7 @@ import 'package:efood_multivendor/view/base/bottom_cart_widget.dart';
 import 'package:efood_multivendor/view/base/custom_image.dart';
 import 'package:efood_multivendor/view/base/product_view.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
+import 'package:efood_multivendor/view/screens/cart/cart_screen.dart';
 import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_web.dart';
 import 'package:efood_multivendor/view/screens/restaurant/recent_order.dart';
 import 'package:efood_multivendor/view/screens/restaurant/widget/restaurant_description_view.dart';
@@ -401,216 +402,226 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       ]),
                     ))),
                   ],
-                ) , flex: 7,),
+                ) , flex: 8,),
                 new Flexible(
-                  child: Container(
-                    margin: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      //mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                  child: CartScreen(fromNav: false),
 
+                //   Container(
+                //     margin: EdgeInsets.all(20),
+                //   alignment: Alignment.center,
+                //   child: SingleChildScrollView(
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.stretch,
+                //       //mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //
+                //
+                //
+                //         SizedBox(height: 20,),
+                //
+                //         Row(
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Switch(
+                //               activeColor: Color(0xffE34A28),
+                //               value: isSwitched,
+                //               onChanged: (value) {
+                //                 setState(() {
+                //                   isSwitched = value;
+                //                 });
+                //               },
+                //             ),
+                //             SizedBox(width: 10,),
+                //             Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
+                //           ],
+                //         ),
+                //
+                //
+                //         SizedBox(height: 20,),
+                //         Row(
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Text('Your Cart',style: TextStyle(fontSize: 15,color: Colors.black),)
+                //           ],
+                //         ),
+                //         SizedBox(height: 20,),
+                //         Row(
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             //Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
+                //           ],
+                //         ),
+                //
+                //        // CartScreen(fromNav: false),
+                //
+                //         GetBuilder<CartController>(builder: (cartController) {
+                //           return ListView.builder(
+                //             physics: NeverScrollableScrollPhysics(),
+                //             shrinkWrap: true,
+                //             itemCount: cartController.cartList.length,
+                //             itemBuilder: (context, index) {
+                //               var cart = cartController.cartList[index];
+                //               return CartProductWidgetWeb(
+                //                   cart: cart,
+                //                   cartIndex: index,
+                //                   addOns: cartController.addOnsList[index] ,
+                //                   isAvailable: cartController.availableList[index]);
+                //
+                //                 Column(
+                //                 children: [
+                //
+                //                   Stack(
+                //                     children: [
+                //                       Align(
+                //                         alignment: Alignment.topLeft,
+                //                         child:
+                //                         //Flexible(child:
+                //                         Text(''+cartController.cartList[index].product.name),
+                //                         //),
+                //                       ),
+                //
+                //                       Align(
+                //                         alignment: Alignment.topRight,
+                //                         child:Container(
+                //
+                //                           child: Flexible(child: Text(''+cartController.cartList[index].product.price.toString()),),
+                //                           width: 100,
+                //                           alignment: Alignment.centerRight,
+                //                         )
+                //
+                //                       )
+                //                     ],
+                //                   ),
+                //                   SizedBox(
+                //                     height: 5,
+                //                   ),
+                //                   Stack(
+                //                     children: [
+                //                       Align(
+                //                         alignment: Alignment.topLeft,
+                //                         //child:
+                //                         //Flexible(child:
+                //                         //Text('+'+cartController.cartList[index].product.name),
+                //                         //),
+                //                       ),
+                //
+                //                       Align(
+                //                           alignment: Alignment.topRight,
+                //                           child:Container(
+                //
+                //                             child: Row(
+                //
+                //                               children: [
+                //                                 IconButton(
+                //                                   color: Colors.deepOrange,
+                //                                   onPressed: (){
+                //
+                //                                   },
+                //                                   icon: Icon(Icons.delete_outline_outlined),
+                //                                 ),
+                //                                 SizedBox(width: 10,),
+                //                                 Text(cart.quantity.toString(), style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
+                //
+                //                                 SizedBox(width: 10,),
+                //                                 IconButton(
+                //                                   color: Colors.deepOrange,
+                //                                   onPressed: (){
+                //                                     if (cart.quantity > 0) {
+                //                                      Get.find<CartController>().setQuantity(true, cart);
+                //                                     }else {
+                //                                     //  Get.find<CartController>().removeFromCart(index);
+                //                                     }
+                //                                   },
+                //                                   icon: Icon(Icons.add_outlined),
+                //                                 ),
+                //                               ],
+                //                               crossAxisAlignment: CrossAxisAlignment.center,
+                //                               mainAxisAlignment: MainAxisAlignment.end,
+                //                             ),
+                //                             width: 150,
+                //                             alignment: Alignment.centerRight,
+                //                           )
+                //
+                //                       )
+                //                     ],
+                //                   ),
+                //
+                //                 ],
+                //               );
+                //
+                //             },
+                //           );
+                //         }),
+                //
+                //         SizedBox(height: 20,),
+                //
+                //         Container(
+                //           margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                //           width: context.width/5,
+                //           height: 1,
+                //           color: Colors.grey,
+                //         ),
+                //
+                //         SizedBox(height: 20,),
+                //         Row(
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           mainAxisAlignment: MainAxisAlignment.end,
+                //           children: [
+                //             Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.grey),)
+                //           ],
+                //         ),
+                //
+                //         SizedBox(height: 20,),
+                //         Row(
+                //           crossAxisAlignment: CrossAxisAlignment.center,
+                //           mainAxisAlignment: MainAxisAlignment.end,
+                //           children: [
+                //             Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.black,fontWeight: FontWeight.bold),)
+                //           ],
+                //         ),
+                //
+                //
+                //         SizedBox(height: 40,),
+                //         //Go to Checkout
+                //         InkWell(
+                //           onTap: (){
+                //             Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+                //           },
+                //           child: Container(
+                //             margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                //             padding: EdgeInsets.fromLTRB(25, 7, 25, 7),
+                //             // height: 30,
+                //             //width: 100,
+                //             decoration: BoxDecoration(
+                //
+                //               color: Color(0xFFCACACA),
+                //               borderRadius: BorderRadius.all(
+                //                 Radius.circular(5),
+                //               ),
+                //               border: Border.all(
+                //                 width: 1,
+                //                 color: Colors.white,
+                //                 style: BorderStyle.solid,
+                //               ),
+                //             ),
+                //             child: Center(
+                //               child: Text(
+                //                 "Go to Checkout",style: TextStyle(fontSize: 15,color: Colors.white),
+                //               ),
+                //             ),
+                //           ),
+                //         )
+                //
+                //       ],
+                //     ),
+                //   )
+                //
+                // ),
 
-
-                        SizedBox(height: 20,),
-
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Switch(
-                              activeColor: Color(0xffE34A28),
-                              value: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                            SizedBox(width: 10,),
-                            Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
-                          ],
-                        ),
-
-
-                        SizedBox(height: 20,),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Your Cart',style: TextStyle(fontSize: 15,color: Colors.black),)
-                          ],
-                        ),
-                        SizedBox(height: 20,),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            //Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
-                          ],
-                        ),
-
-                        GetBuilder<CartController>(builder: (cartController) {
-                          return ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: cartController.cartList.length,
-                            itemBuilder: (context, index) {
-                              var cart = cartController.cartList[index];
-                              return Column(
-                                children: [
-
-                                  Stack(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        child:
-                                        //Flexible(child:
-                                        Text(''+cartController.cartList[index].product.name),
-                                        //),
-                                      ),
-
-                                      Align(
-                                        alignment: Alignment.topRight,
-                                        child:Container(
-
-                                          child: Flexible(child: Text(''+cartController.cartList[index].product.price.toString()),),
-                                          width: 100,
-                                          alignment: Alignment.centerRight,
-                                        )
-
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Stack(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topLeft,
-                                        //child:
-                                        //Flexible(child:
-                                        //Text('+'+cartController.cartList[index].product.name),
-                                        //),
-                                      ),
-
-                                      Align(
-                                          alignment: Alignment.topRight,
-                                          child:Container(
-
-                                            child: Row(
-
-                                              children: [
-                                                IconButton(
-                                                  color: Colors.deepOrange,
-                                                  onPressed: (){
-
-                                                  },
-                                                  icon: Icon(Icons.delete_outline_outlined),
-                                                ),
-                                                SizedBox(width: 10,),
-                                                Text(cart.quantity.toString(), style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
-
-                                                SizedBox(width: 10,),
-                                                IconButton(
-                                                  color: Colors.deepOrange,
-                                                  onPressed: (){
-                                                    if (cart.quantity > 1) {
-                                                      Get.find<CartController>().setQuantity(false, cart);
-                                                    }else {
-                                                      Get.find<CartController>().removeFromCart(index);
-                                                    }
-                                                  },
-                                                  icon: Icon(Icons.add_outlined),
-                                                ),
-                                              ],
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.end,
-                                            ),
-                                            width: 150,
-                                            alignment: Alignment.centerRight,
-                                          )
-
-                                      )
-                                    ],
-                                  ),
-
-                                ],
-                              );
-
-                                //CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
-                            },
-                          );
-                        }),
-
-                        SizedBox(height: 20,),
-
-                        Container(
-                          margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                          width: context.width/5,
-                          height: 1,
-                          color: Colors.grey,
-                        ),
-
-                        SizedBox(height: 20,),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.grey),)
-                          ],
-                        ),
-
-                        SizedBox(height: 20,),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.black,fontWeight: FontWeight.bold),)
-                          ],
-                        ),
-
-
-                        SizedBox(height: 40,),
-                        //Go to Checkout
-                        InkWell(
-                          onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                            padding: EdgeInsets.fromLTRB(25, 7, 25, 7),
-                            // height: 30,
-                            //width: 100,
-                            decoration: BoxDecoration(
-
-                              color: Color(0xFFCACACA),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5),
-                              ),
-                              border: Border.all(
-                                width: 1,
-                                color: Colors.white,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Go to Checkout",style: TextStyle(fontSize: 15,color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        )
-
-                      ],
-                    ),
-                  )
-
-                ),
-                  flex: 2,)
+                  flex: 3,)
               ],
             )
 

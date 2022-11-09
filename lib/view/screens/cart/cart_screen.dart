@@ -10,6 +10,7 @@ import 'package:efood_multivendor/view/base/custom_button.dart';
 import 'package:efood_multivendor/view/base/custom_snackbar.dart';
 import 'package:efood_multivendor/view/base/no_data_screen.dart';
 import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget.dart';
+import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_web.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'my_cart'.tr, isBackButtonExist: (ResponsiveHelper.isDesktop(context) || !widget.fromNav)),
+      //appBar: CustomAppBar(title: 'my_cart'.tr, isBackButtonExist: (ResponsiveHelper.isDesktop(context) || !widget.fromNav)),
       body: GetBuilder<CartController>(builder: (cartController) {
 
           return cartController.cartList.length > 0 ? Column(
@@ -44,8 +45,9 @@ class _CartScreenState extends State<CartScreen> {
                     padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL), physics: BouncingScrollPhysics(),
                     child: Center(
                       child: SizedBox(
-                        width: Dimensions.WEB_MAX_WIDTH,
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        //width: Dimensions.WEB_MAX_WIDTH,
+                        child:
+                        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
                           // Product
                           ListView.builder(
@@ -53,7 +55,7 @@ class _CartScreenState extends State<CartScreen> {
                             shrinkWrap: true,
                             itemCount: cartController.cartList.length,
                             itemBuilder: (context, index) {
-                              return CartProductWidget(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
+                              return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
                             },
                           ),
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL),

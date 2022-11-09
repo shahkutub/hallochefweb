@@ -69,7 +69,7 @@ class CartProductWidget extends StatelessWidget {
           child: Stack(children: [
             Positioned(
               top: 0, bottom: 0, right: 0, left: 0,
-              child: Icon(Icons.delete, color: Colors.white, size: 50),
+              child: Icon(Icons.delete, color: Colors.white, size: 20),
             ),
             Dismissible(
               key: UniqueKey(),
@@ -94,7 +94,7 @@ class CartProductWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
                             child: CustomImage(
                               image: '${Get.find<SplashController>().configModel.baseUrls.productImageUrl}/${cart.product.image}',
-                              height: 65, width: 70, fit: BoxFit.cover,
+                              height: 20, width: 30, fit: BoxFit.cover,
                             ),
                           ),
                           isAvailable ? SizedBox() : Positioned(
@@ -119,56 +119,56 @@ class CartProductWidget extends StatelessWidget {
                             maxLines: 2, overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(height: 2),
-                          RatingBar(rating: cart.product.avgRating, size: 12, ratingCount: cart.product.ratingCount),
-                          SizedBox(height: 5),
-                          Text(
-                            PriceConverter.convertPrice(cart.discountedPrice+cart.discountAmount),
-                            style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
-                          ),
+                          // RatingBar(rating: cart.product.avgRating, size: 12, ratingCount: cart.product.ratingCount),
+                          // SizedBox(height: 5),
+                          // Text(
+                          //   PriceConverter.convertPrice(cart.discountedPrice+cart.discountAmount),
+                          //   style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+                          // ),
                         ]),
                       ),
 
-                      Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Get.find<SplashController>().configModel.toggleVegNonVeg ? Container(
-                          padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Text(
-                            cart.product.veg == 0 ? 'non_veg'.tr : 'veg'.tr,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Colors.white),
-                          ),
-                        ) : SizedBox(),
-                        SizedBox(height: Get.find<SplashController>().configModel.toggleVegNonVeg ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
-                        Row(children: [
-                          QuantityButton(
-                            onTap: () {
-                              if (cart.quantity > 1) {
-                                Get.find<CartController>().setQuantity(false, cart);
-                              }else {
-                                Get.find<CartController>().removeFromCart(cartIndex);
-                              }
-                            },
-                            isIncrement: false,
-                          ),
-                          Text(cart.quantity.toString(), style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
-                          QuantityButton(
-                            onTap: () => Get.find<CartController>().setQuantity(true, cart),
-                            isIncrement: true,
-                          ),
-                        ]),
-                      ]),
-
-                      !ResponsiveHelper.isMobile(context) ? Padding(
-                        padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_SMALL),
-                        child: IconButton(
-                          onPressed: () {
-                            Get.find<CartController>().removeFromCart(cartIndex);
-                          },
-                          icon: Icon(Icons.delete, color: Colors.red),
-                        ),
-                      ) : SizedBox(),
+                      // Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      //   Get.find<SplashController>().configModel.toggleVegNonVeg ? Container(
+                      //     padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
+                      //     decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                      //       color: Theme.of(context).primaryColor,
+                      //     ),
+                      //     child: Text(
+                      //       cart.product.veg == 0 ? 'non_veg'.tr : 'veg'.tr,
+                      //       style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Colors.white),
+                      //     ),
+                      //   ) : SizedBox(),
+                      //   SizedBox(height: Get.find<SplashController>().configModel.toggleVegNonVeg ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
+                      //   Row(children: [
+                      //     QuantityButton(
+                      //       onTap: () {
+                      //         if (cart.quantity > 1) {
+                      //           Get.find<CartController>().setQuantity(false, cart);
+                      //         }else {
+                      //           Get.find<CartController>().removeFromCart(cartIndex);
+                      //         }
+                      //       },
+                      //       isIncrement: false,
+                      //     ),
+                      //     Text(cart.quantity.toString(), style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
+                      //     QuantityButton(
+                      //       onTap: () => Get.find<CartController>().setQuantity(true, cart),
+                      //       isIncrement: true,
+                      //     ),
+                      //   ]),
+                      // ]),
+                      //
+                      // !ResponsiveHelper.isMobile(context) ? Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_SMALL),
+                      //   child: IconButton(
+                      //     onPressed: () {
+                      //       Get.find<CartController>().removeFromCart(cartIndex);
+                      //     },
+                      //     icon: Icon(Icons.delete, color: Colors.red),
+                      //   ),
+                      // ) : SizedBox(),
 
                     ]),
 

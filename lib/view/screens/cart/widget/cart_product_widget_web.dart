@@ -65,7 +65,7 @@ class CartProductWidgetWeb extends StatelessWidget {
           ));
         },
         child: Container(
-          decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL)),
+         // decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL)),
           child: Stack(children: [
             Positioned(
               top: 0, bottom: 0, right: 0, left: 0,
@@ -75,28 +75,28 @@ class CartProductWidgetWeb extends StatelessWidget {
               key: UniqueKey(),
               onDismissed: (DismissDirection direction) => Get.find<CartController>().removeFromCart(cartIndex),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey[Get.isDarkMode ? 800 : 200],
-                    blurRadius: 5, spreadRadius: 1,
-                  )],
-                ),
+                // padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
+                // decoration: BoxDecoration(
+                //   color: Theme.of(context).cardColor,
+                //   borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                //   boxShadow: [BoxShadow(
+                //     color: Colors.grey[Get.isDarkMode ? 800 : 200],
+                //     blurRadius: 5, spreadRadius: 1,
+                //   )],
+                // ),
                 child: Column(
                   children: [
 
                     Row(children: [
                       (cart.product.image != null && cart.product.image.isNotEmpty) ? Stack(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                            child: CustomImage(
-                              image: '${Get.find<SplashController>().configModel.baseUrls.productImageUrl}/${cart.product.image}',
-                              height: 65, width: 70, fit: BoxFit.cover,
-                            ),
-                          ),
+                          // ClipRRect(
+                          //   borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                          //   child: CustomImage(
+                          //     image: '${Get.find<SplashController>().configModel.baseUrls.productImageUrl}/${cart.product.image}',
+                          //     height: 65, width: 70, fit: BoxFit.cover,
+                          //   ),
+                          // ),
                           isAvailable ? SizedBox() : Positioned(
                             top: 0, left: 0, bottom: 0, right: 0,
                             child: Container(
@@ -118,9 +118,9 @@ class CartProductWidgetWeb extends StatelessWidget {
                             style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
                             maxLines: 2, overflow: TextOverflow.ellipsis,
                           ),
-                          SizedBox(height: 2),
-                          RatingBar(rating: cart.product.avgRating, size: 12, ratingCount: cart.product.ratingCount),
-                          SizedBox(height: 5),
+                          // SizedBox(height: 2),
+                          // RatingBar(rating: cart.product.avgRating, size: 12, ratingCount: cart.product.ratingCount),
+                          // SizedBox(height: 5),
                           Text(
                             PriceConverter.convertPrice(cart.discountedPrice+cart.discountAmount),
                             style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
@@ -129,17 +129,17 @@ class CartProductWidgetWeb extends StatelessWidget {
                       ),
 
                       Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Get.find<SplashController>().configModel.toggleVegNonVeg ? Container(
-                          padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Text(
-                            cart.product.veg == 0 ? 'non_veg'.tr : 'veg'.tr,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Colors.white),
-                          ),
-                        ) : SizedBox(),
+                        // Get.find<SplashController>().configModel.toggleVegNonVeg ? Container(
+                        //   padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                        //     color: Theme.of(context).primaryColor,
+                        //   ),
+                        //   child: Text(
+                        //     cart.product.veg == 0 ? 'non_veg'.tr : 'veg'.tr,
+                        //     style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Colors.white),
+                        //   ),
+                        // ) : SizedBox(),
                         SizedBox(height: Get.find<SplashController>().configModel.toggleVegNonVeg ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
                         Row(children: [
                           QuantityButton(
@@ -184,17 +184,17 @@ class CartProductWidgetWeb extends StatelessWidget {
                       ]),
                     ) : SizedBox(),
 
-                    cart.product.variations.length > 0 ? Padding(
-                      padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                      child: Row(children: [
-                        SizedBox(width: 80),
-                        Text('${'variations'.tr}: ', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
-                        Flexible(child: Text(
-                          _variationText,
-                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
-                        )),
-                      ]),
-                    ) : SizedBox(),
+                    // cart.product.variations.length > 0 ? Padding(
+                    //   padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                    //   child: Row(children: [
+                    //     SizedBox(width: 80),
+                    //     Text('${'variations'.tr}: ', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
+                    //     Flexible(child: Text(
+                    //       _variationText,
+                    //       style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
+                    //     )),
+                    //   ]),
+                    // ) : SizedBox(),
 
                     /*addOns.length > 0 ? SizedBox(
                       height: 30,
