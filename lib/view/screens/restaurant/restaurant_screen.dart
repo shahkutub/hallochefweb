@@ -448,7 +448,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
+                            //Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
                           ],
                         ),
 
@@ -458,6 +458,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             shrinkWrap: true,
                             itemCount: cartController.cartList.length,
                             itemBuilder: (context, index) {
+                              var cart = cartController.cartList[index];
                               return Column(
                                 children: [
 
@@ -511,12 +512,17 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                                   icon: Icon(Icons.delete_outline_outlined),
                                                 ),
                                                 SizedBox(width: 10,),
-                                                Text('1'),
+                                                Text(cart.quantity.toString(), style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
+
                                                 SizedBox(width: 10,),
                                                 IconButton(
                                                   color: Colors.deepOrange,
                                                   onPressed: (){
-
+                                                    if (cart.quantity > 1) {
+                                                      Get.find<CartController>().setQuantity(false, cart);
+                                                    }else {
+                                                      Get.find<CartController>().removeFromCart(index);
+                                                    }
                                                   },
                                                   icon: Icon(Icons.add_outlined),
                                                 ),
