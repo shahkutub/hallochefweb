@@ -403,126 +403,207 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   ],
                 ) , flex: 7,),
                 new Flexible(
-                  //child: Container(
-                  //alignment: Alignment.center,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    //mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                  child: Container(
+                    margin: EdgeInsets.all(20),
+                  alignment: Alignment.center,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
 
 
 
-                      SizedBox(height: 20,),
+                        SizedBox(height: 20,),
 
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Switch(
-                            activeColor: Color(0xffE34A28),
-                            value: isSwitched,
-                            onChanged: (value) {
-                              setState(() {
-                                isSwitched = value;
-                              });
-                            },
-                          ),
-                          SizedBox(width: 10,),
-                          Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
-                        ],
-                      ),
-
-
-                      SizedBox(height: 20,),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Your Cart',style: TextStyle(fontSize: 15,color: Colors.black),)
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
-                        ],
-                      ),
-
-          GetBuilder<CartController>(builder: (cartController) {
-            return ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: cartController.cartList.length,
-              itemBuilder: (context, index) {
-                return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
-              },
-            );
-          }),
-
-                      SizedBox(height: 20,),
-
-                      Container(
-                        margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                        width: context.width/5,
-                        height: 1,
-                        color: Colors.grey,
-                      ),
-
-                      SizedBox(height: 20,),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.grey),)
-                        ],
-                      ),
-
-                      SizedBox(height: 20,),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.black,fontWeight: FontWeight.bold),)
-                        ],
-                      ),
-
-
-                      SizedBox(height: 40,),
-                      //Go to Checkout
-                      InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                          padding: EdgeInsets.fromLTRB(25, 7, 25, 7),
-                         // height: 30,
-                          //width: 100,
-                          decoration: BoxDecoration(
-
-                            color: Color(0xFFCACACA),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(5),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Switch(
+                              activeColor: Color(0xffE34A28),
+                              value: isSwitched,
+                              onChanged: (value) {
+                                setState(() {
+                                  isSwitched = value;
+                                });
+                              },
                             ),
-                            border: Border.all(
-                              width: 1,
-                              color: Colors.white,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Go to Checkout",style: TextStyle(fontSize: 15,color: Colors.white),
-                            ),
-                          ),
+                            SizedBox(width: 10,),
+                            Text('Pick Up',style: TextStyle(fontSize: 15,color: Colors.black),)
+                          ],
                         ),
-                      )
 
-                    ],
-                  ),
-                //),
+
+                        SizedBox(height: 20,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Your Cart',style: TextStyle(fontSize: 15,color: Colors.black),)
+                          ],
+                        ),
+                        SizedBox(height: 20,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Start adding items to your cart',style: TextStyle(fontSize: 10,color: Colors.grey),)
+                          ],
+                        ),
+
+                        GetBuilder<CartController>(builder: (cartController) {
+                          return ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: cartController.cartList.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+
+                                  Stack(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child:
+                                        //Flexible(child:
+                                        Text(''+cartController.cartList[index].product.name),
+                                        //),
+                                      ),
+
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child:Container(
+
+                                          child: Flexible(child: Text(''+cartController.cartList[index].product.price.toString()),),
+                                          width: 100,
+                                          alignment: Alignment.centerRight,
+                                        )
+
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Stack(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        //child:
+                                        //Flexible(child:
+                                        //Text('+'+cartController.cartList[index].product.name),
+                                        //),
+                                      ),
+
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child:Container(
+
+                                            child: Row(
+
+                                              children: [
+                                                IconButton(
+                                                  color: Colors.deepOrange,
+                                                  onPressed: (){
+
+                                                  },
+                                                  icon: Icon(Icons.delete_outline_outlined),
+                                                ),
+                                                SizedBox(width: 10,),
+                                                Text('1'),
+                                                SizedBox(width: 10,),
+                                                IconButton(
+                                                  color: Colors.deepOrange,
+                                                  onPressed: (){
+
+                                                  },
+                                                  icon: Icon(Icons.add_outlined),
+                                                ),
+                                              ],
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                            ),
+                                            width: 150,
+                                            alignment: Alignment.centerRight,
+                                          )
+
+                                      )
+                                    ],
+                                  ),
+
+                                ],
+                              );
+
+                                //CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
+                            },
+                          );
+                        }),
+
+                        SizedBox(height: 20,),
+
+                        Container(
+                          margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                          width: context.width/5,
+                          height: 1,
+                          color: Colors.grey,
+                        ),
+
+                        SizedBox(height: 20,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.grey),)
+                          ],
+                        ),
+
+                        SizedBox(height: 20,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(' Tk 0   ',style: TextStyle(fontSize: 12,color: Colors.black,fontWeight: FontWeight.bold),)
+                          ],
+                        ),
+
+
+                        SizedBox(height: 40,),
+                        //Go to Checkout
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            padding: EdgeInsets.fromLTRB(25, 7, 25, 7),
+                            // height: 30,
+                            //width: 100,
+                            decoration: BoxDecoration(
+
+                              color: Color(0xFFCACACA),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5),
+                              ),
+                              border: Border.all(
+                                width: 1,
+                                color: Colors.white,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Go to Checkout",style: TextStyle(fontSize: 15,color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        )
+
+                      ],
+                    ),
+                  )
+
+                ),
                   flex: 2,)
               ],
             )
