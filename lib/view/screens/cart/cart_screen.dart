@@ -108,6 +108,22 @@ class _CartScreenState extends State<CartScreen> {
                           ]),
 
 
+                          SizedBox(height: 30,),
+                          Container(
+                            width: Dimensions.WEB_MAX_WIDTH,
+                            padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                            child: CustomButton(buttonText: 'proceed_to_checkout'.tr, onPressed: () {
+                              if(!cartController.cartList.first.product.scheduleOrder && cartController.availableList.contains(false)) {
+                                showCustomSnackBar('one_or_more_product_unavailable'.tr);
+                              } else {
+                                Get.find<CouponController>().removeCouponData(false);
+                                //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+
+                              }
+                            }),
+                          ),
+
                         ]),
                       ),
                     ),
@@ -115,20 +131,20 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
 
-              Container(
-                width: Dimensions.WEB_MAX_WIDTH,
-                padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                child: CustomButton(buttonText: 'proceed_to_checkout'.tr, onPressed: () {
-                  if(!cartController.cartList.first.product.scheduleOrder && cartController.availableList.contains(false)) {
-                    showCustomSnackBar('one_or_more_product_unavailable'.tr);
-                  } else {
-                    Get.find<CouponController>().removeCouponData(false);
-                    //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
-
-                  }
-                }),
-              ),
+              // Container(
+              //   width: Dimensions.WEB_MAX_WIDTH,
+              //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+              //   child: CustomButton(buttonText: 'proceed_to_checkout'.tr, onPressed: () {
+              //     if(!cartController.cartList.first.product.scheduleOrder && cartController.availableList.contains(false)) {
+              //       showCustomSnackBar('one_or_more_product_unavailable'.tr);
+              //     } else {
+              //       Get.find<CouponController>().removeCouponData(false);
+              //       //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
+              //       Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+              //
+              //     }
+              //   }),
+              // ),
 
             ],
           ) : NoDataScreen(isCart: true, text: '');
