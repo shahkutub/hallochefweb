@@ -328,8 +328,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                     (restController.categoryList.length > 0) ? SliverPersistentHeader(
                       pinned: false,
                       delegate: SliverDelegate(child: Center(child: Container(
+                        alignment: Alignment.center,
                         //height: 50, width: context.width*5, color: Theme.of(context).cardColor,
-                        height: 50, width: Dimensions.WEB_MAX_WIDTH, color: Theme.of(context).cardColor,
+                        height: 50, width: context.width, color: Theme.of(context).cardColor,
                         padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -341,7 +342,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                               onTap: () => restController.setCategoryIndex(index),
                               child: Container(
                                 padding: EdgeInsets.only(
-                                  left: index == 0 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_SMALL,
+                                  left: index == 0 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_LARGE,
                                   right: index == restController.categoryList.length-1 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_SMALL,
                                   top: Dimensions.PADDING_SIZE_SMALL,
                                 ),

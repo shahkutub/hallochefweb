@@ -30,7 +30,7 @@ class ProductWidget extends StatelessWidget {
   final bool inRestaurant;
   final bool isCampaign;
   ProductWidget({@required this.product, @required this.isRestaurant, @required this.restaurant, @required this.index,
-   @required this.length, this.inRestaurant = false, this.isCampaign = false});
+    @required this.length, this.inRestaurant = false, this.isCampaign = false});
 
   @override
   Widget build(BuildContext context) {
@@ -78,125 +78,208 @@ class ProductWidget extends StatelessWidget {
             color: Colors.grey[Get.isDarkMode ? 700 : 300], spreadRadius: 1, blurRadius: 5,
           )] : null,
         ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        child: Stack(
+          children: [
 
-          Expanded(child: Padding(
-            padding: EdgeInsets.symmetric(vertical: _desktop ? 0 : Dimensions.PADDING_SIZE_EXTRA_SMALL),
-            child: Row(children: [
-              Column(mainAxisAlignment: isRestaurant ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween, children: [
-
-                !isRestaurant ? Padding(
-                  padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
-                  child: Icon(Icons.add, size: _desktop ? 30 : 25),
-                ) : SizedBox(),
-
-                GetBuilder<WishListController>(builder: (wishController) {
-                  bool _isWished = isRestaurant ? wishController.wishRestIdList.contains(restaurant.id)
-                      : wishController.wishProductIdList.contains(product.id);
-                  return InkWell(
-                    onTap: () {
-                      if(Get.find<AuthController>().isLoggedIn()) {
-                        _isWished ? wishController.removeFromWishList(isRestaurant ? restaurant.id : product.id, isRestaurant)
-                            : wishController.addToWishList(product, restaurant, isRestaurant);
-                      }else {
-                        showCustomSnackBar('you_are_not_logged_in'.tr);
-                      }
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
-                      child: Icon(
-                        _isWished ? Icons.favorite : Icons.favorite_border,  size: _desktop ? 30 : 25,
-                        color: _isWished ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
-                      ),
-                    ),
-                  );
-                }),
-
-              ]),
-              SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
-
-              Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
-
-                  Text(
-                    isRestaurant ? restaurant.name : product.name,
-                    style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
-                    maxLines: _desktop ? 2 : 1, overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: isRestaurant ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
-
-                  Text(
-                    isRestaurant ? restaurant.address ?? 'no_address_found'.tr : product.restaurantName ?? '',
-                    style: robotoRegular.copyWith(
-                      fontSize: Dimensions.fontSizeSmall,
-                      color: Theme.of(context).hintColor,
-                    ),
-                    maxLines: 1, overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: (_desktop || isRestaurant) ? 5 : 0),
-
-                  !isRestaurant ? RatingBar(
-                    rating: isRestaurant ? restaurant.avgRating : product.avgRating, size: _desktop ? 15 : 12,
-                    ratingCount: isRestaurant ? restaurant.ratingCount : product.ratingCount,
-                  ) : SizedBox(),
-                  SizedBox(height: (!isRestaurant && _desktop) ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
-
-                  isRestaurant ? RatingBar(
-                    rating: isRestaurant ? restaurant.avgRating : product.avgRating, size: _desktop ? 15 : 12,
-                    ratingCount: isRestaurant ? restaurant.ratingCount : product.ratingCount,
-                  ) : Row(children: [
-
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.only(right: 120),
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      PriceConverter.convertPrice(product.price, discount: _discount, discountType: _discountType),
-                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+                      product.name,
+                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
+                      maxLines: _desktop ? 2 : 1, overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(width: _discount > 0 ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
+                    SizedBox(height: 10),
+                    Text(product.description,style: robotoMedium.copyWith(fontSize: 12,color: Colors.grey),
+                        maxLines:  2 ),
 
-                    _discount > 0 ? Text(
-                      PriceConverter.convertPrice(product.price),
-                      style: robotoMedium.copyWith(
-                        fontSize: Dimensions.fontSizeExtraSmall,
-                        color: Theme.of(context).disabledColor,
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ) : SizedBox(),
-                    SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
 
-                    (_image != null && _image.isNotEmpty) ? SizedBox.shrink() : DiscountTagWithoutImage(discount: _discount, discountType: _discountType,
-                        freeDelivery: isRestaurant ? restaurant.freeDelivery : false),
+                  ],
+                ),
+              )
 
-                  ]),
+            ),
 
-                ]),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                PriceConverter.convertPrice(product.price, discount: _discount, discountType: _discountType),
+                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
               ),
-              ((_image != null && _image.isNotEmpty) || isRestaurant) ? Stack(children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-                  child: CustomImage(
-                    image: '${isCampaign ? _baseUrls.campaignImageUrl : isRestaurant ? _baseUrls.restaurantImageUrl
-                        : _baseUrls.productImageUrl}'
-                        '/${isRestaurant ? restaurant.logo : product.image}',
-                    height: _desktop ? 120 : 95, width: _desktop ? 120 : 110, fit: BoxFit.cover,
-                  ),
-                ),
-                DiscountTag(
-                  discount: _discount, discountType: _discountType,
-                  freeDelivery: isRestaurant ? restaurant.freeDelivery : false,
-                ),
-                _isAvailable ? SizedBox() : NotAvailableWidget(isRestaurant: isRestaurant),
-              ]) : SizedBox.shrink(),
+            ),
+
+            Align(
+              alignment: Alignment.centerRight,
+              child: ((_image != null && _image.isNotEmpty) || isRestaurant) ? Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+                        child: CustomImage(
+                          image: '${isCampaign ? _baseUrls.campaignImageUrl : isRestaurant ? _baseUrls.restaurantImageUrl
+                              : _baseUrls.productImageUrl}'
+                              '/${isRestaurant ? restaurant.logo : product.image}',
+                          height: _desktop ? 90 : 95, width: _desktop ? 100 : 110, fit: BoxFit.cover,
+                        ),
+                      ),
+                      DiscountTag(
+                        discount: _discount, discountType: _discountType,
+                        freeDelivery: isRestaurant ? restaurant.freeDelivery : false,
+                      ),
+                      _isAvailable ? SizedBox() : NotAvailableWidget(isRestaurant: isRestaurant),
+                Container(
+                  
+                  color: Colors.deepOrangeAccent,
+                  margin: EdgeInsets.only(top: 65,left: 75),
+                  child: Padding(
+                    padding: EdgeInsets.all(2),
+
+                    //padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
+                    child: Icon(Icons.add, size: _desktop ? 20 : 20,color: Colors.white,),
+                  )
+                )
+
+                // Align(
+                //   //alignment: Alignment.bottomRight,
+                //   child:
+                //   //!isRestaurant ?
+                //   Padding(
+                //     padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
+                //     child: Icon(Icons.add, size: _desktop ? 30 : 25),
+                //   )
+                //      // : SizedBox(),
+                //
+                // )
 
 
-
-            ]),
-          )),
-
-          _desktop ? SizedBox() : Padding(
-            padding: EdgeInsets.only(left: _desktop ? 130 : 90),
-            child: Divider(color: index == length-1 ? Colors.transparent : Theme.of(context).disabledColor),
-          ),
-
-        ]),
+                    ]) : SizedBox.shrink(),
+            )
+          ],
+        ),
+        // Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        //
+        //   Expanded(child: Padding(
+        //     padding: EdgeInsets.symmetric(vertical: _desktop ? 0 : Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //     child: Row(children: [
+        //       Column(mainAxisAlignment: isRestaurant ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween, children: [
+        //
+        //         // if restaurant
+        //         !isRestaurant ? Padding(
+        //           padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
+        //           child: Icon(Icons.add, size: _desktop ? 30 : 25),
+        //         ) : SizedBox(),
+        //
+        //         GetBuilder<WishListController>(builder: (wishController) {
+        //           bool _isWished = isRestaurant ? wishController.wishRestIdList.contains(restaurant.id)
+        //               : wishController.wishProductIdList.contains(product.id);
+        //           return InkWell(
+        //             onTap: () {
+        //               if(Get.find<AuthController>().isLoggedIn()) {
+        //                 _isWished ? wishController.removeFromWishList(isRestaurant ? restaurant.id : product.id, isRestaurant)
+        //                     : wishController.addToWishList(product, restaurant, isRestaurant);
+        //               }else {
+        //                 showCustomSnackBar('you_are_not_logged_in'.tr);
+        //               }
+        //             },
+        //             child: Padding(
+        //               padding: EdgeInsets.symmetric(vertical: _desktop ? Dimensions.PADDING_SIZE_SMALL : 0),
+        //               child: Icon(
+        //                 _isWished ? Icons.favorite : Icons.favorite_border,  size: _desktop ? 30 : 25,
+        //                 color: _isWished ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
+        //               ),
+        //             ),
+        //           );
+        //         }),
+        //
+        //       ]),
+        //       SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+        //
+        //       // if food
+        //       Expanded(
+        //         child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
+        //
+        //           Text(
+        //             isRestaurant ? restaurant.name : product.name,
+        //             style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
+        //             maxLines: _desktop ? 2 : 1, overflow: TextOverflow.ellipsis,
+        //           ),
+        //           SizedBox(height: isRestaurant ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
+        //
+        //           Text(
+        //             isRestaurant ? restaurant.address ?? 'no_address_found'.tr : product.restaurantName ?? '',
+        //             style: robotoRegular.copyWith(
+        //               fontSize: Dimensions.fontSizeSmall,
+        //               color: Theme.of(context).hintColor,
+        //             ),
+        //             maxLines: 1, overflow: TextOverflow.ellipsis,
+        //           ),
+        //           SizedBox(height: (_desktop || isRestaurant) ? 5 : 0),
+        //
+        //           !isRestaurant ? RatingBar(
+        //             rating: isRestaurant ? restaurant.avgRating : product.avgRating, size: _desktop ? 15 : 12,
+        //             ratingCount: isRestaurant ? restaurant.ratingCount : product.ratingCount,
+        //           ) : SizedBox(),
+        //           SizedBox(height: (!isRestaurant && _desktop) ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
+        //
+        //           isRestaurant ? RatingBar(
+        //             rating: isRestaurant ? restaurant.avgRating : product.avgRating, size: _desktop ? 15 : 12,
+        //             ratingCount: isRestaurant ? restaurant.ratingCount : product.ratingCount,
+        //           ) : Row(children: [
+        //
+        //             Text(
+        //               PriceConverter.convertPrice(product.price, discount: _discount, discountType: _discountType),
+        //               style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+        //             ),
+        //             SizedBox(width: _discount > 0 ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0),
+        //
+        //             _discount > 0 ? Text(
+        //               PriceConverter.convertPrice(product.price),
+        //               style: robotoMedium.copyWith(
+        //                 fontSize: Dimensions.fontSizeExtraSmall,
+        //                 color: Theme.of(context).disabledColor,
+        //                 decoration: TextDecoration.lineThrough,
+        //               ),
+        //             ) : SizedBox(),
+        //             SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+        //
+        //             (_image != null && _image.isNotEmpty) ? SizedBox.shrink() : DiscountTagWithoutImage(discount: _discount, discountType: _discountType,
+        //                 freeDelivery: isRestaurant ? restaurant.freeDelivery : false),
+        //
+        //           ]),
+        //
+        //         ]),
+        //       ),
+        //       ((_image != null && _image.isNotEmpty) || isRestaurant) ? Stack(children: [
+        //         ClipRRect(
+        //           borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
+        //           child: CustomImage(
+        //             image: '${isCampaign ? _baseUrls.campaignImageUrl : isRestaurant ? _baseUrls.restaurantImageUrl
+        //                 : _baseUrls.productImageUrl}'
+        //                 '/${isRestaurant ? restaurant.logo : product.image}',
+        //             height: _desktop ? 100 : 95, width: _desktop ? 100 : 110, fit: BoxFit.cover,
+        //           ),
+        //         ),
+        //         DiscountTag(
+        //           discount: _discount, discountType: _discountType,
+        //           freeDelivery: isRestaurant ? restaurant.freeDelivery : false,
+        //         ),
+        //         _isAvailable ? SizedBox() : NotAvailableWidget(isRestaurant: isRestaurant),
+        //       ]) : SizedBox.shrink(),
+        //
+        //
+        //
+        //     ]),
+        //   )),
+        //
+        //   _desktop ? SizedBox() : Padding(
+        //     padding: EdgeInsets.only(left: _desktop ? 130 : 90),
+        //     child: Divider(color: index == length-1 ? Colors.transparent : Theme.of(context).disabledColor),
+        //   ),
+        //
+        // ]),
       ),
     );
   }
