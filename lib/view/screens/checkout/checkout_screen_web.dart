@@ -771,7 +771,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                           new Flexible(
 
 
-                            child: CartScreen(fromNav: false),
+                            child: CartScreen(fromNav: true),
                             //child: Container(
                             //alignment: Alignment.center,
                             // child: Column(
