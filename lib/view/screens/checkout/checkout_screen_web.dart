@@ -32,6 +32,7 @@ import 'package:efood_multivendor/view/screens/cart/widget/delivery_option_butto
 import 'package:efood_multivendor/view/screens/checkout/widget/address_dialogue.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/payment_button.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/tips_widget.dart';
+import 'package:efood_multivendor/view/screens/order/order_tracking_screen_web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -41,6 +42,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
 
 import '../cart/cart_screen.dart';
+import '../cart/widget/cart_widget_check_out.dart';
 
 class CheckoutScreenWeb extends StatefulWidget {
   final List<CartModel> cartList;
@@ -864,9 +866,60 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                                           ),
                                           SizedBox(height: 20,),
 
+                                          Container(
+                                              color: Theme.of(context).cardColor,
+                                              padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL, horizontal: Dimensions.PADDING_SIZE_SMALL),
+                                              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                                Text('choose_payment_method'.tr, style: robotoMedium),
+                                                SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
 
+                                                SingleChildScrollView(scrollDirection: Axis.horizontal, physics: BouncingScrollPhysics(), child: Row(children: [
 
+                                                  //_isCashOnDeliveryActive ?
+                                                  PaymentButton(
+                                                    icon: Images.cash_on_delivery,
+                                                    title: 'cash_on_delivery'.tr,
+                                                    subtitle: 'pay_your_payment_after_getting_food'.tr,
+                                                    index: 0,
+                                                  ) ,
+                                                      //: SizedBox(),
+                                                  //_isDigitalPaymentActive ?
+                                                  PaymentButton(
+                                                    icon: Images.digital_payment,
+                                                    title: 'digital_payment'.tr,
+                                                    subtitle: 'faster_and_safe_way'.tr,
+                                                    index: 1,
+                                                  ) ,
+                                                    //  : SizedBox(),
+                                                  //_isWalletActive ?
+                                                  PaymentButton(
+                                                    icon: Images.wallet,
+                                                    title: 'wallet_payment'.tr,
+                                                    subtitle: 'pay_from_your_existing_balance'.tr,
+                                                    index: 2,
+                                                  )
+                                                      //: SizedBox(),
 
+                                                ])),
+
+                                              ],
+                                              )),
+
+                                          SizedBox(height: 20,),
+                                          InkWell(
+                                            onTap: (){
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => OrderTrackingScreenWeb(orderID: '154')));
+
+                                            },
+                                            child: Container(
+                                              width: 100,
+                                              height: 50,
+                                              color: Colors.deepOrangeAccent,
+                                            ),
+                                            
+                                          )
+                                          
+                                          
 
                                         ],
                                       ),
@@ -882,7 +935,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                           new Flexible(
 
 
-                            child: CartScreen(fromNav: true),
+                            child: CartWidgetCheckOut(),
                             //child: Container(
                             //alignment: Alignment.center,
                             // child: Column(

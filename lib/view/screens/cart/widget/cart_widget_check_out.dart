@@ -14,17 +14,16 @@ import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_w
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../checkout/checkout_screen_web.dart';
 
-class CartScreen extends StatefulWidget {
-  final fromNav;
-  CartScreen({@required this.fromNav});
+class CartWidgetCheckOut extends StatefulWidget {
+
+  CartWidgetCheckOut();
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CartWidgetCheckOut> createState() => _CartScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CartScreenState extends State<CartWidgetCheckOut> {
   bool isSwitched = false;
   @override
   void initState() {
@@ -109,22 +108,22 @@ class _CartScreenState extends State<CartScreen> {
 
 
                           SizedBox(height: 30,),
-
-                          Container(
-                            width: Dimensions.WEB_MAX_WIDTH,
-                            padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                            child: CustomButton(buttonText: 'proceed_to_checkout'.tr, onPressed: () {
-                              if(!cartController.cartList.first.product.scheduleOrder && cartController.availableList.contains(false)) {
-                                showCustomSnackBar('one_or_more_product_unavailable'.tr);
-                              } else {
-                                Get.find<CouponController>().removeCouponData(false);
-                                //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
-
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
-
-                              }
-                            }),
-                          ),
+                          
+                          // Container(
+                          //   width: Dimensions.WEB_MAX_WIDTH,
+                          //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                          //   child: CustomButton(buttonText: 'proceed_to_checkout'.tr, onPressed: () {
+                          //     if(!cartController.cartList.first.product.scheduleOrder && cartController.availableList.contains(false)) {
+                          //       showCustomSnackBar('one_or_more_product_unavailable'.tr);
+                          //     } else {
+                          //       Get.find<CouponController>().removeCouponData(false);
+                          //       //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
+                          //
+                          //       Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+                          //
+                          //     }
+                          //   }),
+                          // ),
 
                         ]),
                       ),
