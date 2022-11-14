@@ -14,7 +14,7 @@ import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_w
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../checkout/checkout_screen_web.dart';
+import '../checkout/checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {
   final fromNav;
@@ -120,7 +120,7 @@ class _CartScreenState extends State<CartScreen> {
                                 Get.find<CouponController>().removeCouponData(false);
                                 //Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
 
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreenWeb()));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreen(fromCart: true,cartList: cartController.cartList,)));
 
                               }
                             }),

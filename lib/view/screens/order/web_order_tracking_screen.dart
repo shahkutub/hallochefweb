@@ -3,6 +3,7 @@ import 'package:efood_multivendor/util/images.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../util/styles.dart';
 import '../../base/custom_image.dart';
 
 class WebOrderTrackingScreen extends StatefulWidget {
@@ -43,7 +44,9 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Estimated delivery time',style: TextStyle(color: Colors.black,fontSize: 25),),
+                                    Text('Estimated delivery time',style: robotoRegular.copyWith(
+                                      color: Color(0xFFE34A28), fontSize: 25,
+                                    ),),
                                     SizedBox(height: 10,),
                                     Text('15 - 25 Min',style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold),),
                                     SizedBox(height: 10,),
