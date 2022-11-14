@@ -78,4 +78,6 @@ class Images {
   static const String chef = 'assets/image/chef.png';
   static const String citis = 'assets/image/citis.png';
   static const String signupbtn = 'assets/image/signupbtn.png';
+  static const String delivery_paking = 'assets/image/delivery_paking.png';
+  static const String foodboul = 'assets/image/foodboul.png';
 }

@@ -39,7 +39,7 @@ class AccessLocationScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: CustomAppBar(title: 'set_location'.tr, isBackButtonExist: fromHome),
+      //appBar: CustomAppBar(title: 'set_location'.tr, isBackButtonExist: fromHome),
       body: SafeArea(child: Padding(
         padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
         child: GetBuilder<LocationController>(builder: (locationController) {

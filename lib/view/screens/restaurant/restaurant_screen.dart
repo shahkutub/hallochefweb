@@ -325,59 +325,186 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
 
 
-                    (restController.categoryList.length > 0) ? SliverPersistentHeader(
-                      pinned: false,
-                      delegate: SliverDelegate(child: Center(child: Container(
-                        alignment: Alignment.center,
-                        //height: 50, width: context.width*5, color: Theme.of(context).cardColor,
-                        height: 50, width: context.width, color: Theme.of(context).cardColor,
-                        padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: restController.categoryList.length,
-                          padding: EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
-                          physics: BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () => restController.setCategoryIndex(index),
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  left: index == 0 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_LARGE,
-                                  right: index == restController.categoryList.length-1 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_SMALL,
-                                  top: Dimensions.PADDING_SIZE_SMALL,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                    left: Radius.circular(
-                                      _ltr ? index == 0 ? Dimensions.RADIUS_EXTRA_LARGE : 0 : index == restController.categoryList.length-1
-                                          ? Dimensions.RADIUS_EXTRA_LARGE : 0,
-                                    ),
-                                    right: Radius.circular(
-                                      _ltr ? index == restController.categoryList.length-1 ? Dimensions.RADIUS_EXTRA_LARGE : 0 : index == 0
-                                          ? Dimensions.RADIUS_EXTRA_LARGE : 0,
-                                    ),
-                                  ),
-                                  color: Theme.of(context).primaryColor.withOpacity(0.1),
-                                ),
-                                child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                  Text(
-                                    restController.categoryList[index].name,
-                                    style: index == restController.categoryIndex
-                                        ? robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor)
-                                        : robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
-                                  ),
-                                  index == restController.categoryIndex ? Container(
-                                    height: 5, width: 5,
-                                    decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),
-                                  ) : SizedBox(height: 5, width: 5),
-                                ]),
-                              ),
-                            );
-                          },
-                        ),
-                      ))),
-                    ) : SliverToBoxAdapter(child: SizedBox()),
+                    // (restController.categoryList.length > 0) ? SliverPersistentHeader(
+                    //   pinned: false,
+                    //   delegate: SliverDelegate(child: Center(child: Container(
+                    //     alignment: Alignment.center,
+                    //     //height: 50, width: context.width*5, color: Theme.of(context).cardColor,
+                    //     height: 50, width: context.width, color: Theme.of(context).cardColor,
+                    //     padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                    //     child: ListView.builder(
+                    //       scrollDirection: Axis.horizontal,
+                    //       itemCount: restController.categoryList.length,
+                    //       padding: EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
+                    //       physics: BouncingScrollPhysics(),
+                    //       itemBuilder: (context, index) {
+                    //         return InkWell(
+                    //           onTap: () => restController.setCategoryIndex(index),
+                    //           child: Container(
+                    //             padding: EdgeInsets.only(
+                    //               left: index == 0 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_LARGE,
+                    //               right: index == restController.categoryList.length-1 ? Dimensions.PADDING_SIZE_LARGE : Dimensions.PADDING_SIZE_SMALL,
+                    //               top: Dimensions.PADDING_SIZE_SMALL,
+                    //             ),
+                    //             decoration: BoxDecoration(
+                    //               borderRadius: BorderRadius.horizontal(
+                    //                 left: Radius.circular(
+                    //                   _ltr ? index == 0 ? Dimensions.RADIUS_EXTRA_LARGE : 0 : index == restController.categoryList.length-1
+                    //                       ? Dimensions.RADIUS_EXTRA_LARGE : 0,
+                    //                 ),
+                    //                 right: Radius.circular(
+                    //                   _ltr ? index == restController.categoryList.length-1 ? Dimensions.RADIUS_EXTRA_LARGE : 0 : index == 0
+                    //                       ? Dimensions.RADIUS_EXTRA_LARGE : 0,
+                    //                 ),
+                    //               ),
+                    //               color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    //             ),
+                    //             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    //               Text(
+                    //                 restController.categoryList[index].name,
+                    //                 style: index == restController.categoryIndex
+                    //                     ? robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor)
+                    //                     : robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
+                    //               ),
+                    //               index == restController.categoryIndex ? Container(
+                    //                 height: 5, width: 5,
+                    //                 decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),
+                    //               ) : SizedBox(height: 5, width: 5),
+                    //             ]),
+                    //           ),
+                    //         );
+                    //       },
+                    //     ),
+                    //   ))),
+                    // ) : SliverToBoxAdapter(child: SizedBox()),
 
+                    (restController.categoryList.length > 0)
+                        ? SliverPersistentHeader(
+                      pinned: true,
+                      delegate: SliverDelegate(
+                          child: Container(
+                            height: 55,
+                            width: Dimensions.WEB_MAX_WIDTH,
+                            color: Theme.of(context).cardColor,
+                            padding: EdgeInsets.symmetric(
+                                vertical:
+                                Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                            child: Center(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount:
+                                restController.categoryList.length,
+                                padding: EdgeInsets.only(
+                                    left: Dimensions.PADDING_SIZE_SMALL),
+                                physics: BouncingScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () => restController
+                                        .setCategoryIndex(index),
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                        left: Dimensions.PADDING_SIZE_LARGE,
+                                        // index == 0
+                                        //     ? Dimensions.PADDING_SIZE_LARGE
+                                        //     : Dimensions.PADDING_SIZE_SMALL,
+                                        right:
+                                        Dimensions.PADDING_SIZE_LARGE,
+                                        // index ==
+                                        //         restController.categoryList
+                                        //                 .length -
+                                        //             1
+                                        //     ? Dimensions.PADDING_SIZE_LARGE
+                                        //     : Dimensions.PADDING_SIZE_SMALL,
+                                        top: Dimensions.PADDING_SIZE_SMALL,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                        BorderRadius.horizontal(
+                                          left: Radius.circular(
+                                            _ltr
+                                                ? index == 0
+                                                ? Dimensions
+                                                .RADIUS_EXTRA_LARGE
+                                                : 0
+                                                : index ==
+                                                restController
+                                                    .categoryList
+                                                    .length -
+                                                    1
+                                                ? Dimensions
+                                                .RADIUS_EXTRA_LARGE
+                                                : 0,
+                                          ),
+                                          right: Radius.circular(
+                                            _ltr
+                                                ? index ==
+                                                restController
+                                                    .categoryList
+                                                    .length -
+                                                    1
+                                                ? Dimensions
+                                                .RADIUS_EXTRA_LARGE
+                                                : 0
+                                                : index == 0
+                                                ? Dimensions
+                                                .RADIUS_EXTRA_LARGE
+                                                : 0,
+                                          ),
+                                        ),
+                                        color:
+                                        Colors.white.withOpacity(0.1),
+                                      ),
+                                      child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              restController
+                                                  .categoryList[index].name,
+                                              style: index ==
+                                                  restController
+                                                      .categoryIndex
+                                                  ? robotoMedium.copyWith(
+                                                  fontSize: Dimensions
+                                                      .fontSizeSmall,
+                                                  color:
+                                                  Theme.of(context)
+                                                      .primaryColor)
+                                                  : robotoRegular.copyWith(
+                                                  fontSize: Dimensions
+                                                      .fontSizeSmall,
+                                                  color: Theme.of(
+                                                      context)
+                                                      .disabledColor),
+                                            ),
+                                            SizedBox(
+                                              height: 8,
+                                            ),
+                                            index ==
+                                                restController
+                                                    .categoryIndex
+                                                ? Container(
+                                              height: 2,
+                                              width: 25,
+                                              decoration:
+                                              BoxDecoration(
+                                                color:
+                                                Theme.of(context)
+                                                    .primaryColor,
+                                              ),
+                                            )
+                                                : SizedBox(
+                                                height: 5, width: 5),
+                                          ]),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          )),
+                    )
+                        : SliverToBoxAdapter(child: SizedBox()),
                     SliverToBoxAdapter(child: Center(child: Container(
                       width: Dimensions.WEB_MAX_WIDTH,
                       decoration: BoxDecoration(

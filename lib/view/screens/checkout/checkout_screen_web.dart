@@ -43,6 +43,7 @@ import 'package:flutter/material.dart';
 
 import '../cart/cart_screen.dart';
 import '../cart/widget/cart_widget_check_out.dart';
+import '../order/web_order_tracking_screen.dart';
 
 class CheckoutScreenWeb extends StatefulWidget {
   final List<CartModel> cartList;
@@ -908,7 +909,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                                           SizedBox(height: 20,),
                                           InkWell(
                                             onTap: (){
-                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => OrderTrackingScreenWeb(orderID: '154')));
+                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen()));
 
                                             },
                                             child: Container(
