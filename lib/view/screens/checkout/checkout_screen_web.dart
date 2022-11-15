@@ -32,7 +32,6 @@ import 'package:efood_multivendor/view/screens/cart/widget/delivery_option_butto
 import 'package:efood_multivendor/view/screens/checkout/widget/address_dialogue.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/payment_button.dart';
 import 'package:efood_multivendor/view/screens/checkout/widget/tips_widget.dart';
-import 'package:efood_multivendor/view/screens/order/order_tracking_screen_web.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -909,7 +908,7 @@ class _CheckoutScreenWebState extends State<CheckoutScreenWeb> {
                                           SizedBox(height: 20,),
                                           InkWell(
                                             onTap: (){
-                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen()));
+                                            //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen()));
 
                                             },
                                             child: Container(

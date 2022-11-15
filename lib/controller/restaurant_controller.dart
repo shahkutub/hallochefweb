@@ -291,6 +291,7 @@ class RestaurantController extends GetxController implements GetxService {
       _weekday = 0;
     }
     for(int index=0; index<schedules.length; index++) {
+
       if(_weekday == schedules[index].day) {
         return false;
       }
@@ -307,6 +308,7 @@ class RestaurantController extends GetxController implements GetxService {
       _weekday = 0;
     }
     for(int index=0; index<schedules.length; index++) {
+      print('schedules: '+schedules[index].openingTime.toString());
       if(_weekday == schedules[index].day
           && DateConverter.isAvailable(schedules[index].openingTime, schedules[index].closingTime)) {
         return true;

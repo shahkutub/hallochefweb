@@ -3,10 +3,17 @@ import 'package:efood_multivendor/util/images.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/model/body/place_order_body.dart';
+import '../../../data/model/response/cart_model.dart';
 import '../../../util/styles.dart';
 import '../../base/custom_image.dart';
 
 class WebOrderTrackingScreen extends StatefulWidget {
+
+  final  PlaceOrderBody orderData;
+  final List<CartModel> cartList;
+  WebOrderTrackingScreen({@required this.orderData,@required this.cartList});
+
   @override
   _WebOrderTrackingScreenState createState() => _WebOrderTrackingScreenState();
 
@@ -135,7 +142,7 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                                                     mainAxisSize: MainAxisSize.min,
                                                     children: [
                                                       Flexible(
-                                                        child:Text('Ghorua Hotel & restaurant - Mohakhali, dhaka bangladesh',style: TextStyle(color: Colors.deepOrangeAccent,fontSize: 15,fontWeight: FontWeight.normal),),
+                                                        child:Text(''+widget.cartList[0].product.restaurantName,style: TextStyle(color: Colors.deepOrangeAccent,fontSize: 15,fontWeight: FontWeight.normal),),
 
                                                       ),
                                                       SizedBox(width: 10,),

@@ -88,6 +88,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   TextEditingController mobileEditextController = TextEditingController();
   var _selectedDay ='';
   var _selectedTime ='ASAP';
+
+  PlaceOrderBody orderData;
   @override
   void initState() {
     super.initState();
@@ -1450,7 +1452,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                     Container(
                                                       height: 70,
                                                       child: TextField(
-                                                        controller: apartmentEditextController,
+                                                        controller: _noteController,
                                                         decoration: InputDecoration(
                                                           contentPadding: EdgeInsets.symmetric(vertical: 40.0,horizontal: 40.0),
                                                           border: OutlineInputBorder(),
@@ -1681,25 +1683,38 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                             ));
                                                           }
                                                           AddressModel _address =  _addressList[orderController.addressIndex];
-                                                          orderController.placeOrder(PlaceOrderBody(
-                                                            cart: carts, couponDiscountAmount: Get.find<CouponController>().discount, distance: orderController.distance,
+
+                                                          orderData = PlaceOrderBody(
+                                                            cart: carts,
+                                                            couponDiscountAmount: Get.find<CouponController>().discount,
+                                                            distance: orderController.distance,
                                                             couponDiscountTitle: Get.find<CouponController>().discount > 0 ? Get.find<CouponController>().coupon.title : null,
                                                             scheduleAt: !restController.restaurant.scheduleOrder ? null : (orderController.selectedDateSlot == 0
                                                                 && orderController.selectedTimeSlot == 0) ? null : DateConverter.dateToDateAndTime(_scheduleStartDate),
-                                                            orderAmount: _total, orderNote: _noteController.text, orderType: orderController.orderType,
+                                                            orderAmount: _total, orderNote: _noteController.text,
+                                                            orderType: orderController.orderType,
                                                             paymentMethod: orderController.paymentMethodIndex == 0 ? 'cash_on_delivery'
                                                                 : orderController.paymentMethodIndex == 1 ? 'digital_payment' : orderController.paymentMethodIndex == 2
                                                                 ? 'wallet' : 'digital_payment',
                                                             couponCode: (Get.find<CouponController>().discount > 0 || (Get.find<CouponController>().coupon != null
                                                                 && Get.find<CouponController>().freeDelivery)) ? Get.find<CouponController>().coupon.code : null,
                                                             restaurantId: _cartList[0].product.restaurantId,
-                                                            address: _address.address, latitude: _address.latitude, longitude: _address.longitude, addressType: _address.addressType,
+                                                            address: _address.address,
+                                                            latitude: _address.latitude,
+                                                            longitude: _address.longitude,
+                                                            addressType: _address.addressType,
                                                             contactPersonName: _address.contactPersonName ?? '${Get.find<UserController>().userInfoModel.fName} '
                                                                 '${Get.find<UserController>().userInfoModel.lName}',
                                                             contactPersonNumber: _address.contactPersonNumber ?? Get.find<UserController>().userInfoModel.phone,
-                                                            discountAmount: _discount, taxAmount: _tax, road: _streetNumberController.text.trim(),
+                                                            discountAmount: _discount,
+                                                            taxAmount: _tax, road: _streetNumberController.text.trim(),
                                                             house: _houseController.text.trim(), floor: _floorController.text.trim(), dmTips: _tipController.text.trim(),
-                                                          ), _callback, _total);
+                                                          );
+
+
+                                                          //Order place
+                                                          orderController.placeOrder(
+                                                              orderData, _callback, _total);
                                                         }
                                                       }) : Center(child: CircularProgressIndicator()),
                                                     ),
@@ -1864,7 +1879,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       }
       Get.find<OrderController>().stopLoader();
       if(Get.find<OrderController>().paymentMethodIndex == 0 || Get.find<OrderController>().paymentMethodIndex == 2) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen(orderData: orderData,cartList: _cartList,)));
 
         //Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'success', amount));
       }else {
