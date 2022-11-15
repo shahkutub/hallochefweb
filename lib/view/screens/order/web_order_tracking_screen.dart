@@ -60,6 +60,27 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                 double _subTotal = _itemsPrice + _addOns;
                 double _total = _itemsPrice + _addOns - _discount + _tax + _deliveryCharge - _couponDiscount + _dmTips;
 
+
+          //       GetBuilder<OrderController>(builder: (orderController) {
+          //         OrderModel _track;
+          //         if(orderController.trackModel != null) {
+          //           _track = orderController.trackModel;
+          //
+          //           /*if(_controller != null && GetPlatform.isWeb) {
+          //   if(_track.deliveryAddress != null) {
+          //     _controller.showMarkerInfoWindow(MarkerId('destination'));
+          //   }
+          //   if(_track.restaurant != null) {
+          //     _controller.showMarkerInfoWindow(MarkerId('restaurant'));
+          //   }
+          //   if(_track.deliveryMan != null) {
+          //     _controller.showMarkerInfoWindow(MarkerId('delivery_boy'));
+          //   }
+          // }*/
+          //         }
+
+
+
                 return orderController.orderDetails != null ?
                 Container(
 
