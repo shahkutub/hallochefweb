@@ -39,7 +39,7 @@ import 'package:flutter/material.dart';
 import '../cart/widget/cart_widget_check_out.dart';
 import '../order/web_order_tracking_screen.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
-
+import 'package:intl/intl.dart';
 class CheckoutScreen extends StatefulWidget {
   final List<CartModel> cartList;
   final bool fromCart;
@@ -66,12 +66,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool _isLoggedIn;
   List<CartModel> _cartList;
 
-  static const _daylist = [
-    'Mon, Nov 7',
-    'Tue, Nov 8',
-    'Wed, Nov 9',
-
-  ];
+  List<String> _daylist = [] ;
 
   static const _timelist = [
     'ASAP',
@@ -87,7 +82,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool isSwitched = false;
   TextEditingController floorEditextController = TextEditingController();
   TextEditingController apartmentEditextController = TextEditingController();
-  var _selectedDay ='Mon, Nov 7';
+  TextEditingController emailEditextController = TextEditingController();
+  TextEditingController firstNameEditextController = TextEditingController();
+  TextEditingController lastNameEditextController = TextEditingController();
+  TextEditingController mobileEditextController = TextEditingController();
+  var _selectedDay ='';
   var _selectedTime ='ASAP';
   @override
   void initState() {
@@ -104,9 +103,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       Get.find<OrderController>().updateTips(-1, notify: false);
       Get.find<OrderController>().addTips(0, notify: false);
 
+
       if(Get.find<UserController>().userInfoModel == null) {
         Get.find<UserController>().getUserInfo();
       }
+
+
       if(Get.find<LocationController>().addressList == null) {
         Get.find<LocationController>().getAddressList();
       }
@@ -116,6 +118,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       _cartList = [];
       widget.fromCart ? _cartList.addAll(Get.find<CartController>().cartList) : _cartList.addAll(widget.cartList);
       Get.find<RestaurantController>().initCheckoutData(_cartList[0].product.restaurantId);
+
+
     }
   }
 
@@ -129,6 +133,25 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    var now = DateTime.now();
+    print(DateFormat().format(now)); // This will return date using the default locale
+    print('Current date: '+DateFormat('EEE, MMM d').format(now));
+    final tomorrow = DateTime(now.year, now.month, now.day + 1);
+    print('tomorrow date: '+DateFormat('EEE, MMM d').format(tomorrow));
+
+    final aftertomorrow = DateTime(tomorrow.year, tomorrow.month, tomorrow.day + 1);
+    print('aftertomorrow date: '+DateFormat('EEE, MMM d').format(aftertomorrow));
+
+    _selectedDay = DateFormat('EEE, MMM d').format(now).toString();
+    _daylist.add(DateFormat('EEE, MMM d').format(now).toString());
+    _daylist.add(DateFormat('EEE, MMM d').format(tomorrow).toString());
+    _daylist.add(DateFormat('EEE, MMM d').format(aftertomorrow).toString());
+
+
+    final time = DateTime(now.year, now.month, now.day,now.hour,now.minute+15);
+    print('time+15 : '+DateFormat('HH:mm a').format(time));
+
     return Scaffold(
       //appBar: CustomAppBar(title: 'checkout'.tr),
       appBar: WebMenuBar(),
@@ -223,6 +246,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               _tax = PriceConverter.calculation(_orderAmount, _taxPercent, 'percent', 1);
               double _total = _subTotal + _deliveryCharge - _discount - _couponDiscount + _tax + orderController.tips;
 
+              if(Get.find<UserController>().userInfoModel != null) {
+                print('fName: '+Get.find<UserController>().userInfoModel.fName);
+                firstNameEditextController.text = Get.find<UserController>().userInfoModel.fName;
+                lastNameEditextController.text = Get.find<UserController>().userInfoModel.lName;
+                emailEditextController.text = Get.find<UserController>().userInfoModel.email;
+                mobileEditextController.text = Get.find<UserController>().userInfoModel.phone;
+              }
               return (orderController.distance != null && locationController.addressList != null) ?
               // Column(
               //   children: [
@@ -969,17 +999,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                               border: const OutlineInputBorder(),
                                                             ),
                                                             child: DropdownButtonHideUnderline(
-                                                              child: DropdownButton(
+                                                              child:
+                                                              DropdownButton(
                                                                 isExpanded: true,
                                                                 isDense: true, // Reduces the dropdowns height by +/- 50%
                                                                 icon: Icon(Icons.keyboard_arrow_down),
                                                                 value: _selectedDay,
-                                                                items: _daylist.map((item) {
-                                                                  return DropdownMenuItem(
-                                                                    value: item,
-                                                                    child: Text(item),
-                                                                  );
-                                                                }).toList(),
+                                                                items:
+                                                                _daylist.map((String item) =>
+                                                                DropdownMenuItem<String>(child: Text(item), value: item))
+                                                                    .toList(),
                                                                 onChanged: (selectedItem) => setState(() => _selectedDay = selectedItem,
                                                                 ),
                                                               ),
@@ -1463,7 +1492,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                     SizedBox(height: 20,),
 
                                                     TextField(
-                                                      controller: apartmentEditextController,
+                                                      controller: emailEditextController,
                                                       decoration: InputDecoration(
                                                         border: OutlineInputBorder(),
                                                         labelText: 'Email',
@@ -1472,17 +1501,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                     ),
                                                     SizedBox(height: 20,),
                                                     TextField(
-                                                      controller: apartmentEditextController,
+
+                                                      controller: firstNameEditextController,
                                                       decoration: InputDecoration(
                                                         //contentPadding: EdgeInsets.symmetric(vertical: 40.0,horizontal: 40.0),
                                                         border: OutlineInputBorder(),
                                                         labelText: 'First name',
-                                                        hintText: 'Enter Your First name',
+                                                        hintText: 'Enter your first name',
+
                                                       ),
                                                     ),
                                                     SizedBox(height: 20,),
                                                     TextField(
-                                                      controller: apartmentEditextController,
+                                                      controller: lastNameEditextController,
                                                       decoration: InputDecoration(
                                                         //contentPadding: EdgeInsets.symmetric(vertical: 40.0,horizontal: 40.0),
                                                         border: OutlineInputBorder(),
@@ -1493,7 +1524,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                                                     SizedBox(height: 20,),
                                                     TextField(
-                                                      controller: apartmentEditextController,
+                                                      controller: mobileEditextController,
                                                       decoration: InputDecoration(
                                                         //contentPadding: EdgeInsets.symmetric(vertical: 40.0,horizontal: 40.0),
                                                         border: OutlineInputBorder(),
@@ -1586,7 +1617,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                     // ),
 
                                                     Container(
-                                                      width: Dimensions.WEB_MAX_WIDTH,
+                                                      width: context.width/7,
                                                       alignment: Alignment.center,
                                                       padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                                                       child: !orderController.isLoading ? CustomButton(buttonText: 'confirm_order'.tr, onPressed: () {
@@ -1672,7 +1703,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                         }
                                                       }) : Center(child: CircularProgressIndicator()),
                                                     ),
-
 
 
                                                   ],
