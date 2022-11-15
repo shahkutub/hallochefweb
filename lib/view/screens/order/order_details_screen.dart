@@ -86,7 +86,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
             Get.back();
           }
         }),
-        body: GetBuilder<OrderController>(builder: (orderController) {
+        body:
+        GetBuilder<OrderController>(builder: (orderController) {
           double _deliveryCharge = 0;
           double _itemsPrice = 0;
           double _discount = 0;
@@ -139,6 +140,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                       SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
 
                       Text('min'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).primaryColor)),
+
                     ]),
                   ),
                   SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
