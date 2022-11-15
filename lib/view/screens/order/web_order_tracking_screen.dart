@@ -12,7 +12,8 @@ class WebOrderTrackingScreen extends StatefulWidget {
 
   final  PlaceOrderBody orderData;
   final List<CartModel> cartList;
-  WebOrderTrackingScreen({@required this.orderData,@required this.cartList});
+  final String orderID;
+  WebOrderTrackingScreen({@required this.orderData,@required this.cartList ,@required this.orderID});
 
   @override
   _WebOrderTrackingScreenState createState() => _WebOrderTrackingScreenState();
@@ -146,12 +147,12 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
 
                                                       ),
                                                       SizedBox(width: 10,),
-                                                      Text('Order Number: #67565mm',style: TextStyle(color: Colors.grey,fontSize: 10,fontWeight: FontWeight.normal),),
+                                                      Text('Order Number: #'+widget.orderID,style: TextStyle(color: Colors.grey,fontSize: 10,fontWeight: FontWeight.normal),),
 
                                                       SizedBox(width: 10,),
                                                       Text('Delivery address',style: TextStyle(color: Colors.grey,fontSize: 10,fontWeight: FontWeight.normal),),
 
-                                                      Text('10 Rd no 1 dhaka',style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
+                                                      Text(''+widget.orderData.address,style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
 
                                                       SizedBox(width: 20,),
 
@@ -162,7 +163,7 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                                                 ),
                                               ),
                                               SizedBox(width: 10,),
-                                              Text('Tk  5000',style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
+                                              Text('Tk '+widget.orderData.orderAmount.toString(),style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
 
                                             ],
                                           ),

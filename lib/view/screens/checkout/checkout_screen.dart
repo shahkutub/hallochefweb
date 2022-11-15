@@ -1879,7 +1879,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       }
       Get.find<OrderController>().stopLoader();
       if(Get.find<OrderController>().paymentMethodIndex == 0 || Get.find<OrderController>().paymentMethodIndex == 2) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen(orderData: orderData,cartList: _cartList,)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen(orderData: orderData,cartList: _cartList,orderID:orderID)));
 
         //Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'success', amount));
       }else {
