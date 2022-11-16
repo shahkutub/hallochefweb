@@ -3,7 +3,9 @@ import 'package:efood_multivendor/data/model/response/order_details_model.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../../controller/location_controller.dart';
 import '../../../data/model/body/place_order_body.dart';
 import '../../../data/model/response/cart_model.dart';
 import '../../../data/model/response/order_model.dart';
@@ -25,7 +27,43 @@ class WebOrderTrackingScreen extends StatefulWidget {
 
 }
 
-class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
+class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen> with WidgetsBindingObserver{
+
+
+  void _loadData() async {
+    await Get.find<LocationController>().getCurrentLocation(true, notify: false, defaultLatLng: LatLng(
+      double.parse(Get.find<LocationController>().getUserAddress().latitude),
+      double.parse(Get.find<LocationController>().getUserAddress().longitude),
+    ));
+    Get.find<OrderController>().trackOrder(widget.orderID, null, true);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
+    _loadData();
+    // Get.find<OrderController>().callTrackOrderApi(orderModel: Get.find<OrderController>().trackModel, orderId: widget.orderID.toString());
+  }
+
+  @override
+  void didChangeAppLifecycleState(final AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      Get.find<OrderController>().callTrackOrderApi(orderModel: Get.find<OrderController>().trackModel, orderId: widget.orderID.toString());
+    }else if(state == AppLifecycleState.paused){
+      Get.find<OrderController>().cancelTimer();
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    //_controller?.dispose();
+    Get.find<OrderController>().cancelTimer();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -60,28 +98,30 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                 double _subTotal = _itemsPrice + _addOns;
                 double _total = _itemsPrice + _addOns - _discount + _tax + _deliveryCharge - _couponDiscount + _dmTips;
 
+                OrderModel _track;
+                GetBuilder<OrderController>(builder: (orderController) {
 
-          //       GetBuilder<OrderController>(builder: (orderController) {
-          //         OrderModel _track;
-          //         if(orderController.trackModel != null) {
-          //           _track = orderController.trackModel;
-          //
-          //           /*if(_controller != null && GetPlatform.isWeb) {
-          //   if(_track.deliveryAddress != null) {
-          //     _controller.showMarkerInfoWindow(MarkerId('destination'));
-          //   }
-          //   if(_track.restaurant != null) {
-          //     _controller.showMarkerInfoWindow(MarkerId('restaurant'));
-          //   }
-          //   if(_track.deliveryMan != null) {
-          //     _controller.showMarkerInfoWindow(MarkerId('delivery_boy'));
-          //   }
-          // }*/
-          //         }
+                  if (orderController.trackModel != null) {
+                    _track = orderController.trackModel;
+
+                    /*if(_controller != null && GetPlatform.isWeb) {
+            if(_track.deliveryAddress != null) {
+              _controller.showMarkerInfoWindow(MarkerId('destination'));
+            }
+            if(_track.restaurant != null) {
+              _controller.showMarkerInfoWindow(MarkerId('restaurant'));
+            }
+            if(_track.deliveryMan != null) {
+              _controller.showMarkerInfoWindow(MarkerId('delivery_boy'));
+            }
+          }*/
+                  }
+                });
 
 
 
-                return orderController.orderDetails != null ?
+                return
+                  //orderController.orderDetails != null ?
                 Container(
 
                   child: SingleChildScrollView(
@@ -106,11 +146,11 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        // Text('Estimated delivery time',style: robotoRegular.copyWith(
-                                        //   color: Color(0xFFE34A28), fontSize: 25,
-                                        // ),),
-                                        // SizedBox(height: 10,),
-                                        // Text('15 - 25 Min'+orderDetails.,style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold),),
+                                        Text('Estimated delivery time',style: robotoRegular.copyWith(
+                                          color: Color(0xFFE34A28), fontSize: 25,
+                                        ),),
+                                        SizedBox(height: 10,),
+                                        Text('15 - 25 Min'+_track.restaurant.deliveryTime,style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold),),
 
                                         DateConverter.isBeforeTime(_order.scheduleAt) ? (_order.orderStatus != 'delivered' && _order.orderStatus != 'failed'&& _order.orderStatus != 'canceled') ? Column(children: [
                                           ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset(Images.animate_delivery_man, fit: BoxFit.contain)),
@@ -328,7 +368,8 @@ class _WebOrderTrackingScreenState extends State<WebOrderTrackingScreen>{
 
                     ),
                   ),
-                ) : Center(child: CircularProgressIndicator());
+                );
+                    //: Center(child: CircularProgressIndicator());
               }),
 
             );

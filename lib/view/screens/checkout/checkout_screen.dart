@@ -37,6 +37,8 @@ import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
 
 import '../cart/widget/cart_widget_check_out.dart';
+import '../order/new_order_tracking_screen.dart';
+import '../order/order_tracking_screen.dart';
 import '../order/web_order_tracking_screen.dart';
 import 'package:efood_multivendor/view/base/web_menu_bar.dart';
 import 'package:intl/intl.dart';
@@ -1879,7 +1881,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       }
       Get.find<OrderController>().stopLoader();
       if(Get.find<OrderController>().paymentMethodIndex == 0 || Get.find<OrderController>().paymentMethodIndex == 2) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => WebOrderTrackingScreen(orderData: orderData,cartList: _cartList,orderID:orderID)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewOrderTrackingScreen(orderData: orderData,cartList: _cartList,orderID:orderID)));
+        //Navigator.of(context).push(MaterialPageRoute(builder: (context) => OrderTrackingScreen(orderID:orderID)));
 
         //Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, 'success', amount));
       }else {

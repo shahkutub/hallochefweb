@@ -93,27 +93,31 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsB
 
         return _track != null ? Center(child: SizedBox(width: Dimensions.WEB_MAX_WIDTH, child: Stack(children: [
 
-          GoogleMap(
-            initialCameraPosition: CameraPosition(target: LatLng(
-              double.parse(_track.deliveryAddress.latitude), double.parse(_track.deliveryAddress.longitude),
-            ), zoom: 16),
-            minMaxZoomPreference: MinMaxZoomPreference(0, 16),
-            zoomControlsEnabled: true,
-            markers: _markers,
-            onMapCreated: (GoogleMapController controller) {
-              _controller = controller;
-              _isLoading = false;
-              setMarker(
-                _track.restaurant, _track.deliveryMan ?? DeliveryMan(location: ''),
-                _track.orderType == 'take_away' ? Get.find<LocationController>().position.latitude == 0 ? _track.deliveryAddress : AddressModel(
-                  latitude: Get.find<LocationController>().position.latitude.toString(),
-                  longitude: Get.find<LocationController>().position.longitude.toString(),
-                  address: Get.find<LocationController>().address,
-                ) : _track.deliveryAddress,
-                _track.orderType == 'take_away',
-              );
-            },
-          ),
+
+          Text('Delivery Time: '+_track.restaurant.deliveryTime),
+
+
+          // GoogleMap(
+          //   initialCameraPosition: CameraPosition(target: LatLng(
+          //     double.parse(_track.deliveryAddress.latitude), double.parse(_track.deliveryAddress.longitude),
+          //   ), zoom: 16),
+          //   minMaxZoomPreference: MinMaxZoomPreference(0, 16),
+          //   zoomControlsEnabled: true,
+          //   markers: _markers,
+          //   onMapCreated: (GoogleMapController controller) {
+          //     _controller = controller;
+          //     _isLoading = false;
+          //     setMarker(
+          //       _track.restaurant, _track.deliveryMan ?? DeliveryMan(location: ''),
+          //       _track.orderType == 'take_away' ? Get.find<LocationController>().position.latitude == 0 ? _track.deliveryAddress : AddressModel(
+          //         latitude: Get.find<LocationController>().position.latitude.toString(),
+          //         longitude: Get.find<LocationController>().position.longitude.toString(),
+          //         address: Get.find<LocationController>().address,
+          //       ) : _track.deliveryAddress,
+          //       _track.orderType == 'take_away',
+          //     );
+          //   },
+          // ),
 
           _isLoading ? Center(child: CircularProgressIndicator()) : SizedBox(),
 
