@@ -44,6 +44,8 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
   bool _isLoading = true;
   Set<Marker> _markers = HashSet<Marker>();
 
+  bool isArrowUp = false;
+
   void _loadData() async {
     await Get.find<LocationController>().getCurrentLocation(true, notify: false, defaultLatLng: LatLng(
       double.parse(Get.find<LocationController>().getUserAddress().latitude),
@@ -265,15 +267,30 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                           Align(
                                             alignment: Alignment.topRight,
                                             child: Flexible(
-                                                child: Icon(Icons.keyboard_arrow_down,size: 30,color: Colors.deepOrangeAccent,)
+                                                child: InkWell(
+
+                                                  child:Icon(!isArrowUp?Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,size: 30,color: Colors.deepOrangeAccent,),
+                                                  onTap: (){
+
+                                                    setState(() {
+                                                      if(!isArrowUp){
+                                                        isArrowUp = true;
+                                                      }else{
+                                                        isArrowUp = false;
+                                                      }
+                                                    });
+
+
+                                                  },
+                                                )
+
                                             ),
                                           ),
                                         ],
 
                                       ),
 
-
-                                      CartWidgetDelivery()
+                                      !isArrowUp? CartWidgetDelivery():SizedBox()
 
                                     ],
                                   ),
