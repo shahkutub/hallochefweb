@@ -221,6 +221,8 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                                 width: width/7,
                                                 child:Column(
                                                   mainAxisSize: MainAxisSize.min,
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Flexible(
                                                       child:Text(''+widget.cartList[0].product.restaurantName,style: TextStyle(color: Colors.deepOrangeAccent,fontSize: 15,fontWeight: FontWeight.normal),),
@@ -258,9 +260,11 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                         children: [
                                           Align(
                                             alignment: Alignment.topLeft,
-                                            child: Flexible(
-                                              child: Text('Order Details'+'('+widget.cartList.length.toString()+')',style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
-
+                                            child: Row(
+                                              children: [
+                                                Text('Order Details',style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.normal),),
+                                                Text('('+widget.cartList.length.toString()+')',style: TextStyle(color: Colors.grey,fontSize: 10,fontWeight: FontWeight.normal),),
+                                              ],
                                             ),
                                           ),
 
