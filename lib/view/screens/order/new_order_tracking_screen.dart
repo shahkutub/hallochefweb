@@ -364,50 +364,43 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)), //this right here
       child: Container(
         padding: EdgeInsets.all(10.0),
-        height: 400.0,
-        width: 400.0,
+        height: 500.0,
+        width: 500.0,
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: <Widget>[
-            Padding(
-              padding:  EdgeInsets.all(15.0),
-              child: Text('Cool', style: TextStyle(color: Colors.red),),
-            ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text('Awesome', style: TextStyle(color: Colors.red),),
-            ),
-            Padding(padding: EdgeInsets.only(top: 50.0)),
-            TextField(
-              
-             // maxLines: 20,
-              controller: _text,
-              decoration: InputDecoration(
-                
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () {},
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: TextField(
+                // maxLines: 20,
+                controller: _text,
+                decoration: InputDecoration(
+
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () {},
+                  ),
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.end,
+                  //   mainAxisSize: MainAxisSize.min,
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   children: [
+                  //     IconButton(
+                  //       icon: Icon(Icons.send),
+                  //       onPressed: () {},
+                  //     ),
+                  //     IconButton(
+                  //       icon: Icon(Icons.image),
+                  //       onPressed: () {},
+                  //     ),
+                  //   ],
+                  // ),
+                  border: InputBorder.none,
+                  hintText: "enter your message",
                 ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.end,
-                //   mainAxisSize: MainAxisSize.min,
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   children: [
-                //     IconButton(
-                //       icon: Icon(Icons.send),
-                //       onPressed: () {},
-                //     ),
-                //     IconButton(
-                //       icon: Icon(Icons.image),
-                //       onPressed: () {},
-                //     ),
-                //   ],
-                // ),
-                border: InputBorder.none,
-                hintText: "enter your message",
               ),
-            ),
+            )
+
           ],
         ),
       ),
