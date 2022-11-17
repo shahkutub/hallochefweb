@@ -46,6 +46,8 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
   bool isArrowUp = false;
 
+   TextEditingController _text;
+
   void _loadData() async {
     await Get.find<LocationController>().getCurrentLocation(true, notify: false, defaultLatLng: LatLng(
       double.parse(Get.find<LocationController>().getUserAddress().latitude),
@@ -319,7 +321,9 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
                                       OutlinedButton(
 
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          showCustomDialog(context);
+                                        },
                                         child: Text('Help center'),
                                         style: OutlinedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
@@ -353,6 +357,132 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
       }),
     );
   }
+
+
+  void showCustomDialog(BuildContext context) {
+    Dialog errorDialog = Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)), //this right here
+      child: Container(
+        padding: EdgeInsets.all(10.0),
+        height: 500.0,
+        width: 500.0,
+
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: TextField(
+                // maxLines: 20,
+                controller: _text,
+                decoration: InputDecoration(
+
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () {},
+                  ),
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.end,
+                  //   mainAxisSize: MainAxisSize.min,
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   children: [
+                  //     IconButton(
+                  //       icon: Icon(Icons.send),
+                  //       onPressed: () {},
+                  //     ),
+                  //     IconButton(
+                  //       icon: Icon(Icons.image),
+                  //       onPressed: () {},
+                  //     ),
+                  //   ],
+                  // ),
+                  border: InputBorder.none,
+                  hintText: "enter your message",
+                ),
+              ),
+            )
+
+          ],
+        ),
+      ),
+    );
+    showDialog(context: context, builder: (BuildContext context) => errorDialog);
+
+  }
+
+    // showGeneralDialog(
+    //   context: context,
+    //   barrierLabel: "Barrier",
+    //   barrierDismissible: true,
+    //   barrierColor: Colors.black.withOpacity(0.5),
+    //   transitionDuration: Duration(milliseconds: 100),
+    //   pageBuilder: (_, __, ___) {
+    //     return  Container(
+    //       margin: EdgeInsets.fromLTRB(100,60,100,60),
+    //         color: Colors.white,
+    //
+    //           child: Stack(
+    //             children: [
+    //               Align(
+    //                 alignment: Alignment.bottomCenter,
+    //                 child: Container(
+    //                   height: 50,
+    //                   child:  Column(
+    //                     children: [
+    //                       Divider(height: 0, color: Colors.black26),
+    //                       Material(
+    //                         child: TextField(
+    //                           maxLines: 20,
+    //                           controller: _text,
+    //                           decoration: InputDecoration(
+    //                             suffixIcon: Row(
+    //                               crossAxisAlignment: CrossAxisAlignment.end,
+    //                               mainAxisSize: MainAxisSize.min,
+    //                               mainAxisAlignment: MainAxisAlignment.start,
+    //                               children: [
+    //                                 IconButton(
+    //                                   icon: Icon(Icons.send),
+    //                                   onPressed: () {},
+    //                                 ),
+    //                                 IconButton(
+    //                                   icon: Icon(Icons.image),
+    //                                   onPressed: () {},
+    //                                 ),
+    //                               ],
+    //                             ),
+    //                             border: InputBorder.none,
+    //                             hintText: "enter your message",
+    //                           ),
+    //                         ),
+    //                       )
+    //                     ],
+    //                   ),
+    //                 )
+    //
+    //
+    //               )
+    //
+    //             ],
+    //           )
+    //     );
+    //   },
+    //   transitionBuilder: (_, anim, __, child) {
+    //     Tween<Offset> tween;
+    //     if (anim.status == AnimationStatus.reverse) {
+    //       tween = Tween(begin: Offset(-1, 0), end: Offset.zero);
+    //     } else {
+    //       tween = Tween(begin: Offset(1, 0), end: Offset.zero);
+    //     }
+    //
+    //     return SlideTransition(
+    //       position: tween.animate(anim),
+    //       child: FadeTransition(
+    //         opacity: anim,
+    //         child: child,
+    //       ),
+    //     );
+    //   },
+    // );
+ // }
 
   void setMarker(Restaurant restaurant, DeliveryMan deliveryMan, AddressModel addressModel, bool takeAway) async {
     try {

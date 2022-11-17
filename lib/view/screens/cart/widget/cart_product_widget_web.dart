@@ -52,7 +52,8 @@ class CartProductWidgetWeb extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_DEFAULT),
+     // padding: EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_DEFAULT),
+      padding: EdgeInsets.only(bottom:5),
       child: InkWell(
         onTap: () {
           ResponsiveHelper.isMobile(context) ? showModalBottomSheet(
