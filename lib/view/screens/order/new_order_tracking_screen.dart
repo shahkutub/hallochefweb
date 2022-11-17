@@ -359,7 +359,7 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
   }
 
 
-  void showCustomDialog(BuildContext context) {
+  void  showCustomDialog(BuildContext context) {
     Dialog errorDialog = Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)), //this right here
       child: Container(
@@ -369,6 +369,67 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
         child: Stack(
           children: <Widget>[
+            Align(
+              alignment: Alignment.topLeft,
+              child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Rider contact'),
+                  SizedBox(height: 30,),
+                  Container(
+                    height: 120,
+                    color: Color(0xffEEF0F1),
+                    child: Stack(
+                      children: [
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              height: 120,
+                              width: 1,
+                              color: Colors.black,
+                            )
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  children: [
+                                    Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Container(
+                                            margin: EdgeInsets.fromLTRB(0, 5, 30, 0),
+                                            child: Flexible(child:Text('Request your to simply leave your order at the door. Message your rider with drop-off instruction for contactless delivery.',textAlign: TextAlign.left,),)
+                                        )
+
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 10,),
+                                Text('Delivery details'),
+                                Text(''+widget.orderData.address,style: TextStyle(color: Colors.black,fontSize: 12,fontWeight: FontWeight.normal),),
+
+                              ],
+                            ),
+                          ),
+
+                        ),
+
+
+                      ],
+                    ),
+                  ),
+
+
+                ],
+              )
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: TextField(
