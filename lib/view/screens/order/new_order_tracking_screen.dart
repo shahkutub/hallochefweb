@@ -436,7 +436,6 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                 ),
 
 
-
               ],
 
             ),

@@ -87,10 +87,10 @@ class _SignInScreenState extends State<SignInScreen> {
         }
       },
       child: Scaffold(
-        appBar: ResponsiveHelper.isDesktop(context) ? WebMenuBar() : !widget.exitFromApp ? AppBar(leading: IconButton(
+        appBar: AppBar(leading: IconButton(
           onPressed: () => Get.back(),
           icon: Icon(Icons.arrow_back_ios_rounded, color: Theme.of(context).textTheme.bodyText1.color),
-        ), elevation: 0, backgroundColor: Colors.transparent) : null,
+        ), elevation: 0, backgroundColor: Colors.transparent) ,
         body: SafeArea(child: Center(
           child: Scrollbar(
             child: SingleChildScrollView(

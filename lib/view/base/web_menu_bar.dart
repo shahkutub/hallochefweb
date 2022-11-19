@@ -11,6 +11,7 @@ import 'package:efood_multivendor/view/screens/menu/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controller/user_controller.dart';
 import '../../util/app_constants.dart';
 import '../screens/cart/cart_screen.dart';
 
@@ -27,7 +28,29 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
       _entryList.add(PopupMenuItem<int>(child: Text('join_as_a_restaurant'.tr), value: 1));
     }
 
+    if(Get.find<UserController>().userInfoModel == null) {
+      Get.find<UserController>().getUserInfo();
+    }
+
+    var menuList= [
+      'ASAP',
+      '12:15 PM',
+      '12:30 PM',
+      '12:45 PM',
+      '1:00 PM',
+      '1:15 PM',
+      '1:30 PM',
+    ];
+
+
     return GetBuilder<LocationController>(builder: (locationController) {
+
+
+      if(Get.find<UserController>().userInfoModel != null) {
+        print('fName: '+Get.find<UserController>().userInfoModel.fName);
+
+      }
+
       return Column(
         children: [
           Container(
@@ -180,7 +203,25 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                         onTap: (){
                                           AppConstants.showDialogLogin(context);
                                         },
-                                        child: Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
+                                        child:
+                                        // DropdownButtonHideUnderline(
+                                        //   child:
+                                        //   DropdownButton(
+                                        //     isExpanded: true,
+                                        //     isDense: true, // Reduces the dropdowns height by +/- 50%
+                                        //     icon: Icon(Icons.keyboard_arrow_down),
+                                        //    // value: _selectedDay,
+                                        //     items:
+                                        //     menuList.map((String item) =>
+                                        //         DropdownMenuItem<String>(child: Text(item), value: item))
+                                        //         .toList(),
+                                        //     onChanged: (selectedItem) {
+                                        //
+                                        //     }
+                                        //   ),
+                                        // )
+
+                                        Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
                                       )
 
                                     ],

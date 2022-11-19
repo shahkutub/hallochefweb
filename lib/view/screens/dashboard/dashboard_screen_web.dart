@@ -97,10 +97,22 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
 
 
     Get.find<CategoryController>().getCategoryList(true);
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+
+    var menuList= [
+      'ASAP',
+      '12:15 PM',
+      '12:30 PM',
+      '12:45 PM',
+      '1:00 PM',
+      '1:15 PM',
+      '1:30 PM',
+    ];
     return WillPopScope(
       onWillPop: () async {
         if (_pageIndex != 0) {
@@ -324,12 +336,33 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
                                               onTap: (){
                                                 AppConstants.showDialogLogin(context);
                                               },
-                                              child: Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
+                                              child: Text(" ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
                                             )
 
                                           ],
                                         ),
                                       ),
+
+                                      Container(
+                                        width: 100,
+                                        child: DropdownButtonHideUnderline(
+                                          child:
+                                          DropdownButton(
+                                              isExpanded: true,
+                                              isDense: true, // Reduces the dropdowns height by +/- 50%
+                                              icon: Icon(Icons.keyboard_arrow_down,color: Colors.white,),
+                                              // value: _selectedDay,
+                                              items:
+                                              menuList.map((String item) =>
+                                                  DropdownMenuItem<String>(child: Text(item), value: item))
+                                                  .toList(),
+                                              onChanged: (selectedItem) {
+
+                                              }
+                                          ),
+                                        ),
+                                      ),
+
 
                                       Container(
                                         margin: EdgeInsets.only(left: 15,right: 15),
