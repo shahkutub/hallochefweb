@@ -4,6 +4,7 @@ import 'package:efood_multivendor/util/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
 import '../helper/route_helper.dart';
@@ -249,6 +250,23 @@ class AppConstants {
   }
 
   static showDialogWhenAsap(BuildContext context) {
+    var _selectedDay ='';
+
+    List<String> _daylist = [] ;
+    var now = DateTime.now();
+    print(DateFormat().format(now)); // This will return date using the default locale
+    print('Current date: '+DateFormat('EEE, MMM d').format(now));
+    final tomorrow = DateTime(now.year, now.month, now.day + 1);
+    print('tomorrow date: '+DateFormat('EEE, MMM d').format(tomorrow));
+
+    final aftertomorrow = DateTime(tomorrow.year, tomorrow.month, tomorrow.day + 1);
+    print('aftertomorrow date: '+DateFormat('EEE, MMM d').format(aftertomorrow));
+
+    _selectedDay = DateFormat('EEE, MMM d').format(now).toString();
+    _daylist.add(DateFormat('EEE, MMM d').format(now).toString());
+    _daylist.add(DateFormat('EEE, MMM d').format(tomorrow).toString());
+    _daylist.add(DateFormat('EEE, MMM d').format(aftertomorrow).toString());
+
 
     showGeneralDialog(
         context: context,
@@ -292,94 +310,45 @@ class AppConstants {
 
                     SizedBox(height: 20,),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: (){
+                    Container(
+                      height: 80,
+                     // width: 70,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: _daylist.length,
+                        itemBuilder: (BuildContext context, int index) =>
 
-                          },
-                          child:Container(
-                            alignment: Alignment.center,
-                            height: 70,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                border: Border.all(
-                                  color: Colors.red[500],
-                                ),
-                                borderRadius: BorderRadius.circular(10)
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text('Fri',style: TextStyle(color: Colors.white,fontSize: 12,decoration: TextDecoration.none),),
-                                SizedBox(height: 5,),
-                                Text('4',style: TextStyle(color: Colors.white,fontSize: 15,decoration: TextDecoration.none),),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20,),
-                        GestureDetector(
-                          onTap: (){
+                            GestureDetector(
+                              onTap: (){
 
-                          },
-                          child:Container(
-                            alignment: Alignment.center,
-                            height: 70,
-                            width: 70,
-                            decoration: BoxDecoration(
-                               // color: Colors.red,
-                                border: Border.all(
-                                  color: Colors.red[500],
+                              },
+                              child:Container(
+                                margin: EdgeInsets.all(10),
+                                alignment: Alignment.center,
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    border: Border.all(
+                                      color: Colors.red[500],
+                                    ),
+                                    borderRadius: BorderRadius.circular(10)
                                 ),
-                                borderRadius: BorderRadius.circular(10)
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text('Sat',style: TextStyle(color: Colors.red,fontSize: 12,decoration: TextDecoration.none),),
-                                SizedBox(height: 5,),
-                                Text('5',style: TextStyle(color: Colors.red,fontSize: 15,decoration: TextDecoration.none),),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20,),
-                        GestureDetector(
-                          onTap: (){
-
-                          },
-                          child:Container(
-                            alignment: Alignment.center,
-                            height: 70,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                //color: Colors.red,
-                                border: Border.all(
-                                  color: Colors.red[500],
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(''+_daylist[index],style: TextStyle(color: Colors.white,fontSize: 12,decoration: TextDecoration.none),),
+                                    SizedBox(height: 5,),
+                                    Text('4',style: TextStyle(color: Colors.white,fontSize: 15,decoration: TextDecoration.none),),
+                                  ],
                                 ),
-                                borderRadius: BorderRadius.circular(10)
+                              ),
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text('Sun',style: TextStyle(color: Colors.red,
-                                    fontSize: 12,decoration: TextDecoration.none),),
-                                SizedBox(height: 5,),
-                                Text('6',style: TextStyle(color: Colors.red,
-                                    fontSize: 15,decoration: TextDecoration.none),),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
+
 
                     SizedBox(height: 40,),
 

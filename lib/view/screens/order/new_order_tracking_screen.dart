@@ -44,7 +44,7 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
   bool _isLoading = true;
   Set<Marker> _markers = HashSet<Marker>();
 
-  bool isArrowUp = false;
+  bool isShowDetail = false;
 
    TextEditingController _text;
 
@@ -275,14 +275,14 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                             child: Flexible(
                                                 child: InkWell(
 
-                                                  child:Icon(!isArrowUp?Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,size: 30,color: Colors.deepOrangeAccent,),
+                                                  child:Icon(!isShowDetail?Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,size: 30,color: Colors.deepOrangeAccent,),
                                                   onTap: (){
 
                                                     setState(() {
-                                                      if(!isArrowUp){
-                                                        isArrowUp = true;
+                                                      if(!isShowDetail){
+                                                        isShowDetail = true;
                                                       }else{
-                                                        isArrowUp = false;
+                                                        isShowDetail = false;
                                                       }
                                                     });
 
@@ -296,15 +296,17 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
                                       ),
 
-                                      !isArrowUp? CartWidgetDelivery():SizedBox()
+                                      isShowDetail? CartWidgetDelivery():SizedBox()
 
                                     ],
                                   ),
                                 ),
                               ),
 
+
                               Card(
                                 elevation: 10,
+
                                 child: Container(
                                   padding: EdgeInsets.all(10),
                                   height: width/11,
@@ -322,7 +324,7 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                       OutlinedButton(
 
                                         onPressed: () {
-                                          showCustomDialog(context);
+
                                         },
                                         child: Text('Help center'),
                                         style: OutlinedButton.styleFrom(
@@ -344,9 +346,96 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                         ),
 
 
+
                       ],
                     )
-                )
+                ),
+
+                Container(
+                  width: width,
+                  alignment: Alignment.center,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Card(
+                        elevation: 10,
+                        child:InkWell(
+                          child:Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(15),
+                              //height: width/11,
+                              width: width/3.5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    height: 45,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                      ///color: Colors.deepOrangeAccent.withOpacity(0.5),
+                                        color: Color(0xFFE34A28).withOpacity(0.1),
+                                        shape: BoxShape.circle
+                                    ),
+                                    child:Image.asset(Images.logo,
+                                      height: 40,width: 40,
+                                      fit: BoxFit.cover,),
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+
+                                      SizedBox(height: 10,),
+                                      Text('Rider contact',style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold),),
+
+                                      Text('Ask your rider for contactless delivery.'),
+                                      SizedBox(height: 10,),
+
+                                      // OutlinedButton(
+                                      //
+                                      //   onPressed: () {
+                                      //     showCustomDialog(context);
+                                      //   },
+                                      //   child: Text('Help center'),
+                                      //   style: OutlinedButton.styleFrom(
+                                      //     shape: RoundedRectangleBorder(
+                                      //       borderRadius: BorderRadius.circular(12),
+                                      //
+                                      //     ),
+                                      //     side: BorderSide(width: 1.0, color: Colors.deepOrangeAccent),
+                                      //   ),
+                                      // )
+
+
+                                    ],
+                                  ),
+                                ],
+                              )
+
+
+                          ),
+                          onTap: (){
+                            showCustomDialog(context);
+                          },
+                        )
+
+                      ),
+                      SizedBox(width: 10,),
+                      Container(
+                        // height: width/3.5,
+                        width: width/3.5,
+                      ),
+
+
+
+                    ],
+                  )
+                ),
+
+
 
               ],
 
