@@ -1,5 +1,6 @@
 import 'package:efood_multivendor/controller/cart_controller.dart';
 import 'package:efood_multivendor/controller/coupon_controller.dart';
+import 'package:efood_multivendor/data/model/response/cart_model.dart';
 import 'package:efood_multivendor/helper/price_converter.dart';
 import 'package:efood_multivendor/helper/responsive_helper.dart';
 import 'package:efood_multivendor/helper/route_helper.dart';
@@ -14,10 +15,15 @@ import 'package:efood_multivendor/view/screens/cart/widget/cart_product_widget_w
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../util/images.dart';
+import 'cart_detail_widget_delivery.dart';
+
 
 class CartWidgetDelivery extends StatefulWidget {
 
-  CartWidgetDelivery();
+  final List<CartModel> cartList;
+  CartWidgetDelivery({@required this.cartList});
+
 
   @override
   State<CartWidgetDelivery> createState() => _CartScreenState();
@@ -33,34 +39,40 @@ class _CartScreenState extends State<CartWidgetDelivery> {
   }
   @override
   Widget build(BuildContext context) {
-   GetBuilder<CartController>(builder: (cartController) {
-          return cartController.cartList.length > 0 ?
+    return GetBuilder<CartController>(builder: (cartController) {
+     print('cartlist: '+cartController.cartList.length.toString());
+
+            return cartController.cartList.length > 0 ?
               Container(
-                color: Colors.grey,
-                height: 70,
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+               // color: Colors.amber,
+                //height: 20,
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-                  // Product
-                  // SizedBox(
-                  //   height: 40,
-                  //   child: ListView.builder(
-                  //     //physics: NeverScrollableScrollPhysics(),
-                  //     shrinkWrap: false,
-                  //     itemCount: cartController.cartList.length,
-                  //     itemBuilder: (context, index) {
-                  //       return CartProductWidgetWeb(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
-                  //     },
-                  //   ),
-                  // ),
+                 // Product
+                  SizedBox(
+                    height: 50,
+                    child: ListView.builder(
+                      //physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: false,
+                      itemCount: cartController.cartList.length,
+                      itemBuilder: (context, index) {
+                        return CartDetailWidgetDelivery(cart: cartController.cartList[index], cartIndex: index, addOns: cartController.addOnsList[index] , isAvailable: cartController.availableList[index]);
+                      },
+                    ),
+                  ),
 
-                  //SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                  SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
-                  // Total
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text('item_price'.tr, style: robotoRegular),
-                    Text(PriceConverter.convertPrice(cartController.itemPrice), style: robotoRegular),
-                  ]),
-                 // SizedBox(height: 10),
+                  //Total
+                  Flexible(
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                      Text('item_price'.tr, style: robotoRegular),
+                      Text(PriceConverter.convertPrice(cartController.itemPrice), style: robotoRegular),
+                    ]),
+                  ),
+                 SizedBox(height: 10),
 
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text('addons'.tr, style: robotoRegular),
@@ -81,8 +93,14 @@ class _CartScreenState extends State<CartWidgetDelivery> {
                 ]
                 )
               )
-          : NoDataScreen(isCart: true, text: '');
-        },
+           : SizedBox(
+              height: 20,
+              child: Image.asset(
+                Images.empty_cart,
+                width: 20, height: 20,
+              ),
+            );
+        }
 
     );
   }

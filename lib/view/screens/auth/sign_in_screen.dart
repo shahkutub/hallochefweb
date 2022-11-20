@@ -26,6 +26,7 @@ import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';
 
 import '../../../util/app_constants.dart';
+import '../dashboard/dashboard_screen_web.dart';
 import 'widget/social_login_widget.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -261,7 +262,14 @@ class _SignInScreenState extends State<SignInScreen> {
             String _data = base64Encode(_encoded);
             Get.toNamed(RouteHelper.getVerificationRoute(_numberWithCountryCode, _token, RouteHelper.signUp, _data));
           }else {
+            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+
             Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
+            // if (Navigator.canPop(context)) {
+            //   Navigator.pop(context);
+            // } else {
+            //   SystemNavigator.pop();
+            // }
           }
         }else {
           showCustomSnackBar(status.message);

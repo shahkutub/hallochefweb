@@ -1873,11 +1873,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void _callback(bool isSuccess, String message, String orderID, double amount) async {
     if(isSuccess) {
       if(Get.find<OrderController>().isRunningOrderViewShow == false){
-        Get.find<OrderController>().closeRunningOrder(true);
+        //Get.find<OrderController>().closeRunningOrder(true);
       }
       Get.find<OrderController>().getRunningOrders(1, notify: false, fromHome: true);
       if(widget.fromCart) {
-        Get.find<CartController>().clearCartList();
+        //Get.find<CartController>().clearCartList();
       }
       Get.find<OrderController>().stopLoader();
       if(Get.find<OrderController>().paymentMethodIndex == 0 || Get.find<OrderController>().paymentMethodIndex == 2) {

@@ -32,6 +32,15 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
       Get.find<UserController>().getUserInfo();
     }
 
+    String fname = '';
+    if(Get.find<UserController>().userInfoModel != null) {
+      fname = Get.find<UserController>().userInfoModel.fName;
+
+      print('fName: ' + Get
+          .find<UserController>()
+          .userInfoModel
+          .fName);
+    }
     var menuList= [
       'ASAP',
       '12:15 PM',
@@ -46,10 +55,6 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
     return GetBuilder<LocationController>(builder: (locationController) {
 
 
-      if(Get.find<UserController>().userInfoModel != null) {
-        print('fName: '+Get.find<UserController>().userInfoModel.fName);
-
-      }
 
       return Column(
         children: [
@@ -203,30 +208,69 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                         onTap: (){
                                           AppConstants.showDialogLogin(context);
                                         },
-                                        child:
-                                        // DropdownButtonHideUnderline(
-                                        //   child:
-                                        //   DropdownButton(
-                                        //     isExpanded: true,
-                                        //     isDense: true, // Reduces the dropdowns height by +/- 50%
-                                        //     icon: Icon(Icons.keyboard_arrow_down),
-                                        //    // value: _selectedDay,
-                                        //     items:
-                                        //     menuList.map((String item) =>
-                                        //         DropdownMenuItem<String>(child: Text(item), value: item))
-                                        //         .toList(),
-                                        //     onChanged: (selectedItem) {
-                                        //
-                                        //     }
-                                        //   ),
-                                        // )
-
-                                        Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
+                                        child: fname.length>0?Text(""+fname,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),):Text("  LOGIN",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,),), // here, inside the column
                                       )
 
                                     ],
                                   ),
                                 ),
+
+
+                                PopupMenuButton(
+                                  child: Center(
+                                      child: Icon(Icons.keyboard_arrow_down_sharp)),
+                                  itemBuilder: (context) {
+                                    return [
+                                      PopupMenuItem(
+                                        value: 'Refund account',
+                                        child: Text('Refund account'),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 'Orders',
+                                        child: Text('Orders & recordings'),
+                                      ),
+
+                                      PopupMenuItem(
+                                        value: 'Profile',
+                                        child: Text('Profile'),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 'Vouchers',
+                                        child: Text('Vouchers'),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 'challenges',
+                                        child: Text('Challenges & Rewords'),
+                                      ),
+
+                                      PopupMenuItem(
+                                        value: 'help',
+                                        child: Text('Help center'),
+                                      ),
+
+                                      PopupMenuItem(
+                                        value: 'logout',
+                                        child: Text('Logout'),
+                                      ),
+                                    ];
+                                  },
+                                  onSelected: (String value){
+                                    print('You Click on po up menu item');
+                                  },
+                                ),
+                                // PopupMenuButton(
+                                //   initialValue: 2,
+                                //   child: Center(
+                                //       child: Icon(Icons.keyboard_arrow_down_sharp)),
+                                //   itemBuilder: (context) {
+                                //     return List.generate(7, (index) {
+                                //       return PopupMenuItem(
+                                //         value: index,
+                                //         child: Text('button no $index'),
+                                //       );
+                                //     });
+                                //   },
+                                // ),
 
                                 Container(
                                   margin: EdgeInsets.only(left: 15,right: 15),

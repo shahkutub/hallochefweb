@@ -113,13 +113,13 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                     width: width,
-                    alignment: Alignment.center,
+                    //alignment: Alignment.center,
                     child:Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Card(
@@ -188,7 +188,7 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                         ),
                         SizedBox(width: 10,),
                         Container(
-                          height: width/3.5,
+                         // height: width/3.5,
                           width: width/3.5,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -198,9 +198,10 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
                                 elevation: 10,
                                 child: Container(
                                   padding: EdgeInsets.all(10),
-                                  height: width/5.5,
+                                  //height: width/5.5,
                                   width: width/3.5,
                                   child: Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -296,12 +297,22 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
                                       ),
 
-                                      isShowDetail? CartWidgetDelivery():SizedBox()
+                                      isShowDetail?
+                                     Flexible(child: CartWidgetDelivery(cartList: widget.cartList))
+                                      //SizedBox(height: 30,)
+                                          :SizedBox()
 
                                     ],
                                   ),
                                 ),
                               ),
+
+                              // isShowDetail?
+                              // Flexible(child: CartWidgetDelivery(cartList: widget.cartList))
+                              // //SizedBox(height: 30,)
+                              //     :SizedBox(),
+
+
 
 
                               Card(

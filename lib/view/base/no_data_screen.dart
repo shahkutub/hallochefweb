@@ -13,7 +13,9 @@ class NoDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 
         Image.asset(
           isCart ? Images.empty_cart : Images.empty_box,
