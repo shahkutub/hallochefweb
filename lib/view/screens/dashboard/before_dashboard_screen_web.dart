@@ -107,6 +107,9 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
     if(_isLoggedIn) {
       Get.find<SearchController>().getSuggestedFoods();
     }
+
+    Get.find<OrderController>().getRunningOrders(1, notify: false, fromHome: true);
+
     Get.find<SearchController>().getHistoryList();
   }
 
@@ -629,6 +632,10 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+
+                      RunningOrderViewWidget(),
+
                       Row(
                         children: [
                           Flexible(
