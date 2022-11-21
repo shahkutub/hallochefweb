@@ -16,6 +16,7 @@ import '../../util/app_constants.dart';
 import '../screens/cart/cart_screen.dart';
 
 class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
+  bool _isLoggedIn;
   @override
   Widget build(BuildContext context) {
     bool _showJoin = (Get.find<SplashController>().configModel.toggleDmRegistration
@@ -29,7 +30,7 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
 
-   bool _isLoggedIn = Get.find<AuthController>().isLoggedIn();
+    _isLoggedIn = Get.find<AuthController>().isLoggedIn();
     String fname = '';
     if(_isLoggedIn){
       if(Get.find<UserController>().userInfoModel == null) {
@@ -59,9 +60,6 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
 
 
     return GetBuilder<LocationController>(builder: (locationController) {
-
-
-
       return Column(
         children: [
           Container(
@@ -105,9 +103,9 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                   color: Color(0xffEBEBEB),
                                 ),
                                 SizedBox(width: 20,),
-                                Text('DELIVERING TO : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2)),),
 
-                                Container(
+                                _isLoggedIn? Text('DELIVERING TO : ',style: TextStyle(fontSize: 10,color: Color(0xFFA2A2A2)),):SizedBox(),
+                                _isLoggedIn? Container(
                                   alignment: Alignment.center,
                                   height: 40,
                                   width: 40,
@@ -121,13 +119,13 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                   child: Icon(
                                       locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on_outlined,
                                       size: 30, color: Color(0xFFE34A28)),
-                                ),
+                                ):SizedBox(),
                                 // SizedBox(width: 10),
                                 // Icon(
                                 //   locationController.getUserAddress().addressType == 'home' ? Icons.home_filled : locationController.getUserAddress().addressType == 'office' ? Icons.work : Icons.location_on,
                                 //   size: 20, color: Colors.white,),
                                 SizedBox(width: 10),
-                                Flexible(
+                                _isLoggedIn?  Flexible(
                                   child: Text(
                                     //'Gulshan, dhaka',
                                     locationController.getUserAddress().address,
@@ -136,8 +134,8 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                     ),
                                     maxLines: 1, overflow: TextOverflow.ellipsis,
                                   ),
-                                ),
-                                Icon(Icons.arrow_drop_down, color: Color(0xFFE34A28)),
+                                ) : SizedBox(),
+                                _isLoggedIn? Icon(Icons.arrow_drop_down, color: Color(0xFFE34A28)):SizedBox(),
 
                                 Container(
                                   margin: EdgeInsets.only(left: 25,right: 15),
@@ -639,7 +637,6 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
           // )
         ],
       );
-
     }
     );
     //   Center(child: Container(
