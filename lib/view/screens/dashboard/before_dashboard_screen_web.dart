@@ -18,6 +18,7 @@ import 'package:efood_multivendor/view/screens/order/order_screen.dart';
 import 'package:efood_multivendor/view/screens/restaurant/all_restaurant_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places_web/flutter_google_places_web.dart';
 import 'package:get/get.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
@@ -51,6 +52,7 @@ class BeforeDashboardScreenWeb extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
+  String kGoogleApiKey = "AIzaSyCaCSJ0BZItSyXqBv8vpD1N4WBffJeKhLQ";
   //PageController _pageController;
   int _pageIndex = 0;
   //List<Widget> _screens;
@@ -454,6 +456,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                 ],
               ),
             ),
+
             Container(
               padding: EdgeInsets.all(5),
               color: Color(0xFFffffff),
@@ -635,6 +638,13 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
 
                       RunningOrderViewWidget(),
+
+                      FlutterGooglePlacesWeb(
+                        apiKey: kGoogleApiKey,
+                        proxyURL: 'https://cors-anywhere.herokuapp.com/',
+                        components: 'country:us',
+                      ),
+
 
                       Row(
                         children: [

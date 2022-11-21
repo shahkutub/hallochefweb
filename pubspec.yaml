@@ -51,6 +51,7 @@ dependencies:
   proste_bezier_curve: ^2.0.2
   social_login_buttons: ^1.0.6+2
   intl: ^0.17.0
+  flutter_google_places_web: ^1.0.0
 
 dev_dependencies:
   flutter_test:
