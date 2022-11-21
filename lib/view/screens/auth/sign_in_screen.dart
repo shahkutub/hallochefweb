@@ -20,6 +20,7 @@ import 'package:efood_multivendor/view/base/web_menu_bar.dart';
 import 'package:efood_multivendor/view/screens/auth/widget/code_picker_widget.dart';
 import 'package:efood_multivendor/view/screens/auth/widget/condition_check_box.dart';
 import 'package:efood_multivendor/view/screens/auth/widget/guest_button.dart';
+import 'package:efood_multivendor/view/screens/dashboard/before_dashboard_screen_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -262,9 +263,9 @@ class _SignInScreenState extends State<SignInScreen> {
             String _data = base64Encode(_encoded);
             Get.toNamed(RouteHelper.getVerificationRoute(_numberWithCountryCode, _token, RouteHelper.signUp, _data));
           }else {
-            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BeforeDashboardScreenWeb(pageIndex: 0,)));
 
-            Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
+            //Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
             // if (Navigator.canPop(context)) {
             //   Navigator.pop(context);
             // } else {

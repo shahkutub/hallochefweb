@@ -108,7 +108,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
       Get.find<SearchController>().getSuggestedFoods();
     }
 
-    Get.find<OrderController>().getRunningOrders(1, notify: false, fromHome: true);
+    //Get.find<OrderController>().getRunningOrders(1, notify: false, fromHome: true);
 
     Get.find<SearchController>().getHistoryList();
   }
@@ -634,7 +634,7 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                     children: [
 
 
-                      //RunningOrderViewWidget(),
+                      RunningOrderViewWidget(),
 
                       Row(
                         children: [

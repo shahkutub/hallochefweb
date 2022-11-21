@@ -71,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       'img':Images.booktable_tab
     }
   ];
-
+  bool _isLoggedIn;
   @override
   void initState() {
     super.initState();
@@ -96,7 +96,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       NetworkInfo.checkConnectivity(_scaffoldKey.currentContext);
     }*/
 
-
+    _isLoggedIn = Get.find<AuthController>().isLoggedIn();
     Get.find<CategoryController>().getCategoryList(true);
 
 

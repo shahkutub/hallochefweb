@@ -28,19 +28,25 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
       _entryList.add(PopupMenuItem<int>(child: Text('join_as_a_restaurant'.tr), value: 1));
     }
 
-    if(Get.find<UserController>().userInfoModel == null) {
-      Get.find<UserController>().getUserInfo();
-    }
 
+   bool _isLoggedIn = Get.find<AuthController>().isLoggedIn();
     String fname = '';
-    if(Get.find<UserController>().userInfoModel != null) {
-      fname = Get.find<UserController>().userInfoModel.fName;
+    if(_isLoggedIn){
+      if(Get.find<UserController>().userInfoModel == null) {
+        Get.find<UserController>().getUserInfo();
+      }
 
-      print('fName: ' + Get
-          .find<UserController>()
-          .userInfoModel
-          .fName);
+
+      if(Get.find<UserController>().userInfoModel != null) {
+        fname = Get.find<UserController>().userInfoModel.fName;
+
+        print('fName: ' + Get
+            .find<UserController>()
+            .userInfoModel
+            .fName);
+      }
     }
+
     var menuList= [
       'ASAP',
       '12:15 PM',
