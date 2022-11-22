@@ -33,6 +33,7 @@ import '../../../util/styles.dart';
 import '../../base/title_widget.dart';
 import '../address/address_screen.dart';
 import '../auth/sign_in_button_screen.dart';
+import '../auth/sign_in_screen.dart';
 import '../home/delivery_home_screen.dart';
 import '../home/pick_up_home_screen.dart';
 import '../home/widget/category_view_before_dashboard.dart';
@@ -712,7 +713,11 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
                                                 InkWell(
                                                   onTap: (){
-                                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+                                                    if(Get.find<AuthController>().isLoggedIn()){
+                                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+                                                    }else{
+                                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignInScreen(exitFromApp: false,)));
+                                                    }
                                                   },
                                                   child: Container(
                                                     margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
