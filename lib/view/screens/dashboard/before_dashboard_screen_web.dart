@@ -108,12 +108,13 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
    // Get.find<CategoryController>().getCategoryList(true);
     _isLoggedIn = Get.find<AuthController>().isLoggedIn();
     if(_isLoggedIn) {
-      Get.find<SearchController>().getSuggestedFoods();
+      // Get.find<SearchController>().getSuggestedFoods();
+      // Get.find<SearchController>().getHistoryList();
     }
 
     //Get.find<OrderController>().getRunningOrders(1, notify: false, fromHome: true);
 
-    Get.find<SearchController>().getHistoryList();
+    //Get.find<SearchController>().getHistoryList();
   }
 
   @override
@@ -638,13 +639,13 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                     children: [
 
 
-                      RunningOrderViewWidget(),
-
-                      FlutterGooglePlacesWeb(
-                        apiKey: kGoogleApiKey,
-                        proxyURL: 'https://cors-anywhere.herokuapp.com/',
-                        components: 'country:us',
-                      ),
+                      // RunningOrderViewWidget(),
+                      //
+                      // FlutterGooglePlacesWeb(
+                      //   apiKey: kGoogleApiKey,
+                      //   proxyURL: 'https://cors-anywhere.herokuapp.com/',
+                      //   components: 'country:us',
+                      // ),
 
 
                       Row(

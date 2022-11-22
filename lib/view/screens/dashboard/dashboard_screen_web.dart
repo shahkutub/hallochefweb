@@ -97,7 +97,10 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
     }*/
 
     _isLoggedIn = Get.find<AuthController>().isLoggedIn();
-    Get.find<CategoryController>().getCategoryList(true);
+    if(_isLoggedIn){
+      Get.find<CategoryController>().getCategoryList(true);
+    }
+
 
 
   }
