@@ -53,7 +53,8 @@ class BeforeDashboardScreenWeb extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
-  String kGoogleApiKey = "AIzaSyCaCSJ0BZItSyXqBv8vpD1N4WBffJeKhLQ";
+  //String kGoogleApiKey = "AIzaSyCaCSJ0BZItSyXqBv8vpD1N4WBffJeKhLQ";
+  String kGoogleApiKey = "AIzaSyDbyQUqqWpxFCkZJdGSxqc4f-zDTR8QZfU";
   //PageController _pageController;
   int _pageIndex = 0;
   //List<Widget> _screens;
@@ -639,13 +640,13 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                     children: [
 
 
-                      // RunningOrderViewWidget(),
+                       RunningOrderViewWidget(),
                       //
-                      // FlutterGooglePlacesWeb(
-                      //   apiKey: kGoogleApiKey,
-                      //   proxyURL: 'https://cors-anywhere.herokuapp.com/',
-                      //   components: 'country:us',
-                      // ),
+                      FlutterGooglePlacesWeb(
+                        apiKey: kGoogleApiKey,
+                        proxyURL: 'https://cors-anywhere.herokuapp.com/',
+                        components: 'country:us',
+                      ),
 
 
                       Row(
