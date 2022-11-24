@@ -220,6 +220,7 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                 ),
 
 
+                                _isLoggedIn?
                                 PopupMenuButton(
                                   child: Center(
                                       child: Icon(Icons.keyboard_arrow_down_sharp)),
@@ -261,7 +262,7 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                   onSelected: (String value){
                                     print('You Click on po up menu item');
                                   },
-                                ),
+                                ):SizedBox(),
                                 // PopupMenuButton(
                                 //   initialValue: 2,
                                 //   child: Center(
