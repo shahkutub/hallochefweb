@@ -231,15 +231,24 @@ class WebMenuBar extends StatelessWidget implements PreferredSizeWidget {
                                         child: Text('Refund account'),
                                       ),
                                       PopupMenuItem(
+                                        onTap: (){
+
+                                        },
                                         value: 'Orders',
                                         child: Text('Orders & recordings'),
                                       ),
 
                                       PopupMenuItem(
+                                        onTap: (){
+                                          Get.toNamed(RouteHelper.getProfileRoute());
+                                        },
                                         value: 'Profile',
                                         child: Text('Profile'),
                                       ),
                                       PopupMenuItem(
+                                        onTap: (){
+                                          Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
+                                        },
                                         value: 'Vouchers',
                                         child: Text('Vouchers'),
                                       ),
