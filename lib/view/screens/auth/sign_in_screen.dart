@@ -263,9 +263,9 @@ class _SignInScreenState extends State<SignInScreen> {
             String _data = base64Encode(_encoded);
             Get.toNamed(RouteHelper.getVerificationRoute(_numberWithCountryCode, _token, RouteHelper.signUp, _data));
           }else {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BeforeDashboardScreenWeb(pageIndex: 0,)));
+            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => BeforeDashboardScreenWeb(pageIndex: 0,)));
 
-            //Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
+            Get.toNamed(RouteHelper.getAccessLocationRoute('sign-in'));
             // if (Navigator.canPop(context)) {
             //   Navigator.pop(context);
             // } else {

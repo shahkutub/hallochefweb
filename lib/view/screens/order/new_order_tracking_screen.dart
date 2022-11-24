@@ -28,6 +28,7 @@ import '../../../data/model/response/cart_model.dart';
 import '../../../util/styles.dart';
 import '../../base/custom_image.dart';
 import '../cart/widget/cart_widget_delivery.dart';
+import 'widget/running_order_view_widget_new.dart';
 
 class NewOrderTrackingScreen extends StatefulWidget {
   final String orderID;
@@ -62,6 +63,8 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
     WidgetsBinding.instance.addObserver(this);
 
     _loadData();
+
+
     // Get.find<OrderController>().callTrackOrderApi(orderModel: Get.find<OrderController>().trackModel, orderId: widget.orderID.toString());
   }
 
@@ -144,42 +147,46 @@ class _OrderTrackingScreenState extends State<NewOrderTrackingScreen> with Widge
 
                                 SizedBox(height: 20,),
 
-                                Row(
-                                  children: [
-                                    Flexible(child:  LinearProgressIndicator(
-                                      minHeight: 5,
-                                      backgroundColor: Colors.grey,
-                                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                                    ),flex: 1,),
+                                RunningOrderViewWidgetNewState()
 
-                                    SizedBox(width: 10,),
-                                    Flexible(child:  LinearProgressIndicator(
-                                      minHeight: 5,
-                                      value: 0,
-                                      backgroundColor: Colors.grey,
-                                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                                    ),flex: 1,),
-                                    SizedBox(width: 10,),
-                                    Flexible(child:  LinearProgressIndicator(
-                                      minHeight: 5,
-                                      value: 0,
-                                      backgroundColor: Colors.grey,
-                                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                                    ),flex: 1,),
-                                    SizedBox(width: 10,),
-                                    Flexible(child:  LinearProgressIndicator(
-                                      minHeight: 5,
-                                      value: 0,
-                                      backgroundColor: Colors.grey,
-                                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                                    ),flex: 1,),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     Flexible(child:  LinearProgressIndicator(
+                                //       minHeight: 5,
+                                //       backgroundColor: Colors.grey,
+                                //       valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                                //     ),flex: 1,),
+                                //
+                                //     SizedBox(width: 10,),
+                                //     Flexible(child:  LinearProgressIndicator(
+                                //       minHeight: 5,
+                                //       value: 0,
+                                //       backgroundColor: Colors.grey,
+                                //       valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                                //     ),flex: 1,),
+                                //     SizedBox(width: 10,),
+                                //     Flexible(child:  LinearProgressIndicator(
+                                //       minHeight: 5,
+                                //       value: 0,
+                                //       backgroundColor: Colors.grey,
+                                //       valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                                //     ),flex: 1,),
+                                //     SizedBox(width: 10,),
+                                //     Flexible(child:  LinearProgressIndicator(
+                                //       minHeight: 5,
+                                //       value: 0,
+                                //       backgroundColor: Colors.grey,
+                                //       valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                                //     ),flex: 1,),
+                                //   ],
+                                // ),
+                                //
+                                // SizedBox(
+                                //   height: 20,
+                                // ),
+                                // Text('Preparing your food.Your rider will pack it up once it\'s ready.',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                                //
 
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text('Preparing your food.Your rider will pack it up once it\'s ready.',style: TextStyle(color: Colors.grey,fontSize: 15),),
                               ],
                             ),
 

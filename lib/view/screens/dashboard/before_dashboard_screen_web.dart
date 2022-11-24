@@ -715,11 +715,15 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
 
                                                 InkWell(
                                                   onTap: (){
-                                                    if(Get.find<AuthController>().isLoggedIn()){
-                                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
-                                                    }else{
-                                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignInScreen(exitFromApp: false,)));
-                                                    }
+
+                                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+
+
+                                                    // if(Get.find<AuthController>().isLoggedIn()){
+                                                    //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
+                                                    // }else{
+                                                    //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignInScreen(exitFromApp: false,)));
+                                                    // }
                                                   },
                                                   child: Container(
                                                     margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
