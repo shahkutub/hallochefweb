@@ -58,7 +58,8 @@ class RunningOrderViewWidgetNew extends State<RunningOrderViewWidgetNewDashboard
 
       //_orderStatus = 'accepted';
 
-        return (_status == 1 || _status == 2 || _status == 3) ? InkWell(
+        return (_status == 1 || _status == 2 || _status == 3) ? 
+        InkWell(
           onTap: (){
             Get.toNamed(
               RouteHelper.getOrderDetailsRoute(orderController.runningOrderList[orderController.runningOrderIndex].id),
@@ -66,7 +67,10 @@ class RunningOrderViewWidgetNew extends State<RunningOrderViewWidgetNewDashboard
             );
             orderController.closeRunningOrder(true);
           },
-          child: Container(
+          child: Container( 
+            // height: context.width/4,
+             width: context.width/3,
+            margin: EdgeInsets.all(30),
             //height: 100,
             // decoration: BoxDecoration(
             //     color: Theme.of(context).cardColor,

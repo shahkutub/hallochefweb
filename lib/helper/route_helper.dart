@@ -287,7 +287,7 @@ class RouteHelper {
       orderID: Get.parameters['id'], status: Get.parameters['status'].contains('success') ? 1 : 0, totalAmount: null,
     ))),
     GetPage(name: payment, page: () => getRoute(PaymentScreen(orderModel: OrderModel(
-        id: int.parse(Get.parameters['id']), userId: int.parse(Get.parameters['user']), orderAmount: double.parse( Get.parameters['amount']),
+      id: int.parse(Get.parameters['id']), userId: int.parse(Get.parameters['user']), orderAmount: double.parse( Get.parameters['amount']),
     )))),
     GetPage(name: checkout, page: () {
       CheckoutScreen _checkoutScreen = Get.arguments;
@@ -358,10 +358,10 @@ class RouteHelper {
       _minimumVersion = Get.find<SplashController>().configModel.appMinimumVersionIos;
     }
     return
-        AppConstants.APP_VERSION < _minimumVersion ? UpdateScreen(isUpdate: true)
-        : Get.find<SplashController>().configModel.maintenanceMode ? UpdateScreen(isUpdate: false)
-        : Get.find<LocationController>().getUserAddress() != null ? navigateTo
-        : AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute);
-        //: BeforeDashboardScreenWeb(pageIndex: 0);
+      AppConstants.APP_VERSION < _minimumVersion ? UpdateScreen(isUpdate: true)
+          : Get.find<SplashController>().configModel.maintenanceMode ? UpdateScreen(isUpdate: false)
+          : Get.find<LocationController>().getUserAddress() != null ? navigateTo
+          : AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute);
+    //: BeforeDashboardScreenWeb(pageIndex: 0);
   }
 }
