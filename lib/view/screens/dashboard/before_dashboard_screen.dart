@@ -116,7 +116,7 @@ class _BeforeDashboardScreenState extends State<BeforeDashboardScreen> {
                       borderRadius : BorderRadius.circular(50)
                   ),
                   style: TextStyle(color: Color(0xff707070) ,
-                      fontSize: 12, ) ,
+                    fontSize: 12, ) ,
                 )),
               ],
             ),
@@ -313,52 +313,52 @@ class _BeforeDashboardScreenState extends State<BeforeDashboardScreen> {
                           SizedBox(height: 5),
 
                           InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen(pageIndex: 0)));
-                            },
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * .15,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Stack(
-
-                                  children: [
-
-                                    Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Dine-in' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold, fontSize: 18 ),),
-                                          //Text('Order food you love' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.w500 ,height:1 ,  fontSize: 14  )),
-
-                                        ],
-                                      ),
-                                    ),
-
-
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.white,
-                                        radius: 35,
-                                        backgroundImage: AssetImage('assets/image/dinein.png'),
-                                      ),
-                                    ),
-
-
-
-                                  ],
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen(pageIndex: 0)));
+                              },
+                              child: Container(
+                                height: MediaQuery.of(context).size.height * .15,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10)
                                 ),
-                              ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Stack(
 
-                            )
+                                    children: [
+
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('Dine-in' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold, fontSize: 18 ),),
+                                            //Text('Order food you love' , style: TextStyle(color: Colors.black , fontWeight: FontWeight.w500 ,height:1 ,  fontSize: 14  )),
+
+                                          ],
+                                        ),
+                                      ),
+
+
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.white,
+                                          radius: 35,
+                                          backgroundImage: AssetImage('assets/image/dinein.png'),
+                                        ),
+                                      ),
+
+
+
+                                    ],
+                                  ),
+                                ),
+
+                              )
                           ),
 
                         ],

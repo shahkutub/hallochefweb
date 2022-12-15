@@ -5,10 +5,12 @@ import 'package:efood_multivendor/util/dimensions.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:efood_multivendor/util/styles.dart';
 import 'package:efood_multivendor/view/base/custom_snackbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class SocialLoginWidget extends StatelessWidget {
   @override
@@ -52,17 +54,28 @@ class SocialLoginWidget extends StatelessWidget {
          // Get.find<SplashController>().configModel.socialLogin[1].status ?
           InkWell(
             onTap: () async{
-              LoginResult _result = await FacebookAuth.instance.login();
-              if (_result.status == LoginStatus.success) {
-                Map _userData = await FacebookAuth.instance.getUserData();
-                if(_userData != null){
-                  Get.find<AuthController>().loginWithSocialMedia(SocialLogInBody(
-                    email: _userData['email'], token: _result.accessToken.token, uniqueId: _result.accessToken.userId, medium: 'facebook',
-                  ));
-                }
-              } else {
-                showCustomSnackBar('${_result.status} ${_result.message}');
-              }
+              // LoginResult _result = await FacebookAuth.instance.login();
+              // if (_result.status == LoginStatus.success) {
+              //   Map _userData = await FacebookAuth.instance.getUserData();
+              //   if(_userData != null){
+              //     Get.find<AuthController>().loginWithSocialMedia(SocialLogInBody(
+              //       email: _userData['email'], token: _result.accessToken.token, uniqueId: _result.accessToken.userId, medium: 'facebook',
+              //     ));
+              //   }
+              // } else {
+              //   showCustomSnackBar('${_result.status} ${_result.message}');
+              // }
+
+             // if (kIsWeb || defaultTargetPlatform == TargetPlatform.macOS) {
+                // initialiaze the facebook javascript SDK
+                await FacebookAuth.instance.webAndDesktopInitialize(
+                  appId: "849360052932540",
+                  cookie: true,
+                  xfbml: true,
+                  version: "v15.0",
+                );
+              //}
+
             },
             child: Container(
               height: 40, width: 40,
