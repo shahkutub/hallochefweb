@@ -16,7 +16,8 @@ class AppConstants {
   static const double APP_VERSION = 5.8;
 
   //static const String BASE_URL = 'https://stackfood-admin.6amtech.com';
-  static const String BASE_URL = 'https://app.smartcoderlab.com';
+  //static const String BASE_URL = 'https://app.smartcoderlab.com';
+  static const String BASE_URL = 'https://api.hallochefco.com';
   //static const String BASE_URL = 'https://hallochefco.com';
   static const String CATEGORY_URI = '/api/v1/categories';
   static const String BANNER_URI = '/api/v1/banners';
