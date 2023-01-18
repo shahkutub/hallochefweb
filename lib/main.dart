@@ -35,10 +35,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if(GetPlatform.isWeb) {
     await Firebase.initializeApp(options: FirebaseOptions(
-      apiKey: 'AIzaSyCeaw_gVN0iQwFHyuF8pQ6PbVDmSVQw8AY',
-      appId: '1:1049699819506:web:a4b5e3bedc729aab89956b',
-      messagingSenderId: '1049699819506',
-      projectId: 'stackfood-bd3ee',
+      apiKey: 'AIzaSyC2lJOWiwyEporfrYyvDfuwVC6NpvfZPnY',
+      appId: '1:53002672272:web:85fb98f4c268244d756015',
+      messagingSenderId: '53002672272',
+      projectId: 'hallochef-4c5fb',
     ));
   }else {
     await Firebase.initializeApp();
@@ -88,12 +88,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(GetPlatform.isWeb) {
-      // Get.find<SplashController>().initSharedData();
-      // if(Get.find<LocationController>().getUserAddress() != null && (Get.find<LocationController>().getUserAddress().zoneIds == null
-      //     || Get.find<LocationController>().getUserAddress().zoneData == null)) {
-      //   Get.find<AuthController>().clearSharedAddress();
-      // }
-      // Get.find<CartController>().getCartData();
+      Get.find<SplashController>().initSharedData();
+      if(Get.find<LocationController>().getUserAddress() != null && (Get.find<LocationController>().getUserAddress().zoneIds == null
+          || Get.find<LocationController>().getUserAddress().zoneData == null)) {
+        Get.find<AuthController>().clearSharedAddress();
+      }
+      Get.find<CartController>().getCartData();
       _route();
       //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
 
