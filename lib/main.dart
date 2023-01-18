@@ -88,12 +88,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if(GetPlatform.isWeb) {
-      Get.find<SplashController>().initSharedData();
-      if(Get.find<LocationController>().getUserAddress() != null && (Get.find<LocationController>().getUserAddress().zoneIds == null
-          || Get.find<LocationController>().getUserAddress().zoneData == null)) {
-        Get.find<AuthController>().clearSharedAddress();
-      }
-      Get.find<CartController>().getCartData();
+      // Get.find<SplashController>().initSharedData();
+      // if(Get.find<LocationController>().getUserAddress() != null && (Get.find<LocationController>().getUserAddress().zoneIds == null
+      //     || Get.find<LocationController>().getUserAddress().zoneData == null)) {
+      //   Get.find<AuthController>().clearSharedAddress();
+      // }
+      // Get.find<CartController>().getCartData();
       _route();
       //Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreenWeb(pageIndex: 0,)));
 
