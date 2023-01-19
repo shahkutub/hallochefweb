@@ -53,6 +53,7 @@ dependencies:
   intl: ^0.17.0
   flutter_google_places_web: ^1.0.0
   flutter_isolate: ^2.0.4
+  flutter_google_places: ^0.3.0
 
 dev_dependencies:
   flutter_test:

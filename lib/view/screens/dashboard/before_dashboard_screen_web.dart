@@ -8,42 +8,25 @@ import 'package:efood_multivendor/util/app_constants.dart';
 import 'package:efood_multivendor/util/dimensions.dart';
 import 'package:efood_multivendor/view/base/cart_widget.dart';
 import 'package:efood_multivendor/view/screens/cart/cart_screen.dart';
-import 'package:efood_multivendor/view/screens/coupon/coupon_screen.dart';
-import 'package:efood_multivendor/view/screens/dashboard/widget/bottom_nav_item.dart';
-import 'package:efood_multivendor/view/screens/dashboard/widget/running_order_view_widget.dart';
-import 'package:efood_multivendor/view/screens/favourite/favourite_screen.dart';
-import 'package:efood_multivendor/view/screens/home/home_screen.dart';
-import 'package:efood_multivendor/view/screens/menu/menu_screen.dart';
-import 'package:efood_multivendor/view/screens/order/order_screen.dart';
-import 'package:efood_multivendor/view/screens/order/widget/running_order_view_widget_new_dashboard.dart';
-import 'package:efood_multivendor/view/screens/restaurant/all_restaurant_screen.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_google_places_web/flutter_google_places_web.dart';
 import 'package:get/get.dart';
-import 'package:social_login_buttons/social_login_buttons.dart';
 
 import '../../../controller/auth_controller.dart';
-import '../../../controller/category_controller.dart';
-import '../../../controller/location_controller.dart';
-import '../../../controller/search_controller.dart';
-import '../../../controller/splash_controller.dart';
+
 import '../../../helper/route_helper.dart';
 import '../../../util/images.dart';
-import '../../../util/styles.dart';
-import '../../base/title_widget.dart';
-import '../address/address_screen.dart';
-import '../auth/sign_in_button_screen.dart';
-import '../auth/sign_in_screen.dart';
-import '../home/delivery_home_screen.dart';
-import '../home/pick_up_home_screen.dart';
-import '../home/widget/category_view_before_dashboard.dart';
-import '../home/widget/causines_view_dashboard.dart';
-import '../language/language_screen.dart';
-import '../location/access_location_screen.dart';
-import '../search/search_screen_web.dart';
-import '../support/support_screen.dart';
 import 'dashboard_screen_web.dart';
+import 'dart:async';
+import 'dart:math';
+
+import 'package:google_api_headers/google_api_headers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:google_maps_webservice/places.dart';
 
 class BeforeDashboardScreenWeb extends StatefulWidget {
   final int pageIndex;
@@ -642,8 +625,8 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                   children: [
 
 
-                    RunningOrderViewWidgetNewDashboard(),
-                    //
+                    //RunningOrderViewWidgetNewDashboard(),
+
                     // FlutterGooglePlacesWeb(
                     //   apiKey: kGoogleApiKey,
                     //   proxyURL: 'https://cors-anywhere.herokuapp.com/',
@@ -673,8 +656,16 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
                                             children: [
                                               InkWell(
                                                 onTap: (){
-                                                  //AppConstants.showDialogPlaceSearch(context);
-                                                  Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
+
+                                                 // PlacesAutocomplete.show(
+                                                 //      context: context,
+                                                 //      apiKey: 'AIzaSyD_7sI26H4jmNN9Wjp8ElwiLITT9U5_rWg',
+                                                 //      mode: Mode.overlay, // Mode.fullscreen
+                                                 //      language: "fr",
+                                                 //      components: [new Component(Component.country, "fr")]);
+
+                                                  AppConstants.showDialogPlaceSearch(context);
+                                                  //Get.to(AccessLocationScreen(fromSignUp: false, fromHome: false, route: Get.currentRoute));
                                                 },
                                                 child: Container(
 

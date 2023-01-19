@@ -3,6 +3,7 @@ import 'package:efood_multivendor/data/model/response/language_model.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places_web/flutter_google_places_web.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
@@ -397,21 +398,25 @@ class AppConstants {
 
             Animation secondaryAnimation) {
 
-          double width = MediaQuery.of(context).size.width / 3;
-
-          List<String> times =  [];
-          times.add('ASAP');
-          times.add('10:30 PM');
-          times.add('10:45 PM');
-          times.add('11:00 PM');
-          times.add('11:15 PM');
-          times.add('11:30 PM');
-          times.add('11:45 PM');
+          // double width = MediaQuery.of(context).size.width / 3;
+          //
+          // List<String> times =  [];
+          // times.add('ASAP');
+          // times.add('10:30 PM');
+          // times.add('10:45 PM');
+          // times.add('11:00 PM');
+          // times.add('11:15 PM');
+          // times.add('11:30 PM');
+          // times.add('11:45 PM');
 
           return
-          Center()
-           // PlaceSearch()
-          ;
+          Scaffold(
+            body: FlutterGooglePlacesWeb(
+              apiKey: 'AIzaSyD_7sI26H4jmNN9Wjp8ElwiLITT9U5_rWg',
+              proxyURL: 'https://cors-anywhere.herokuapp.com/',
+              required: true,
+            ),
+          );
         });
 
   }
