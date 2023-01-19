@@ -414,6 +414,7 @@ class AppConstants {
             body: FlutterGooglePlacesWeb(
               apiKey: 'AIzaSyD_7sI26H4jmNN9Wjp8ElwiLITT9U5_rWg',
               proxyURL: 'https://cors-anywhere.herokuapp.com/',
+              components: 'us',
               required: true,
             ),
           );
