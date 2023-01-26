@@ -73,6 +73,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void _route() {
     Get.find<SplashController>().getConfigData().then((isSuccess) {
       if(isSuccess) {
+        print('configlatlon: '+Get.find<SplashController>().configModel.defaultLocation.lat);
+
         Timer(Duration(seconds: 1), () async {
           int _minimumVersion = 0;
           if(GetPlatform.isAndroid) {

@@ -18,11 +18,14 @@ import 'package:efood_multivendor/view/screens/restaurant/all_restaurant_screen.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../controller/auth_controller.dart';
 import '../../../controller/category_controller.dart';
 import '../../../controller/location_controller.dart';
 import '../../../controller/splash_controller.dart';
+import '../../../data/model/response/address_model.dart';
+import '../../../data/model/response/zone_response_model.dart';
 import '../../../helper/route_helper.dart';
 import '../../../util/images.dart';
 import '../../../util/styles.dart';
@@ -73,7 +76,7 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
   ];
   bool _isLoggedIn;
   @override
-  void initState() {
+  Future<void> initState() {
     super.initState();
 
     _pageIndex = widget.pageIndex;
@@ -96,11 +99,26 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       NetworkInfo.checkConnectivity(_scaffoldKey.currentContext);
     }*/
 
+    // Get.find<LocationController>().getCurrentLocation(true, notify: true, defaultLatLng: LatLng(
+    //   // double.parse(Get.find<LocationController>().getUserAddress().latitude) != null ? double.parse(Get.find<LocationController>().getUserAddress().latitude)
+    //   // :
+    //   double.parse('13.7336075'),
+    //   // double.parse(Get.find<LocationController>().getUserAddress().longitude )!= null ? double.parse(Get.find<LocationController>().getUserAddress().longitude)
+    //   // :
+    //   double.parse('100.5649089'),
+    // ));
+
+
+
+   // Get.find<AuthController>().setLocation(LatLng(13.7336075,100.5649089));
+
+   // setLocation();
+
+
     _isLoggedIn = Get.find<AuthController>().isLoggedIn();
     if(_isLoggedIn){
       Get.find<CategoryController>().getCategoryList(true);
     }
-
 
 
   }
@@ -1439,6 +1457,15 @@ class _DashboardScreenState extends State<DashboardScreenWeb> {
       _pageController.jumpToPage(pageIndex);
       _pageIndex = pageIndex;
     });
+  }
+
+  Future<void> setLocation() async {
+
+    AddressModel _address = await Get.find<LocationController>().getCurrentLocation(false,defaultLatLng: LatLng(13.7336075, 100.5649089));
+    ZoneResponseModel _response =  Get.find<LocationController>().getZone(_address.latitude, _address.longitude, false) as ZoneResponseModel;
+    if(_response.isSuccess) {
+      Get.find<LocationController>().saveAddressAndNavigate(_address,false,Get.currentRoute,false);
+    }
   }
 
 }

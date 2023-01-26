@@ -31,6 +31,7 @@ import 'package:efood_multivendor/view/screens/home/widget/category_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../cart/cart_screen.dart';
 import '../location/access_location_screen.dart';
@@ -38,6 +39,8 @@ import '../location/access_location_screen.dart';
 class DeliveryHomeScreen extends StatefulWidget {
 
   static Future<void> loadData(bool reload) async {
+
+    //Get.find<AuthController>().setLocation(LatLng(13.7336075,100.5649089));
     Get.find<BannerController>().getBannerList(reload);
     Get.find<CategoryController>().getCategoryList(reload);
     if(Get.find<SplashController>().configModel.popularRestaurant == 1) {

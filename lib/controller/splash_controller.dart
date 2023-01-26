@@ -27,8 +27,8 @@ class SplashController extends GetxController implements GetxService {
     if(response.statusCode == 200) {
       _configModel = ConfigModel.fromJson(response.body);
 
-      _configModel.defaultLocation.lat = '13.7563';
-      _configModel.defaultLocation.lng = '100.5018';
+      _configModel.defaultLocation.lat = '13.7336075';
+      _configModel.defaultLocation.lng = '100.5649089';
 
 
       _isSuccess = true;
