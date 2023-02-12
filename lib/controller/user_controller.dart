@@ -28,7 +28,7 @@ class UserController extends GetxController implements GetxService {
     _pickedFile = null;
     ResponseModel _responseModel;
     Response response = await userRepo.getUserInfo();
-   // print('userInfoResponse'+response.toString());
+    // print('userInfoResponse'+response.toString());
     if (response.statusCode == 200) {
       _userInfoModel = UserInfoModel.fromJson(response.body);
       _responseModel = ResponseModel(true, 'successful');

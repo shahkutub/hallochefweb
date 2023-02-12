@@ -264,8 +264,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                     ),
                   ])),
                   (_order.orderType == 'take_away' && (_order.orderStatus == 'pending' || _order.orderStatus == 'accepted'
-                  || _order.orderStatus == 'confirmed' || _order.orderStatus == 'processing' || _order.orderStatus == 'handover'
-                  || _order.orderStatus == 'picked_up')) ? TextButton.icon(
+                      || _order.orderStatus == 'confirmed' || _order.orderStatus == 'processing' || _order.orderStatus == 'handover'
+                      || _order.orderStatus == 'picked_up')) ? TextButton.icon(
                     onPressed: () async {
                       String url ='https://www.google.com/maps/dir/?api=1&destination=${_order.restaurant.latitude}'
                           ',${_order.restaurant.longitude}&mode=d';
@@ -277,7 +277,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                     },
                     icon: Icon(Icons.directions), label: Text('direction'.tr),
                   ) : SizedBox(),
-                  (_order.orderStatus != 'delivered' && _order.orderStatus != 'failed' && _order.orderStatus != 'canceled' && _order.orderStatus != 'refunded') ? TextButton.icon(
+                  (_order.orderStatus != 'delivered' && _order.orderStatus != 'failed' && _order.orderStatus != 'canceled' && _order.orderStatus != 'refunded') ?
+                  TextButton.icon(
                     onPressed: () async {
                       orderController.cancelTimer();
                       await Get.toNamed(RouteHelper.getChatRoute(
@@ -381,7 +382,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                 width: Dimensions.WEB_MAX_WIDTH + 20,
                 child: Row(children: [
                   (_order.orderStatus == 'pending' || _order.orderStatus == 'accepted' || _order.orderStatus == 'confirmed'
-                  || _order.orderStatus == 'processing' || _order.orderStatus == 'handover'|| _order.orderStatus == 'picked_up') ? Expanded(
+                      || _order.orderStatus == 'processing' || _order.orderStatus == 'handover'|| _order.orderStatus == 'picked_up') ? Expanded(
                     child: CustomButton(
                       buttonText: 'track_order'.tr,
                       margin: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
@@ -402,8 +403,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                       onPressed: () {
                         Get.dialog(ConfirmationDialog(
                           icon: Images.warning, description: 'are_you_sure_to_cancel'.tr, onYesPressed: () {
-                            orderController.cancelOrder(_order.id);
-                          },
+                          orderController.cancelOrder(_order.id);
+                        },
                         ));
                       },
                       child: Text('cancel_order'.tr, style: robotoBold.copyWith(
@@ -461,15 +462,15 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                   buttonText: 'switch_to_cash_on_delivery'.tr,
                   onPressed: () {
                     Get.dialog(ConfirmationDialog(
-                      icon: Images.warning, description: 'are_you_sure_to_switch'.tr,
-                      onYesPressed: () {
-                        orderController.switchToCOD(_order.id.toString()).then((isSuccess) {
-                          Get.back();
-                          if(isSuccess) {
+                        icon: Images.warning, description: 'are_you_sure_to_switch'.tr,
+                        onYesPressed: () {
+                          orderController.switchToCOD(_order.id.toString()).then((isSuccess) {
                             Get.back();
-                          }
-                        });
-                      }
+                            if(isSuccess) {
+                              Get.back();
+                            }
+                          });
+                        }
                     ));
                   },
                 ),

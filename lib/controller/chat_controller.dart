@@ -235,7 +235,7 @@ class ChatController extends GetxController implements GetxService {
   }
 
   Future<Response> sendMessage({@required String message, @required NotificationBody notificationBody,
-  @required int conversationID, @required int index}) async {
+    @required int conversationID, @required int index}) async {
     Response _response;
     _isLoading = true;
     update();

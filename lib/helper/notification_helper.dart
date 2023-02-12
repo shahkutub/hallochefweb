@@ -46,10 +46,10 @@ class NotificationHelper {
           if(Get.find<ChatController>().messageModel.conversation.id.toString() == message.data['conversation_id'].toString()) {
             Get.find<ChatController>().getMessages(
               1, NotificationBody(
-                notificationType: NotificationType.message, adminId: message.data['sender_type'] == UserType.admin.name ? 0 : null,
-                restaurantId: message.data['sender_type'] == UserType.vendor.name ? 0 : null,
-                deliverymanId: message.data['sender_type'] == UserType.delivery_man.name ? 0 : null,
-              ),
+              notificationType: NotificationType.message, adminId: message.data['sender_type'] == UserType.admin.name ? 0 : null,
+              restaurantId: message.data['sender_type'] == UserType.vendor.name ? 0 : null,
+              deliverymanId: message.data['sender_type'] == UserType.delivery_man.name ? 0 : null,
+            ),
               null, int.parse(message.data['conversation_id'].toString()),
             );
           }else {

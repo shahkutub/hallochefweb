@@ -13,12 +13,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_google_places_web/flutter_google_places_web.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/auth_controller.dart';
 
+import '../../../controller/location_controller.dart';
+import '../../../data/model/response/address_model.dart';
+import '../../../data/model/response/zone_response_model.dart';
 import '../../../helper/route_helper.dart';
 import '../../../util/images.dart';
+import '../../base/custom_loader.dart';
+import '../../base/custom_snackbar.dart';
+import '../location/widget/permission_dialog.dart';
 import 'dashboard_screen_web.dart';
 import 'dart:async';
 import 'dart:math';
@@ -65,9 +72,38 @@ class _DashboardScreenState extends State<BeforeDashboardScreenWeb> {
   ];
   final TextEditingController _searchController = TextEditingController();
   bool _isLoggedIn;
+
+  void _checkPermission(Function onTap) async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    if(permission == LocationPermission.denied) {
+      showCustomSnackBar('you_have_to_allow'.tr);
+    }else if(permission == LocationPermission.deniedForever) {
+      Get.dialog(PermissionDialog());
+    }else {
+      onTap();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+
+    // _checkPermission(() async {
+    //   //Get.dialog(CustomLoader(), barrierDismissible: false);
+    //   AddressModel _address = await Get.find<LocationController>().getCurrentLocation(true);
+    //   ZoneResponseModel _response = await Get.find<LocationController>().getZone(_address.latitude, _address.longitude, false);
+    //   if(_response.isSuccess) {
+    //     Get.find<LocationController>().saveAddressAndNavigate(_address, false,Get.currentRoute,false);
+    //   }else {
+    //     // Get.back();
+    //     // Get.toNamed(RouteHelper.getPickMapRoute(route == null ? RouteHelper.accessLocation : route, route != null));
+    //     // showCustomSnackBar('service_not_available_in_current_location'.tr);
+    //   }
+    // });
+
 
     //_pageIndex = widget.pageIndex;
 

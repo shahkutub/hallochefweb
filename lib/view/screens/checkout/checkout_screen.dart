@@ -1,4 +1,5 @@
 import 'package:efood_multivendor/controller/auth_controller.dart';
+import 'package:efood_multivendor/controller/auth_controller.dart';
 import 'package:efood_multivendor/controller/cart_controller.dart';
 import 'package:efood_multivendor/controller/coupon_controller.dart';
 import 'package:efood_multivendor/controller/localization_controller.dart';

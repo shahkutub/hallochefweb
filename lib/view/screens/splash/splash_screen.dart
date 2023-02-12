@@ -13,9 +13,15 @@ import 'package:efood_multivendor/util/dimensions.dart';
 import 'package:efood_multivendor/util/images.dart';
 import 'package:efood_multivendor/view/base/no_internet_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
+import '../../../data/model/response/address_model.dart';
+import '../../../data/model/response/zone_response_model.dart';
 import '../../../util/styles.dart';
+import '../../base/custom_loader.dart';
+import '../../base/custom_snackbar.dart';
+import '../location/widget/permission_dialog.dart';
 
 class SplashScreen extends StatefulWidget {
   final NotificationBody body;
@@ -29,9 +35,37 @@ class _SplashScreenState extends State<SplashScreen> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey();
   StreamSubscription<ConnectivityResult> _onConnectivityChanged;
 
+  void _checkPermission(Function onTap) async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    if(permission == LocationPermission.denied) {
+      showCustomSnackBar('you_have_to_allow'.tr);
+    }else if(permission == LocationPermission.deniedForever) {
+      Get.dialog(PermissionDialog());
+    }else {
+      onTap();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+
+    // _checkPermission(() async {
+    //   Get.dialog(CustomLoader(), barrierDismissible: false);
+    //   AddressModel _address = await Get.find<LocationController>().getCurrentLocation(true);
+    //   //ZoneResponseModel _response = await locationController.getZone(_address.latitude, _address.longitude, false);
+    //   // if(_response.isSuccess) {
+    //   //   locationController.saveAddressAndNavigate(_address, fromSignUp, route, route != null);
+    //   // }else {
+    //   //   Get.back();
+    //   //   Get.toNamed(RouteHelper.getPickMapRoute(route == null ? RouteHelper.accessLocation : route, route != null));
+    //   //   showCustomSnackBar('service_not_available_in_current_location'.tr);
+    //   // }
+    // });
+
 
     bool _firstTime = true;
     _onConnectivityChanged = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {

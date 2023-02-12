@@ -313,6 +313,23 @@ class LocationController extends GetxController implements GetxService {
     });
   }
 
+  void _setZoneDataNew(AddressModel address, bool fromSignUp, String route, bool canRoute) {
+    Get.find<LocationController>().getZone(address.latitude, address.longitude, false).then((response) async {
+      if (response.isSuccess) {
+        Get.find<CartController>().clearCartList();
+        address.zoneId = response.zoneIds[0];
+        address.zoneIds = [];
+        address.zoneIds.addAll(response.zoneIds);
+        address.zoneData = [];
+        address.zoneData.addAll(response.zoneData);
+        //autoNavigate(address, fromSignUp, route, canRoute);
+      } else {
+        Get.back();
+        showCustomSnackBar(response.message);
+      }
+    });
+  }
+
   void autoNavigate(AddressModel address, bool fromSignUp, String route, bool canRoute) async {
     if(!GetPlatform.isWeb) {
       if (Get.find<LocationController>().getUserAddress() != null && Get.find<LocationController>().getUserAddress().zoneId != address.zoneId) {
